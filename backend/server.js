@@ -41,7 +41,7 @@ app.post('/api/login', async (req,res)=>{
             email: req.body.email
         })
         if(!user){
-            return res.json({status: 'error', error: 'User does not exists with this email Id'})
+            return res.status(404).json({status: 'error', error: 'User does not exists with this email Id'})
         }
         const isValidPassword = await brcrypt.compare(req.body.password,user.password)
         if(isValidPassword){
