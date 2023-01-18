@@ -12,6 +12,8 @@ import Cart from './components/Cart'
 import Seller from "./components/Seller";
 import Products from './components/Products'
 import Product from "./components/Product";
+import { ToastContainer } from 'react-toastify';
+
 function App() {
   
   return (
@@ -19,7 +21,7 @@ function App() {
 
       <Navbar />
       <div className="container">
-
+      <ToastContainer />
         <Switch>
           <Route exact  path="/" component={Home} />
           <Route exact  path="/home" component={Home} />
