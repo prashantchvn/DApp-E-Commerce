@@ -1,17 +1,23 @@
 const express = require('express')
 const app = express()
-
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const brcrypt = require('bcryptjs')
 const mongoose = require('mongoose')
+const User = require('./models/user.model')
+
+// middlewares
 app.use(cors())
 app.use(express.json())
 
+//mongoDb database connection
 mongoose.set('strictQuery', false);
 mongoose.connect('mongodb://localhost:27017/e-commerce-DApp', { useNewUrlParser: true })
 
-const User = require('./models/user.model')
+app.listen(5000,()=>{
+    console.log('Server started')
+    console.log(mongoose.connection.readyState);
+})
 
 app.post('/api/register', async (req,res)=>{
     try {
@@ -54,10 +60,5 @@ app.post('/api/login', async (req,res)=>{
         console.log(error)
         res.json({status: 'error', error: 'Duplicate email'})
     }
-})
-
-app.listen(5000,()=>{
-    console.log('Server started')
-    console.log(mongoose.connection.readyState);
 })
 
