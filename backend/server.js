@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -51,7 +52,7 @@ app.post('/api/login', async (req,res)=>{
                     name: user.name,
                     email: user.email
                 }
-            ,'secret1234')
+            ,process.env.SECRET_KEY)
             return res.json({status: 'ok', user: token})
         }else{
             return res.json({status: 'error', user: false})
