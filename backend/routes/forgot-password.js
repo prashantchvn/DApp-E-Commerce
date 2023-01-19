@@ -1,5 +1,6 @@
-const { User } = require("../models/user.model");
+const User = require('../models/user.model')
 const Token = require("../models/user.forgot-passord-token");
+const brcrypt = require('bcryptjs')
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const express = require("express");
@@ -19,7 +20,8 @@ router.post("/", async (req, res) => {
             }).save();
         }
 
-        const link = `${process.env.BASE_URL}/password-reset/${user._id}/${token.token}`;
+        const link = `http://localhost:5000/password-reset/${user._id}/${token.token}`;
+        console.log(link)
         await sendEmail(user.email, "Password reset", link);
 
         res.send("password reset link sent to your email account");
@@ -29,9 +31,9 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.post("/:userId/:token", async (req, res) => {
+router.post("/changepassword/:id/token/:token", async (req, res) => {
     try {
-        const user = await User.findById(req.params.userId);
+        const user = await User.findById(req.params.id)
         if (!user) return res.status(400).send("invalid link or expired");
 
         const token = await Token.findOne({
