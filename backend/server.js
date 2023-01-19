@@ -19,5 +19,11 @@ app.listen(5000,()=>{
     console.log(mongoose.connection.readyState);
 })
 
+app._router.stack.forEach(function(r){
+    if (r){
+      console.log(r)
+    }
+  })
+
 app.use("/api/password-reset", passwordReset);
 app.use("/api", userAuthentication);

@@ -1,9 +1,11 @@
 
 const jwt = require('jsonwebtoken')
 const brcrypt = require('bcryptjs')
-const User = require('./models/user.model')
+const User = require('../models/user.model')
+const express = require("express");
+const router = express.Router();
 
-app.post('/register', async (req,res)=>{
+router.post('/register', async (req,res)=>{
     try {
         const hashedPassword = await brcrypt.hash(req.body.password,10); 
         const user = await User.create({
@@ -19,7 +21,7 @@ app.post('/register', async (req,res)=>{
     }
 })
 
-app.post('/login', async (req,res)=>{
+router.post('/login', async (req,res)=>{
     try {
         const user = await User.findOne({
             email: req.body.email
@@ -35,7 +37,7 @@ app.post('/login', async (req,res)=>{
                     name: user.name,
                     email: user.email
                 }
-            ,process.env.SECRET_KEY)
+            ,"alksdjlskjfskldfjsdlkjfs")
             return res.json({status: 'ok', user: token})
         }else{
             return res.json({status: 'error', user: false})
@@ -45,3 +47,5 @@ app.post('/login', async (req,res)=>{
         res.json({status: 'error', error: 'Duplicate email'})
     }
 })
+
+module.exports = router;
