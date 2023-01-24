@@ -14,7 +14,6 @@ import Products from './components/Products'
 import Product from "./components/Product";
 function App() {
   
-  
   return (
     <>
 
@@ -38,9 +37,6 @@ function App() {
       
       </div>
       <Footer />
-
-  
-
     </>
   )
 }
