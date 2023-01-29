@@ -2,6 +2,10 @@
 ### note : this commands are for the linux debian based systems the commands may be different for the windows system
 make sure you've correct node version (node 14) for the project install node version 14
 
+
+### to fire up mongo for backend on linux/wsl 
+sudo mongod --fork -f /etc/mongod.conf
+
 ## to check the node version
 `node -v`
 if you don't have node version 14 then make sure you install node 14 using docs from `https://nodejs.org/dist/v14.17.3/node-v14.17.3-x64.msi`(windows), `https://nodejs.org/dist/v14.17.3/node-v14.17.3-linux-x64.tar.xz`(linux)
