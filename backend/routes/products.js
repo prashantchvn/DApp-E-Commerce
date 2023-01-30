@@ -1,7 +1,6 @@
 
 const Products = require('../models/product.model')
 const express = require('express');
-const app = express();
 const router = express.Router();
 const bodyParser = require("body-parser");
 const multer = require("multer");
@@ -9,6 +8,7 @@ const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
 
 
+const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
