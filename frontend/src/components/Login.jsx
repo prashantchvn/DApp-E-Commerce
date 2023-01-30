@@ -1,14 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
-import Divider from "@mui/material/Divider";
-import GoogleIcon from "@mui/icons-material/Google";
-import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
-import GitHubIcon from "@mui/icons-material/GitHub";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
