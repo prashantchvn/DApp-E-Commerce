@@ -4,6 +4,7 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const products = require("./routes/products");
+const cart = require("./routes/cart");
 const passwordReset = require("./routes/forgot-password");
 const userAuthentication = require("./routes/userAuthentication");
 
@@ -23,3 +24,4 @@ app.listen(5000,()=>{
 app.use("/api/password-reset", passwordReset);
 app.use("/api", userAuthentication);
 app.use("/api/products", products);
+app.use("/api/cart", cart);
