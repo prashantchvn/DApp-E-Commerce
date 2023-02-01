@@ -44,8 +44,8 @@ router.post('/addItem', async (req, res) => {
                 })
             }
             // return the new populated cart in the response
-            cartWithProduct = await Cart.findOne({ user: req.user })
-            res.json({ status: 'ok', items: cartWithProduct.cartItems })
+            let products = await Cart.findOne({ user: req.user }).populate("cartItems.product")
+            res.json({ status: 'ok', data: products.cartItems })
         } else {
             //create a new cart if not exist
             const cart = await Cart.create({
@@ -74,8 +74,8 @@ router.post('/removeItem', async (req, res) => {
             }
         )
         // return the new populated cart in the response
-        cartWithProduct = await Cart.findOne({ user: req.user })
-        res.json({ status: 'ok', items: cartWithProduct.cartItems })        
+        let products = await Cart.findOne({ user: req.user }).populate("cartItems.product")
+        res.json({ status: 'ok', data: products.cartItems })       
     } catch (error) {
         console.log(error)
         res.json({ status: 'error', error: error })
@@ -93,7 +93,8 @@ router.get('/', async (req, res) => {
                 cartItems: req.body.cartItem,
             })
         }
-        res.json({ status: 'ok', data: cart.cartItems })
+        let products = await Cart.findOne({ user: req.user }).populate("cartItems.product")
+        res.json({ status: 'ok', data: products.cartItems })
     } catch (error) {
         res.json({ status: 'error', error: error })
     }
