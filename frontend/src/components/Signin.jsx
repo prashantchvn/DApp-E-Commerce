@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { Divider, Box, Button, TextField, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import axios from "axios";
+import "./signin.css"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signin = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [password,setPassword] = useState('');
+  const [password, setPassword] = useState('');
   const register = async (e) => {
     e.preventDefault();
     const res = await axios.post("http://localhost:5000/api/register", {
@@ -19,94 +21,46 @@ const Signin = () => {
       phoneNo: phone,
       password: password
     });
+    if(name && email &&  phone && password)
+    {
+      toast.success('Register Sucessfully', {
+        position: toast.POSITION.BOTTOM_RIGHT
+    });
+    }
+    else if(name=="" || email=="" || phone=="" || password=="")
+    {
+      toast.error('Something Is Wrong  !', {
+        position: toast.POSITION.BOTTOM_RIGHT
+    }); 
+    }
   };
   return (
     <div>
       <form onSubmit={register}>
-        <Box
-          display="flex"
-          flexDirection={"column"}
-          maxWidth={450}
-          alignItems="center"
-          justifyContent={"center"}
-          margin="auto"
-          marginTop={5}
-          marginBottom={5}
-          padding={3}
-          borderRadius={5}
-          boxShadow={"5px 5px 10px #ccc"}
-          sx={{
-            ":hover": {
-              boxShadow: "10px 10px 20px #ccc",
-            },
-          }}
-        >
-          <Typography variant="h3" padding={3} textAlign="center">
-            Sign In
-          </Typography>
-
-          <TextField
-            fullWidth
-            onChange={(e)=>{
-                setName(e.target.value)
-            }}
-            margin="normal"
-            type={"text"}
-            id="outlined-basic"
-            label="Full Name"
-            variant="outlined"
-          />
-          <TextField
-            fullWidth
-            onChange={(e)=>{
-                setEmail(e.target.value)
-            }}
-            margin="normal"
-            type={"email"}
-            id="outlined-basic"
-            label="Email"
-            variant="outlined"
-          />
-          <TextField
-            fullWidth
-            onChange={(e)=>{
-                setPhone(e.target.value)
-            }}
-            margin="normal"
-            type={"phone"}
-            id="outlined-basic"
-            label="Phone No"
-            variant="outlined"
-          />
-          <TextField
-            fullWidth
-            onChange={(e)=>{
-                setPassword(e.target.value)
-            }}
-            margin="normal"
-            type={"password"}
-            id="outlined-basic"
-            label="Password"
-            variant="outlined"
-          />
-          <Button
-            type="submit"
-            sx={{ marginTop: 3, borderRadius: 3 }}
-            variant="contained"
-            color="warning"
-          >
-            SignIn
-          </Button>
-          <Button sx={{ marginTop: 3, marginBottom: 3, borderRadius: 3 }}>
-            <Link to="/login">Alrady Have An Account? Login IN </Link>
-          </Button>
-          <Divider>OR</Divider>
-          <div className="mt-3">
+        <h1 className="mt-5 mb-5 text-center">Sign In</h1>
+        <div className="box1">
+          <label className="mt-4 " for="exampleInputPassword1">Full Name</label>
+          <input onChange={(e)=>{ setName(e.target.value)}} type="name" className="form-control" id="exampleInputPassword1" placeholder="Enter Name" />
+          <label className="mt-4" for="exampleInputPassword1">Email</label>
+          <input  onChange={(e)=>{setEmail(e.target.value)}} type="email" className="form-control" id="exampleInputPassword1" placeholder="Enter Email" />
+          <label className="mt-4" for="exampleInputPassword1">Phone No</label>
+          <input onChange={(e)=>{setPhone(e.target.value)}} type="phone" className="form-control" id="exampleInputPassword1" placeholder="Enter Phone Number" />
+          <label className="mt-4" for="exampleInputPassword1">Password</label>
+          <input  onChange={(e)=>{setPassword(e.target.value)}} type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter Password" />
+          <div className="mt-5 text-center">
+            <button className="btnn">SIGNIN</button>
+            <ToastContainer />
+          </div>
+          <div className="mt-4 mb-4 text-center">
+            <Link to="/login">ALRADY HAVE AN ACCOUNT? LOGIN IN </Link>
+          </div>
+          <p className="text-center">OR</p>
+          <div className="mt-3 mb-4 text-center">
             <FacebookSharpIcon fontSize="large" />
             <GitHubIcon fontSize="large" />
             <GoogleIcon fontSize="large" />
           </div>
-        </Box>
+        </div>
       </form>
     </div>
   );

@@ -12,6 +12,8 @@ import Cart from './components/Cart'
 import Seller from "./components/Seller";
 import Products from './components/Products'
 import Product from "./components/Product";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   
   return (
@@ -30,7 +32,7 @@ function App() {
           <Route path="/about-us" component={About} />
           <Route path="/products" component={Products} />
           <Route path="/seller" component={Seller} />
-          <Route exact path='/product/:id' component={Product} />
+          <Route exact path='/product' component={Product} />
        
           
         </Switch>

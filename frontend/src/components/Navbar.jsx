@@ -29,9 +29,8 @@ function NavScrollExample() {
 
                     <div>
                         <div className="profile">
-                        
-                            <Link to="/login"> <CgProfile color="black" size={35} /></Link>
-                            <Link to="/cart"> <BiShoppingBag color="black" size={35} /></Link>
+                            <Link className="li " to="/login"> <CgProfile color="black" size={35} />Profile</Link>
+                            <Link className="li" to="/cart"> <BiShoppingBag color="black" size={35} />Cart</Link>
                         </div>
                     </div>
                 </Navbar.Collapse>
