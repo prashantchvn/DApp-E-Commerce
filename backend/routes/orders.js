@@ -61,7 +61,7 @@ router.get('/', async (req, res) => {
     try {
         const order = await Orders.findOne({ orderPlacedBy: req.user })
         if (order) {
-            const data = await Orders.find({ orderPlacedBy: req.user }).populate("orderPlacedBy").populate("orders.cartItems.product")
+            const data = await Orders.findOne({ orderPlacedBy: req.user }).populate("orders.cartItems.product")
             res.json({ status: 'ok', data: data })
         } else {
             res.json({ status: 'error', message: "No orders found for relative user" })
