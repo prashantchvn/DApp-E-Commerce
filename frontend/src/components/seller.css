@@ -1,0 +1,29 @@
+.bg {
+    max-height: 500px;
+    background-color: mistyrose;
+}
+
+.poster {
+    padding: 10rem;
+    max-width: 60rem;
+    margin: auto;
+}
+
+.head {
+    font-weight: 700;
+}
+
+.poster span {
+    color: #FFA07A;
+}
+
+.btn2 {
+    margin: auto;
+    color: aliceblue;
+    max-width: 150px;
+    padding: 15px;
+    margin-top: 3rem;
+    background-color: #F08080;
+    border-radius: 20px;
+    font-weight: 600;
+}

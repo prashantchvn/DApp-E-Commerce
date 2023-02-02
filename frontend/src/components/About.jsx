@@ -5,7 +5,7 @@ import React from 'react'
 import "./about.css"
 const About = () => {
   return (
-    <div>
+    <div className="container">
       <h1 className='text-center about'>About Us</h1>
       <div className="row mt-5 text-center">
         <div className="col-sm">

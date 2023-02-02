@@ -20,7 +20,7 @@ function App() {
     <>
 
       <Navbar />
-      <div className="container">
+      
 
         <Switch>
           <Route exact  path="/" component={Home} />
@@ -38,7 +38,7 @@ function App() {
           
         </Switch>
       
-      </div>
+      
       <Footer />
     </>
   )

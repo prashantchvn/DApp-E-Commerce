@@ -1,18 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
-import Divider from "@mui/material/Divider";
 import GoogleIcon from "@mui/icons-material/Google";
-import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
-import GitHubIcon from "@mui/icons-material/GitHub";
 import { Link } from "react-router-dom";
-import GoogleIcon from "@mui/icons-material/Google";
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
 const Login = () => {
@@ -25,50 +20,50 @@ const Login = () => {
       email: email,
       password: password
     });
-    
-      if (res.data.user) {
-        toast.success('Login Sucessfully', {
-          position: toast.POSITION.BOTTOM_RIGHT
-        });
-        window.location.reload();
-        localStorage.setItem('token', res.data.user)
-      }
-    };
-   
-    return (
-      <div className="mb-5 ">
-        <form onSubmit={handleLogin}>
-          <h1 className="mt-5 mb-5 text-center">LOGIN</h1>
-          <div className="box ">
-            <div className="text-center ">
-              <AccountCircleIcon sx={{ fontSize: "110px" }} />
-            </div>
 
-            <label className="mt-4" for="exampleInputEmail1">Email address</label>
-            <input value={email}
-              onChange={(e) => { setEmail(e.target.value) }} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-            <label className="mt-4" for="exampleInputPassword1">Password</label>
-            <input value={password} onChange={(e) => { setPassword(e.target.value) }} type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-            <div className="mt-5 text-center">
-              <button className="button">LOGIN</button>
-              <ToastContainer />
-            </div>
-            <div className="mt-4 text-center">
-              <FacebookSharpIcon fontSize="large" />
-              <GitHubIcon fontSize="large" />
-              <GoogleIcon fontSize="large" />
-            </div>
-            <p className="mt-4 text-center">OR</p>
-            <div className="text-center">
-              <Link to="/signin">Need An Account? Sign In</Link>
-            </div>
-
-          </div>
-
-
-        </form>
-      </div>
-    );
+    if (res.data.user) {
+      toast.success('Login Sucessfully', {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+      window.location.reload();
+      localStorage.setItem('token', res.data.user)
+    }
   };
 
-  export default Login;
+  return (
+    <div className="mb-5 ">
+      <form onSubmit={handleLogin}>
+        <h1 className="mt-5 mb-5 text-center">LOGIN</h1>
+        <div className="box ">
+          <div className="text-center ">
+            <AccountCircleIcon sx={{ fontSize: "110px" }} />
+          </div>
+
+          <label className="mt-4" for="exampleInputEmail1">Email address</label>
+          <input value={email}
+            onChange={(e) => { setEmail(e.target.value) }} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+          <label className="mt-4" for="exampleInputPassword1">Password</label>
+          <input value={password} onChange={(e) => { setPassword(e.target.value) }} type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+          <div className="mt-5 text-center">
+            <button className="button">LOGIN</button>
+            <ToastContainer />
+          </div>
+          <div className="mt-4 text-center">
+            <FacebookSharpIcon fontSize="large" />
+            <GitHubIcon fontSize="large" />
+            <GoogleIcon fontSize="large" />
+          </div>
+          <p className="mt-4 text-center">OR</p>
+          <div className="text-center">
+            <Link to="/signin">Need An Account? Sign In</Link>
+          </div>
+
+        </div>
+
+
+      </form>
+    </div>
+  );
+};
+
+export default Login;
