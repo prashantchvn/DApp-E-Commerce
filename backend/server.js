@@ -5,6 +5,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const products = require("./routes/products");
 const cart = require("./routes/cart");
+const orders = require("./routes/orders");
 const passwordReset = require("./routes/forgot-password");
 const userAuthentication = require("./routes/userAuthentication");
 const auth = require("./middleware/auth");
@@ -26,3 +27,4 @@ app.use("/api/password-reset", passwordReset);
 app.use("/api", userAuthentication);
 app.use("/api/products", products);
 app.use("/api/cart",auth, cart);
+app.use("/api/orders",auth, orders);
