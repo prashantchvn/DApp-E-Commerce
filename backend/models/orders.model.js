@@ -5,7 +5,13 @@ const ordersSchema = new mongoose.Schema({
     orders: [
         {
 
-            cartItems: { type: mongoose.Schema.Types.ObjectId, ref: 'Cart', required: true },
+            cartItems: [
+                {
+                    product: { type: mongoose.Schema.Types.ObjectId, ref: 'ProductData', required: true },
+                    quantity: { type: Number, default: 1 },
+                    //price: { type: Number, required: true }
+                }
+            ],
             orderTotal: { type: Number, required: true },
             paymentMode: { type: String, required: true },
             paymentReference: { type: String },
