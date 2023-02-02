@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.post('/addItem', async (req, res) => {
     try {
-        const cart = await Cart.findOne({ user: req.user })
+        let cart = await Cart.findOne({ user: req.user })
         if (cart) {
             // need to figure out the nested query to find the cart product with given product Id
             let cartWithProduct = await Cart.findOne({ "cartItems.product": req.body.cartItem.product, user: req.user })
@@ -44,8 +44,8 @@ router.post('/addItem', async (req, res) => {
                 })
             }
             // return the new populated cart in the response
-            let products = await Cart.findOne({ user: req.user }).populate("cartItems.product")
-            res.json({ status: 'ok', data: products.cartItems })
+            cart = await Cart.findOne({ user: req.user }).populate("cartItems.product")
+            res.json({ status: 'ok', data: cart.cartItems})
         } else {
             //create a new cart if not exist
             const cart = await Cart.create({
@@ -74,8 +74,8 @@ router.post('/removeItem', async (req, res) => {
             }
         )
         // return the new populated cart in the response
-        let products = await Cart.findOne({ user: req.user }).populate("cartItems.product")
-        res.json({ status: 'ok', data: products.cartItems })       
+        cart = await Cart.findOne({ user: req.user }).populate("cartItems.product")
+        res.json({ status: 'ok', data: cart.cartItems})      
     } catch (error) {
         console.log(error)
         res.json({ status: 'error', error: error })
@@ -93,8 +93,8 @@ router.get('/', async (req, res) => {
                 cartItems: req.body.cartItem,
             })
         }
-        let products = await Cart.findOne({ user: req.user }).populate("cartItems.product")
-        res.json({ status: 'ok', data: products.cartItems })
+        cart = await Cart.findOne({ user: req.user }).populate("cartItems.product")
+        res.json({ status: 'ok', data: cart.cartItems})
     } catch (error) {
         res.json({ status: 'error', error: error })
     }
