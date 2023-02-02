@@ -5,13 +5,21 @@ const router = express.Router();
 
 async function cartItems(id) {
     const cart = await Cart.findOne({ user: id })
-    console.log(cart.cartItems)
     return cart.cartItems
 }
 
 router.post('/', async (req, res) => {
     // get the list of orders placed logged in user
     try {
+        // if the cart is empty
+        let cartLength = await cartItems(req.user)
+        if (cartLength.length == 0) {
+            res.json({ status: 'ok', message: "Order cannot be placed for empty cart" })
+            return
+        }
+        // if (await cartItems(req.user).length === 0) {
+        //     res.json({ status: 'or', message: "Cart is empty so order cannot be placed" })
+        // }
         let order = await Orders.findOne({ orderPlacedBy: req.user })
         if (order) {
 
