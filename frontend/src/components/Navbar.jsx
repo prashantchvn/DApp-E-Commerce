@@ -20,17 +20,17 @@ function NavScrollExample() {
                         navbarScroll
                     >
                         <div className="navbar">
-                            <Nav.Link className="nav-links  nav-link-ltr"> <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/home"> Home </Link></Nav.Link>
-                            <Nav.Link className="nav-links  nav-link-ltr"><Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/Products"> Products</Link></Nav.Link>
-                            <Nav.Link className="nav-links  nav-link-ltr"> <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/contact">Contact</Link></Nav.Link>
-                            <Nav.Link className="nav-links  nav-link-ltr"> <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/seller">  Become-A-Seller</Link></Nav.Link>
-                            <Nav.Link className="nav-links  nav-link-ltr"> <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/about"> About Us</Link></Nav.Link>
+                            <Nav.Link><Link className="nav2" to="/home"> Home</Link></Nav.Link>
+                            <Nav.Link><Link className="nav2" to="/Products"> Products</Link></Nav.Link>
+                            <Nav.Link>  <Link className="nav2" to="/contact">Contact</Link></Nav.Link>
+                            <Nav.Link ><Link className="nav2" to="/seller">  Become-A-Seller</Link></Nav.Link>
+                            <Nav.Link> <Link className="nav2" to="/about"> About Us</Link></Nav.Link>
                         </div></Nav>
 
                     <div>
                         <div className="profile">
                             <Link className="li" to="/login"> <CgProfile className="ml-1.5" color="black" size={30} />Profile</Link>
-                            <Link className="li" to="/cart"> <BiShoppingBag color="black" size={30} />Cart</Link>
+                            <Link className="li" to="/cart"> <BiShoppingBag color="black " size={30} />Cart</Link>
                         </div>
                     </div>
                 </Navbar.Collapse>

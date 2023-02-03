@@ -27,3 +27,51 @@
     border-radius: 20px;
     font-weight: 600;
 }
+
+.row1 {
+    padding: 50px;
+    max-width: 80rem;
+}
+
+.row1 h1 {
+    font-weight: 700;
+}
+
+.boxseller {
+    width: 300px;
+    border: 2px solid #C0C0C0;
+    padding: 30px;
+    border-radius: 25px;
+
+}
+
+.boxseller1 {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.content {
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 25px;
+}
+.content h4{
+    font-weight: 600;
+}
+
+@media (max-width: 800px) {
+    .poster {
+        padding: 20px;
+    }
+
+    .row1 {
+        padding: 50px;
+    }
+    .boxseller1 {
+        margin-bottom: 30px;
+    }
+    .content{
+        padding: 10px;
+    }
+}

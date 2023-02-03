@@ -10,7 +10,7 @@
 }
 
 .li {
-  
+
   color: black;
   font-size: 18px;
   text-decoration: none;
@@ -21,27 +21,15 @@
   color: black;
 }
 
-.nav-link:hover {
-  opacity: 1;
+.li:hover {
+  color: #FF1493;
 }
 
-.nav-link::before {
-  transition: 300ms;
-  height: 2px;
-  content: "";
-  position: absolute;
-  background-color: #808080;
+.navbar .nav2 {
+  color: black;
+  text-decoration: none;
 }
 
-.nav-link-ltr::before {
-  width: 0%;
-  bottom: 10px;
-}
-
-.nav-link-ltr:hover::before {
-  width: 17%;
-}
-
-.dropdown-toggle::after {
-  display: none !important;
+.navbar .nav2:hover {
+  color: #FF1493;
 }

@@ -1,5 +1,5 @@
 .box {
-   max-width: 500px;
+    max-width: 500px;
     box-shadow: 5px 5px 10px #ccc;
     padding: 25px;
     border-radius: 50px;
@@ -10,10 +10,22 @@
     box-shadow: 10px 10px 20px #ccc;
 }
 
-.button{
+.button {
+    margin: auto;
+    max-width: 100px;
     color: white;
     font-weight: 550;
     padding: 10px;
     border-radius: 10px;
-    background-color: #FF5733 ;
+    background-color: #FF5733;
+}
+
+.button .spa1 {
+    display: none;
+}
+.button:hover .spa{
+    display: none;
+}
+.button:hover .spa1{
+    display: inline;
 }

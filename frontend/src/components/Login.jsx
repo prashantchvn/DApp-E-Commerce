@@ -7,6 +7,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
+import LoginIcon from '@mui/icons-material/Login';
 
 import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
@@ -44,8 +45,11 @@ const Login = () => {
             onChange={(e) => { setEmail(e.target.value) }} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
           <label className="mt-4" for="exampleInputPassword1">Password</label>
           <input value={password} onChange={(e) => { setPassword(e.target.value) }} type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-          <div className="mt-5 text-center">
-            <button className="button">LOGIN</button>
+          <div className="mt-5 button text-center">
+            <button >
+              <span className="spa">LOGIN</span>
+              <span className="spa1"><LoginIcon /></span>
+              </button>
             <ToastContainer />
           </div>
           <div className="mt-4 text-center">
