@@ -105,18 +105,18 @@ async function generateSlug(title) {
 }
 
 router.post('/', upload.array("product-images", 12), async (req, res) => {
-
     let imageUrlList = [];
 
-    for (var i = 0; i < req.files.length; i++) {
-        var locaFilePath = req.files[i].path;
-
-        // Upload the local image to Cloudinary
-        // and get image url as response
-        var result = await uploadToCloudinary(locaFilePath);
-        imageUrlList.push(result.url);
+    if(req.files){
+        for (let i = 0; i < req.files.length; i++) {
+            let locaFilePath = req.files[i].path;
+    
+            // Upload the local image to Cloudinary
+            // and get image url as response
+            let result = await uploadToCloudinary(locaFilePath);
+            imageUrlList.push(result.url);
+        }
     }
-
     try {
         const product = await Products.create({
             productName: req.body.productName,
@@ -124,7 +124,8 @@ router.post('/', upload.array("product-images", 12), async (req, res) => {
             price: req.body.price,
             slug: await generateSlug(req.body.productName),
             discountPrice: req.body.discountPrice,
-            images: imageUrlList
+            images: imageUrlList,
+            category: req.body.category
         })
         res.json({ status: 'ok' })
     } catch (error) {
@@ -143,9 +144,25 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.patch('/update/:id', async (req, res) => {
+router.patch('/update/:slug',upload.array("product-images", 12) , async (req, res) => {
     try {
-        const data = await Products.findByIdAndUpdate({ _id: req.params.id }, req.body)
+        const updatedBody = req.body;
+        let imageUrlList = [];
+
+        if(req.files){
+            for (var i = 0; i < req.files.length; i++) {
+                var locaFilePath = req.files[i].path;
+        
+                // Upload the local image to Cloudinary
+                // and get image url as response
+                var result = await uploadToCloudinary(locaFilePath);
+                imageUrlList.push(result.url);
+            }
+        }
+        updatedBody.images = imageUrlList;
+        // update the slug according to the new product name        
+        updatedBody.slug = await generateSlug(req.body.productName)
+        const data = await Products.findOneAndUpdate({ slug: req.params.slug }, updatedBody)
         res.json({ status: 'ok', message: 'product updated successfully' })
     } catch (error) {
         console.log(error)
@@ -153,9 +170,24 @@ router.patch('/update/:id', async (req, res) => {
     }
 })
 
-router.delete('/delete/:id', async (req, res) => {
+router.get('/:slug', async (req, res) => {
+    // get the single product and relative products
     try {
-        const data = await Products.findByIdAndDelete({ _id: req.params.id })
+        const data = await Products.findOne({slug: req.params.slug})
+        let relatedProducts = await Products.find({category: data.category})
+        const filteredRelatedProducts = relatedProducts.filter((product)=>{
+            return product.slug != data.slug
+        })
+        res.json({ status: 'ok', data: data, relatedProducts: filteredRelatedProducts })
+    } catch (error) {
+        console.log(error)
+        res.json({ status: 'error', error: 'Duplicate email' })
+    }
+})
+
+router.delete('/delete/:slug', async (req, res) => {
+    try {
+        const data = await Products.findOneAndDelete({slug: req.params.slug })
         res.json({ status: 'ok', message: 'product Deleted successfully' })
     } catch (error) {
         console.log(error)
