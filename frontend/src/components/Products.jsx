@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import "./products.css"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import axios from "axios";
 import Button from '@mui/material/Button'
 import { Link } from 'react-router-dom'
 const Product = () => {
@@ -11,21 +12,25 @@ const Product = () => {
   const [loading, setLoading] = useState(false);
   let componentMounted = true;
 
-  useEffect(() => {
-    const getProducts = async () => {
-      setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products");
-      if (componentMounted) {
-        setData(await response.clone().json());
-        setFilter(await response.json());
-        setLoading(false);
-      }
-      return () => {
-        componentMounted = false;
-      }
-    }
-    getProducts();
-  }, []);
+  const [deals,setDeals] = useState([]);
+
+  useEffect(()=>{
+    axios.get("http://localhost:5000/api/products").then((res)=>{
+      setDeals(res.data);
+    }).catch((e)=>{
+      console.log(e);
+      // add toast to handle the exception
+    })
+  },[])
+
+  
+  // To do on this page
+  // add the loader on this page once page is loaded then show the deals else only show the loader gif
+  // map the products on the page
+  // add infinite scroll if possible
+  // handle if no deals has been recieved in the response that is handle empty deals page
+
+
 
   const Loading = () => {
     return (
