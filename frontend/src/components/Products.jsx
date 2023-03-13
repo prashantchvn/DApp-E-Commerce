@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
-import "./products.css"
+import "../assets/CSS/products.css"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import axios from "axios";

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box, Button, TextField, Typography, } from "@mui/material"
-import "./contact.css";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { HiLocationMarker } from 'react-icons/hi';

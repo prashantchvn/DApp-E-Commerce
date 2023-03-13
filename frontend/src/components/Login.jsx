@@ -6,24 +6,22 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { loginCall } from "../scripts/login/login";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./login.css";
+import "../assets/CSS/login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:5000/api/login", {
+    const data = {
       email: email,
       password: password
-    });
-    if(res.data.user){
-      console.log(res)
-      localStorage.setItem('token', res.data.user)
     }
+    const res = await loginCall(data);
+    console.log(res);
   };
 
   return (

@@ -1,5 +1,4 @@
 import React from 'react'
-import "./fotter.css";
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookSharpIcon from '@mui/icons-material/FacebookSharp';
 import GitHubIcon from '@mui/icons-material/GitHub';
