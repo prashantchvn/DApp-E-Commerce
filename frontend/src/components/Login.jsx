@@ -15,6 +15,14 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  function refreshPage() {
+    setTimeout(() => {
+      window.location.reload(false);
+    }, 2500);
+
+  }
+
+
   const handleLogin = async (e) => {
     e.preventDefault();
     const res = await axios.post("http://localhost:5000/api/login", {
@@ -23,10 +31,11 @@ const Login = () => {
     });
 
     if (res.data.user) {
+      console.log('Login Sucessfully')
       toast.success('Login Sucessfully', {
         position: toast.POSITION.BOTTOM_RIGHT
       });
-      window.location.reload();
+
       localStorage.setItem('token', res.data.user)
     }
   };
@@ -44,12 +53,13 @@ const Login = () => {
           <input value={email}
             onChange={(e) => { setEmail(e.target.value) }} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
           <label className="mt-4" for="exampleInputPassword1">Password</label>
-          <input value={password} onChange={(e) => { setPassword(e.target.value) }} type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+          <input value={password}
+            onChange={(e) => { setPassword(e.target.value) }} type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
           <div className="mt-5 button text-center">
-            <button >
+            <button onClick={refreshPage} >
               <span className="spa">LOGIN</span>
               <span className="spa1"><LoginIcon /></span>
-              </button>
+            </button>
             <ToastContainer />
           </div>
           <div className="mt-4 text-center">

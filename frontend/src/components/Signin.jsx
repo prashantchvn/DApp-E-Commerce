@@ -13,6 +13,14 @@ const Signin = () => {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+
+  function refreshPage() {
+    setTimeout(() => {
+      window.location.reload(false);
+    }, 2500);
+
+  }
   const register = async (e) => {
     e.preventDefault();
     const res = await axios.post("http://localhost:5000/api/register", {
@@ -21,17 +29,15 @@ const Signin = () => {
       phoneNo: phone,
       password: password
     });
-    if(name && email &&  phone && password)
-    {
+    if (name && email && phone && password) {
       toast.success('Register Sucessfully', {
         position: toast.POSITION.BOTTOM_RIGHT
-    });
+      });
     }
-    else if(name=="" || email=="" || phone=="" || password=="")
-    {
+    else if (name === "" || email === "" || phone === "" || password === "") {
       toast.error('Something Is Wrong  !', {
         position: toast.POSITION.BOTTOM_RIGHT
-    }); 
+      });
     }
   };
   return (
@@ -40,15 +46,15 @@ const Signin = () => {
         <h1 className="mt-5 mb-5 text-center">Sign In</h1>
         <div className="box1">
           <label className="mt-4 " for="exampleInputPassword1">Full Name</label>
-          <input onChange={(e)=>{ setName(e.target.value)}} type="name" className="form-control" id="exampleInputPassword1" placeholder="Enter Name" />
+          <input onChange={(e) => { setName(e.target.value) }} type="name" className="form-control" id="exampleInputPassword1" placeholder="Enter Name" />
           <label className="mt-4" for="exampleInputPassword1">Email</label>
-          <input  onChange={(e)=>{setEmail(e.target.value)}} type="email" className="form-control" id="exampleInputPassword1" placeholder="Enter Email" />
+          <input onChange={(e) => { setEmail(e.target.value) }} type="email" className="form-control" id="exampleInputPassword1" placeholder="Enter Email" />
           <label className="mt-4" for="exampleInputPassword1">Phone No</label>
-          <input onChange={(e)=>{setPhone(e.target.value)}} type="phone" className="form-control" id="exampleInputPassword1" placeholder="Enter Phone Number" />
+          <input onChange={(e) => { setPhone(e.target.value) }} type="phone" className="form-control" id="exampleInputPassword1" placeholder="Enter Phone Number" />
           <label className="mt-4" for="exampleInputPassword1">Password</label>
-          <input  onChange={(e)=>{setPassword(e.target.value)}} type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter Password" />
+          <input onChange={(e) => { setPassword(e.target.value) }} type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter Password" />
           <div className="mt-5 text-center">
-            <button className="btnn">SIGNIN</button>
+            <button onClick={refreshPage} className="btnn">SIGNIN</button>
             <ToastContainer />
           </div>
           <div className="mt-4 mb-4 text-center">
