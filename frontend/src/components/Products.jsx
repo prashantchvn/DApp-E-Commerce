@@ -17,6 +17,7 @@ const Product = () => {
   useEffect(async () => {
     const res = await getProducts();
     console.log(res.data.data);
+    setDeals(res.data.data);
   }, []);
 
   // To do on this page
@@ -53,7 +54,78 @@ const Product = () => {
   };
 
   const ShowProducts = () => {
-    return <div></div>;
+    return (
+      <div>
+        {deals.map((product) => {
+          return (
+            <div className="col-md-3 mb-4">
+              <div className="wrapper">
+                <div class="card h-90 text-center p-4" key={product.id}>
+                  <img
+                    src={product.images[0]}
+                    class="card-img-top image"
+                    alt={product.title}
+                    height="250px"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title mb-0">{product.productName}...</h5>
+                    <p class="card-text lead fw-bold"> $ {product.price}</p>
+                    <div className="middle">
+                      <Link to="/product" state={product}>
+                        <button className="btn btn-outline-dark me-2">
+                          BUY NOW{" "}
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+        {/* <div className='filter'>
+          <div className='button  mt-5  pb-5'>
+            <button className='btn btn-outline-dark me-2' onClick={() => setFilter(data)}>All</button>
+            <button className='btn btn-outline-dark me-2' onClick={() => filterProduct("")}>Mens </button>
+            <button className='btn btn-outline-dark me-2' onClick={() => filterProduct("")}>Womens</button>
+            <button className='btn btn-outline-dark me-2' onClick={() => filterProduct('')}>kids</button>
+          </div>
+          <div>
+            <div class="form-group has-search mt-5 ">
+              <input type="text" class="form-control" placeholder="Search" />
+              <span>
+                <Button variant="contained" className='ml-2' >search</Button>
+                </span>
+            </div>
+          </div>
+        </div> */}
+        {/* <>  <div className="container">
+
+          <div className="row">
+            {
+              deals.map((product) => {
+                return (
+                  <div className="col-md-3 mb-4">
+                    <div className="wrapper">
+                      <div class="card h-90 text-center p-4" key={product.id} >
+                        <img src={product.image} class="card-img-top image" alt={product.title} height="250px" />
+                        <div class="card-body">
+                          <h5 class="card-title mb-0">{product.productName}...</h5>
+                          <p class="card-text lead fw-bold"> $ {product.price}</p>
+                          <div className='middle'>
+                          <Link to="/product" state={product}><button className='btn btn-outline-dark me-2'>BUY NOW </button></Link> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            }
+          </div>
+        </div></> */}
+      </div>
+    );
   };
 
   return (
