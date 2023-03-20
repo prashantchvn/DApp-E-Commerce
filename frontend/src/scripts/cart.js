@@ -1,4 +1,4 @@
-import { Get, Post, Patch, Delete } from "../apiClient";
+import { Get, Post } from "../apiClient";
 
 export function addToCart(data){
     // to reduce the quantity of the item just add negative value of the quanitity sample body is like
