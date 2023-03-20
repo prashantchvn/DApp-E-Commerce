@@ -5,6 +5,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import axios from "axios";
+import { registerCall } from "../scripts/Authentication/Auth";
 
 const Signin = () => {
   const [name, setName] = useState("");
@@ -13,12 +14,14 @@ const Signin = () => {
   const [password,setPassword] = useState('');
   const register = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:5000/api/register", {
+    const data = {
       name: name,
       email: email,
       phoneNo: phone,
       password: password
-    });
+    }
+
+    const res = registerCall(data);
   };
   return (
     <div>

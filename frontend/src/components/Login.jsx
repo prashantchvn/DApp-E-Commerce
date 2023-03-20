@@ -6,7 +6,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Link } from "react-router-dom";
-import { loginCall } from "../scripts/login/login";
+import { loginCall } from "../scripts/Authentication/Auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../assets/CSS/login.css";
@@ -21,7 +21,9 @@ const Login = () => {
       password: password
     }
     const res = await loginCall(data);
-    console.log(res);
+    if(res.data){
+      localStorage.setItem('AuthToken',res.data.user)
+    }
   };
 
   return (
