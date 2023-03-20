@@ -5,7 +5,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import axios from "axios";
-import { registerCall } from "../scripts/Authentication/Auth";
+import { registerCall } from "../scripts/Auth";
 
 const Signin = () => {
   const [name, setName] = useState("");

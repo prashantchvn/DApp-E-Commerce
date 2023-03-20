@@ -4,7 +4,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import { getProducts } from "../scripts/products/products";
+import { getProducts } from "../scripts/products";
 const Product = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState({});

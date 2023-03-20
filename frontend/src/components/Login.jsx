@@ -6,7 +6,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Link } from "react-router-dom";
-import { loginCall } from "../scripts/Authentication/Auth";
+import { loginCall } from "../scripts/Auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../assets/CSS/login.css";
