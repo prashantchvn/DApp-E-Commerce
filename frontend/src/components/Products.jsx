@@ -5,6 +5,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import { getProducts } from "../scripts/products";
+import { validateUser } from "../scripts/Auth";
 const Product = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState({});
@@ -16,6 +17,9 @@ const Product = () => {
   useEffect(async () => {
     const res = await getProducts();
     console.log(res.data.data);
+    // api call to get info about user
+    const user = await validateUser();
+    console.log(user.data)
     setDeals(res.data.data);
   }, []);
 
