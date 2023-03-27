@@ -1,4 +1,4 @@
-import { Get, Post, Patch, Delete } from "../apiClient";
+import { Get, Post, Patch, Delete } from "./apiClient";
 
 export function getProducts(){
     return Get('/api/products')

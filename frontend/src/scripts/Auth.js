@@ -1,4 +1,4 @@
-import { Post, Get } from "../apiClient";
+import { Post, Get } from "./apiClient";
 
 export function loginCall(data){
     // api call to get login into our system
