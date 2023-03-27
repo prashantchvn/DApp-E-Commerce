@@ -8,6 +8,7 @@ const cart = require("./routes/cart");
 const orders = require("./routes/orders");
 const passwordReset = require("./routes/forgot-password");
 const userAuthentication = require("./routes/userAuthentication");
+const Contact = require("./routes/contact")
 const auth = require("./middleware/auth");
 
 // middlewares
@@ -28,3 +29,4 @@ app.use("/api", userAuthentication);
 app.use("/api/products", products);
 app.use("/api/cart",auth, cart);
 app.use("/api/orders",auth, orders);
+app.use("/api",Contact)

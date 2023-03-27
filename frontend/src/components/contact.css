@@ -1,3 +1,58 @@
-.txt {
-    border-style: ridge;
+.contact {
+   justify-content: center;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+
+@media (max-width: 800px) {
+    .contact {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.add {
+    padding: 30px;
+    box-shadow: 5px 5px 10px #ccc;
+    border-radius: 15px;
+    max-width: 250px;
+    justify-content: center;
+    max-height: 250px;
+}
+
+.add:hover {
+    box-shadow: 10px 10px 20px #ccc;
+
+}
+
+.box3 {
+    padding: 15px;
+    justify-content: center;
+}
+
+.box2 {
+    max-width: 900px;
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 5px 5px 10px #ccc;
+    margin: auto;
+}
+
+.box2:hover {
+    box-shadow: 10px 10px 20px #ccc;
+
+}
+
+.button1 {
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: 600;
+    color: white;
+    background-color: #00BFFF;
+}
+
+.ico{
+    margin: auto;
 }

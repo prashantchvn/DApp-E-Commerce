@@ -12,13 +12,15 @@ import Cart from './components/Cart'
 import Seller from "./components/Seller";
 import Products from './components/Products'
 import Product from "./components/Product";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   
   return (
     <>
 
       <Navbar />
-      <div className="container">
+      
 
         <Switch>
           <Route exact  path="/" component={Home} />
@@ -31,11 +33,12 @@ function App() {
           <Route path="/products" component={Products} />
           <Route path="/seller" component={Seller} />
           <Route exact path='/product/:id' component={Product} />
+          <Route exact path='/about' component={About} />
        
           
         </Switch>
       
-      </div>
+      
       <Footer />
     </>
   )
