@@ -10,13 +10,13 @@ const Product = () => {
 
   useEffect(()=>{
     // use useParams to get the product slug from the URL
-    axios.get(`http://localhost:5000/api/products/${productSlug}`).then((res)=>{
-      setProductData(res.data);
-      setRelatedProducts(res.relatedProducts);
-    }).catch((e)=>{
-      console.log(e);
-      // add toast to handle the exception
-    })
+    // axios.get(`http://localhost:5000/api/products/${productSlug}`).then((res)=>{
+    //   setProductData(res.data);
+    //   setRelatedProducts(res.relatedProducts);
+    // }).catch((e)=>{
+    //   console.log(e);
+    //   // add toast to handle the exception
+    // })
 
   },[])
 

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const baseURL = `http://localhost:5000`
 
-const bearerToken = localStorage.getItem('AuthToken') ? `Bearer ${localStorage.setItem('AuthToken')}` : 'Bearer';
+const bearerToken = localStorage.getItem('AuthToken') ? `Bearer ${localStorage.getItem('AuthToken')}` : 'Bearer';
 
 const headers = {
   'Accept': 'application/json',
