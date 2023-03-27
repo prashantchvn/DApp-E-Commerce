@@ -2,9 +2,12 @@ import axios from 'axios';
 
 const baseURL = `http://localhost:5000`
 
+const bearerToken = localStorage.setItem('AuthToken') ? `Bearer ${localStorage.setItem('AuthToken')}` : 'Bearer';
+
 const headers = {
   'Accept': 'application/json',
   'Content-Type': 'application/json',
+  'Authorization': bearerToken,
 }
 
 export function Post(url, data) {
