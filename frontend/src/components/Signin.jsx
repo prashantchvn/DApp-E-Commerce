@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { registerCall } from "../scripts/Auth";
+import { useHistory } from "react-router-dom";
 
 const Signin = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
 
 
   function refreshPage() {
@@ -29,6 +31,14 @@ const Signin = () => {
 
     const res = registerCall(data);
   };
+
+  useEffect(()=>{
+    if(localStorage.getItem('AuthToken')){
+      history.push('/')
+    }
+  },[])
+
+
   return (
     <div>
       <form onSubmit={register}>
