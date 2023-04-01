@@ -1,144 +1,106 @@
-import React from 'react'
-import { Box, Button, TextField, Typography, } from "@mui/material"
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+
+import React, { useState } from 'react'
+import "../assets/CSS/contact.css";
 import { HiLocationMarker } from 'react-icons/hi';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { FaFax } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md'
-const bull = (
-    <Box
-        component="span"
-        sx={{ display: 'inline-block', mx: '1px', transform: 'scale(0.8)' }}
-    >
-        •
-    </Box>
-);
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Contact = () => {
+
+    const [name, setname] = useState('');
+    const [email, setemail] = useState('');
+    const [phone, setphone] = useState('');
+    const [message, setmessage] = useState('');
+
+
+    function refreshPage() {
+        setTimeout(() => {
+            window.location.reload(false);
+        }, 2500);
+
+    }
+    const contact = async (e) => {
+        e.preventDefault();
+        const res = await axios.post("http://localhost:5000/api/contact-us", {
+            name: name,
+            email: email,
+            phone: phone,
+            message: message
+        });
+        if (name && email && phone && message) {
+            toast.success('Saved Message Sucessfully', {
+                position: toast.POSITION.BOTTOM_RIGHT
+            });
+        }
+        else if (name === "" || email === "" || phone === "" || message === "") {
+            toast.error('Something Is Wrong  !', {
+                position: toast.POSITION.BOTTOM_RIGHT
+            });
+        }
+    }
+
+
     return (
+        <div >
+            <div className='mt-5 contact'>
+                <div className="box3">
+                    <div className='add'>
+                        <HiLocationMarker className="ico" color="black" size={35} />
+                        <h3 className='text-center'>ADDRESS</h3>
+                        <p className='text-center'>Lorem ipsum dolor sit amet consectetur . </p>
+                    </div></div>
 
-        <div className='mb-5 '>
-            <div className='container'>
-                <Row className='text-center'>
-                    <Col>
-                        <Box display="flex"
-                            flexDirection={"column"}
-                            maxWidth={500}
-                            alignItems="center"
-                            justifyContent={'center'}
-                            margin="auto"
-                            marginTop={3}
-                            padding={1}
-                            borderRadius={5}
-                            boxShadow={'5px 5px 10px #ccc'}
-                            sx={{
-                                ":hover": {
-                                    boxShadow: '10px 10px 20px #ccc'
-                                }
-                            }}>
-                            <HiLocationMarker className='text-center' color="black" size={35} />
-                            <Typography style={{ fontWeight: 'bold' }} variant='h5' padding={1} textAlign="center"> ADDRESS</Typography>
-                            <Typography padding={1} textAlign="center"> Lorem ipsum dolor sit amet consectetur.</Typography>
-                        </Box>
-                    </Col>
-                    <Col><Box display="flex"
-                        flexDirection={"column"}
-                        maxWidth={500}
-                        alignItems="center"
-                        justifyContent={'center'}
-                        margin="auto"
-                        marginTop={3}
-                        padding={1}
-                        borderRadius={5}
-                        boxShadow={'5px 5px 10px #ccc'}
-                        sx={{
-                            ":hover": {
-                                boxShadow: '10px 10px 20px #ccc'
-                            }
-                        }}>
-                        <BsFillTelephoneFill className='text-center' color="black" size={35} />
-                        <Typography style={{ fontWeight: 'bold' }} variant='h5' padding={1} textAlign="center"> PHONE NUMBER</Typography>
-                        <Typography padding={1} textAlign="center"> Lorem ipsum dolor sit amet consectetur.</Typography>
-                    </Box></Col>
-                    <Col><Box display="flex"
-                        flexDirection={"column"}
-                        maxWidth={500}
-                        alignItems="center"
-                        justifyContent={'center'}
-                        margin="auto"
-                        marginTop={3}
-                        padding={1}
-                        borderRadius={5}
-                        boxShadow={'5px 5px 10px #ccc'}
-                        sx={{
-                            ":hover": {
-                                boxShadow: '10px 10px 20px #ccc'
-                            }
-                        }}>
-                        <FaFax className='text-center' color="black" size={35} />
-                        <Typography style={{ fontWeight: 'bold' }} variant='h5' padding={1} textAlign="center"> FAX</Typography>
-                        <Typography padding={1} textAlign="center"> Lorem ipsum dolor sit amet consectetur.</Typography>
-                    </Box></Col>
-                    <Col><Box display="flex"
-                        flexDirection={"column"}
-                        maxWidth={500}
-                        alignItems="center"
-                        justifyContent={'center'}
-                        margin="auto"
-                        marginTop={3}
-                        padding={1}
-                        borderRadius={5}
-                        boxShadow={'5px 5px 10px #ccc'}
-                        sx={{
-                            ":hover": {
-                                boxShadow: '10px 10px 20px #ccc'
-                            }
-                        }}>
-                        <MdEmail className='text-center' color="black" size={35} />
-                        <Typography style={{ fontWeight: 'bold' }} variant='h5' padding={1} textAlign="center"> EMAIL</Typography>
-                        <Typography padding={1} textAlign="center"> Lorem ipsum dolor sit amet consectetur.</Typography>
-                    </Box></Col>
-                </Row>
+                <div className="box3">
+                    <div className='add'>
+                        <BsFillTelephoneFill className="ico" color="black" size={35} />
+                        <h3 className='text-center'>PHONE </h3>
+                        <p className='text-center'>Lorem ipsum dolor sit amet consectetur . </p>
+                    </div></div>
+
+                <div className="box3">
+                    <div className='add'>
+                        <FaFax className="ico" color="black" size={35} />
+                        <h3 className='text-center'>FAX</h3>
+                        <p className='text-center'>Lorem ipsum dolor sit amet consectetur . </p>
+                    </div></div>
+
+                <div className="box3">
+                    <div className='add'>
+                        <div className='text-center'>
+                            <MdEmail className="ico" color="black" size={35} />
+                        </div>
+
+                        <h3 className='text-center'>EMAIL</h3>
+                        <p className='text-center'>Lorem ipsum dolor sit amet consectetur . </p>
+                    </div>
+                </div>
             </div>
+            <h1 className='mt-5 text-center'>GET IN TOUCH</h1>
+            <form onSubmit={contact}>
 
+                <div className='box2 mt-5'>
+                    <label className="mt-4" for="exampleInputEmail1">Name</label>
+                    <input onChange={(e) => { setname(e.target.value) }} type="name" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Name" />
 
+                    <label className="mt-4" for="exampleInputEmail1">Email address</label>
+                    <input onChange={(e) => { setemail(e.target.value) }} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
 
+                    <label className="mt-4" for="exampleInputEmail1">Phone Number</label>
+                    <input onChange={(e) => { setphone(e.target.value) }} type="phone" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Phone Number" />
 
-            <Box display="flex"
-                flexDirection={"column"}
-                maxWidth={1100}
+                    <label className="mt-4">Message</label>
+                    <textarea onChange={(e) => { setmessage(e.target.value) }} type="message" placeholder="Message" class="form-control" rows="4"></textarea>
+                    <div className='text-center mt-5'>
+                        <button onClick={refreshPage} className='button1'>SEND MESSAGE</button>
+                        <ToastContainer />
+                    </div>
+                </div>
+            </form>
 
-                alignItems="center"
-                justifyContent={'center'}
-                margin="auto"
-                marginTop={5}
-                padding={3}
-                borderRadius={5}
-                boxShadow={'5px 5px 10px #ccc'}
-                sx={{
-                    ":hover": {
-                        boxShadow: '10px 10px 20px #ccc'
-                    }
-                }}>
-
-
-                <Typography variant='h3' padding={3} textAlign="center">GET IN TOUCH</Typography>
-                <Row>
-                    <Col> <TextField sx={{ width: { sm: 50000, md: 300 } }} margin='normal' type={'text'} id="outlined-basic" label="Your Name" variant="outlined" /></Col>
-                    <Col><TextField sx={{ width: { sm: 50000, md: 300 } }} margin='normal' type={'email'} id="outlined-basic" label="Your Email" variant="outlined" /></Col>
-                    <Col><TextField sx={{ width: { sm: 50000, md: 300 } }} margin='normal' type={'Phone'} id="outlined-basic" label="Your Phone Number" variant="outlined" /></Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <TextField multiline rows={5} fullwidth sx={{
-                            width: { sm: 1100, md: 950 }
-                        }} margin='normal' type={'text'} id="outlined-basic" label="Message" variant="outlined" /></Col>
-                </Row>
-                <Button sx={{ marginTop: 3, borderRadius: 3 }} variant="contained" color='primary'>Send Message</Button>
-
-            </Box>
         </div>
-
     )
 }
 

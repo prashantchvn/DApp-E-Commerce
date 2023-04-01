@@ -95,10 +95,10 @@ const Product = () => {
           </div>
           <div>
             <div class="form-group has-search mt-5 ">
-              <input type="text" class="form-control" placeholder="Search" />
+              <input type="text" class="form-control" placeholder="Type Something..." />
               <span>
-                <Button variant="contained" className='ml-2' >search</Button>
-                </span>
+                <button className='button2 ml-2' >search</button>
+              </span>
             </div>
           </div>
         </div> */}
@@ -116,7 +116,7 @@ const Product = () => {
                           <h5 class="card-title mb-0">{product.productName}...</h5>
                           <p class="card-text lead fw-bold"> $ {product.price}</p>
                           <div className='middle'>
-                          <Link to="/product" state={product}><button className='btn btn-outline-dark me-2'>BUY NOW </button></Link> 
+                            <Link to={"/product/" + product.id} state={product}><button className='btn btn-outline-dark me-2'>BUY NOW </button></Link>
                           </div>
                         </div>
                       </div>
