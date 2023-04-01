@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import axios from "axios";
 import { registerCall } from "../scripts/Auth";
 
 const Signin = () => {
@@ -29,16 +28,6 @@ const Signin = () => {
     }
 
     const res = registerCall(data);
-    if (res) {
-      toast.success('Register Sucessfully', {
-        position: toast.POSITION.BOTTOM_RIGHT
-      });
-    }
-    else if (name === "" || email === "" || phone === "" || password === "") {
-      toast.error('Something Is Wrong  !', {
-        position: toast.POSITION.BOTTOM_RIGHT
-      });
-    }
   };
   return (
     <div>
@@ -55,7 +44,6 @@ const Signin = () => {
           <input onChange={(e) => { setPassword(e.target.value) }} type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter Password" />
           <div className="mt-5 text-center">
             <button onClick={refreshPage} className="btnn">SIGNIN</button>
-            <ToastContainer />
           </div>
           <div className="mt-4 mb-4 text-center">
             <Link to="/login">ALRADY HAVE AN ACCOUNT? LOGIN IN </Link>

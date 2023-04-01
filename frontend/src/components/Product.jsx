@@ -31,12 +31,12 @@ const Product = () => {
     <div>
       <div className="container">
         <div className='mt-5'>
-          <ChevronLeftIcon style={{ fontSize: 30 }} /> Home <ChevronLeftIcon style={{ fontSize: 30 }} /> Products
+          {/* <ChevronLeftIcon style={{ fontSize: 30 }} /> Home <ChevronLeftIcon style={{ fontSize: 30 }} /> Products */}
         </div>
 
         <div className="row  mt-5">
           <div className="col-sm d-flex justify-content-center product_img">
-            <img src={first} alt="" />
+            {/* <img src={first} alt="" /> */}
           </div>
           <div className="col-sm info">
             <p className='name'>Ninja T-Shirt</p>
@@ -46,7 +46,8 @@ const Product = () => {
             <p className='price'>$25.50</p>
             <div className='mt-5 hover'>
               <button><span className='first'>Add To Cart</span>
-                <span className='second'><ShoppingCartRoundedIcon /></span></button>
+                {/* <span className='second'><ShoppingCartRoundedIcon /></span> */}
+              </button>
             </div>
 
           </div>

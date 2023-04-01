@@ -1,5 +1,5 @@
 import React from 'react'
-import "./seller.css"
+import "../assets/CSS/seller.css"
 import PaidIcon from '@mui/icons-material/Paid';
 const Seller = () => {
   return (
