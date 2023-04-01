@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 import { Link } from "react-router-dom";
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
@@ -8,12 +8,14 @@ import { loginCall } from "../scripts/Auth";
 import { ToastContainer } from "react-toastify";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginIcon from '@mui/icons-material/Login';
-
 import "react-toastify/dist/ReactToastify.css";
 import "../assets/CSS/login.css";
+import { useHistory } from "react-router-dom";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   function refreshPage() {
     setTimeout(() => {
@@ -22,6 +24,11 @@ const Login = () => {
 
   }
 
+  useEffect(()=>{
+    if(localStorage.getItem('AuthToken')){
+      history.push('/')
+    }
+  },[])
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -32,6 +39,7 @@ const Login = () => {
     const res = await loginCall(data);
     if(res.data){
       localStorage.setItem('AuthToken',res.data.user)
+      history.push("/")
     }
   };
 

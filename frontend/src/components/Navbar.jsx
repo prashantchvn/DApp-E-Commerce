@@ -11,7 +11,7 @@ function NavScrollExample() {
     return (
         <Navbar bg="light" expand="lg" className='bg-white py-3 shadow-sm'>
             <Container >
-                <Navbar.Brand className='fw-bold fs-4' href="#">ECOMM</Navbar.Brand>
+                <Navbar.Brand className='fw-bold fs-4'><Link className="nav2" to="/">ECOMM</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
