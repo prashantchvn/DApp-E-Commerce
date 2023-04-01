@@ -4,9 +4,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import axios from "axios";
-import "./signin.css"
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { registerCall } from "../scripts/Auth";
 
 const Signin = () => {
   const [name, setName] = useState("");
@@ -23,13 +21,15 @@ const Signin = () => {
   }
   const register = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:5000/api/register", {
+    const data = {
       name: name,
       email: email,
       phoneNo: phone,
       password: password
-    });
-    if (name && email && phone && password) {
+    }
+
+    const res = registerCall(data);
+    if (res) {
       toast.success('Register Sucessfully', {
         position: toast.POSITION.BOTTOM_RIGHT
       });

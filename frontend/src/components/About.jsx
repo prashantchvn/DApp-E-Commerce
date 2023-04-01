@@ -1,8 +1,8 @@
-import cloth1 from "../assests/shop1.jpg"
-import cloth2 from "../assests/shop2.jpg"
-import cloth3 from "../assests/shop3.jpg"
 import React from 'react'
-import "./about.css"
+import cloth1 from "../assets/shop1.jpg"
+import cloth2 from "../assets/shop1.jpg"
+import cloth3 from "../assets/shop1.jpg"
+import "../assets/CSS/about.css"
 const About = () => {
   return (
     <div className="container">

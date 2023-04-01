@@ -4,13 +4,13 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { Link } from "react-router-dom";
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { loginCall } from "../scripts/Auth";
+import { ToastContainer } from "react-toastify";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { ToastContainer, toast } from 'react-toastify';
-import axios from "axios";
 import LoginIcon from '@mui/icons-material/Login';
 
 import "react-toastify/dist/ReactToastify.css";
-import "./login.css";
+import "../assets/CSS/login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,18 +25,13 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:5000/api/login", {
+    const data = {
       email: email,
       password: password
-    });
-
-    if (res.data.user) {
-      console.log('Login Sucessfully')
-      toast.success('Login Sucessfully', {
-        position: toast.POSITION.BOTTOM_RIGHT
-      });
-
-      localStorage.setItem('token', res.data.user)
+    }
+    const res = await loginCall(data);
+    if(res.data){
+      localStorage.setItem('AuthToken',res.data.user)
     }
   };
 

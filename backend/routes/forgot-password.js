@@ -40,6 +40,7 @@ router.post("/changepassword/:id/token/:token", async (req, res) => {
             userId: user._id,
             token: req.params.token,
         });
+        // add one more validation to check new password and confirm password
         if (!token) return res.status(400).send("Invalid link or expired");
         const hashedPassword = await brcrypt.hash(req.body.password,10);
         user.password = hashedPassword;

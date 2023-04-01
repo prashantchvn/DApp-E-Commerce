@@ -1,7 +1,7 @@
 import React from 'react'
-import "./cart.css"
+import "../assets/CSS/cart.css"
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
-import one from "../assests/12.png"
+import one from "../assets/12.png"
 const Cart = () => {
     return (
         <div>
