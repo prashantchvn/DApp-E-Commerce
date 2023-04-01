@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../assets/CSS/navbar.css";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -8,6 +9,8 @@ import { Link } from 'react-router-dom'
 
 
 function NavScrollExample() {
+
+    const [isLoggedIn,setIsLoggedIn] = useState(false);
 
     const logout = () => {
         localStorage.removeItem('AuthToken')
@@ -28,16 +31,16 @@ function NavScrollExample() {
                         <div className="navbar">
                             <Nav.Link><Link className="nav2" to="/home"> Home</Link></Nav.Link>
                             <Nav.Link><Link className="nav2" to="/Products"> Products</Link></Nav.Link>
-                            <Nav.Link>  <Link className="nav2" to="/contact">Contact</Link></Nav.Link>
-                            <Nav.Link ><Link className="nav2" to="/seller">  Become-A-Seller</Link></Nav.Link>
-                            <Nav.Link> <Link className="nav2" to="/about"> About Us</Link></Nav.Link>
+                            <Nav.Link><Link className="nav2" to="/contact">Contact</Link></Nav.Link>
+                            <Nav.Link><Link className="nav2" to="/seller">  Become-A-Seller</Link></Nav.Link>
+                            <Nav.Link><Link className="nav2" to="/about"> About Us</Link></Nav.Link>
                         </div></Nav>
 
                     <div>
                         <div className="profile">
-                            <Link className="li" to="/login"> <CgProfile className="ml-1.5" color="black" size={30} />Profile</Link>
+                            { isLoggedIn ? <Link className="li" to="/profile/:id"><CgProfile className="ml-1.5" color="black" size={30} />Profile</Link> : <Link className="nav2" to="/login">login</Link>}
                             <Link className="li" to="/cart"> <BiShoppingBag color="black " size={30} />Cart</Link>
-                            <button className="nav2" onClick={logout}>logout</button>
+                            { isLoggedIn ? <button className="nav2" onClick={logout}>logout</button> : <></>}
                         </div>
                     </div>
                 </Navbar.Collapse>
