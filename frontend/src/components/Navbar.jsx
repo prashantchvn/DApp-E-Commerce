@@ -8,6 +8,12 @@ import { Link } from 'react-router-dom'
 
 
 function NavScrollExample() {
+
+    const logout = () => {
+        localStorage.removeItem('AuthToken')
+        // show toast on the logout button
+    }
+
     return (
         <Navbar bg="light" expand="lg" className='bg-white py-3 shadow-sm'>
             <Container >
@@ -31,6 +37,7 @@ function NavScrollExample() {
                         <div className="profile">
                             <Link className="li" to="/login"> <CgProfile className="ml-1.5" color="black" size={30} />Profile</Link>
                             <Link className="li" to="/cart"> <BiShoppingBag color="black " size={30} />Cart</Link>
+                            <button className="nav2" onClick={logout}>logout</button>
                         </div>
                     </div>
                 </Navbar.Collapse>
