@@ -15,7 +15,7 @@ function NavScrollExample() {
 
   const Dialog = ({ open, children }) => {
     return (
-      <dialog className="w-full absolute inset-x-0 top-20 pt-10 z-50" open={open}>
+      <dialog className="w-full absolute inset-x-0 top-20 pt-10 z-50 px-20 pointer-cursor" open={open}>
         <button onClick={()=> setDialog('')}><img src={Close} className="h-8 w-8 right-6 absolute top-5"/></button>
         {children}
       </dialog>
