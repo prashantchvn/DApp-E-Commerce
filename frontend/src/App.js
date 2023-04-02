@@ -13,6 +13,9 @@ function App() {
           {/* <Route exact  path="/" component={Home} /> */}
           <Route exact  path="/home" component={Home} />
         </Switch>
+        <Home>
+          <h1>hello</h1>
+        </Home>
 
     </>
   )
