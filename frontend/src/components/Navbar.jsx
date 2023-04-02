@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../assets/CSS/navbar.css";
 import { Link } from "react-router-dom";
 import Search from "../assets/Icons/search.svg";
 import Profile from "../assets/Icons/profile.svg";
@@ -14,8 +13,8 @@ function NavScrollExample() {
   };
 
   return (
-    <navbar>
-      <div classname="">
+    <navbar classname="bg-black">
+      <div classname="bg-black">
         {/* left side of the menu */}
         <Link to="#">MEN</Link>
         <Link to="#">WOMEN</Link>

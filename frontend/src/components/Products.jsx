@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../assets/CSS/products.css";
 import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import { getProducts } from "../scripts/products";
 import { validateUser } from "../scripts/Auth";

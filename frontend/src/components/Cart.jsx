@@ -1,5 +1,5 @@
 import React from 'react'
-import "../assets/CSS/cart.css"
+
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 const Cart = () => {
     return (

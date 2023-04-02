@@ -1,5 +1,5 @@
 import React from 'react'
-import "../assets/CSS/about.css"
+
 const About = () => {
   return (
     <div className="container">

@@ -1,6 +1,4 @@
-
 import React, { useState } from 'react'
-import "../assets/CSS/contact.css";
 import { HiLocationMarker } from 'react-icons/hi';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { FaFax } from 'react-icons/fa';

@@ -9,7 +9,6 @@ import { ToastContainer } from "react-toastify";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginIcon from '@mui/icons-material/Login';
 import "react-toastify/dist/ReactToastify.css";
-import "../assets/CSS/login.css";
 import { useHistory } from "react-router-dom";
 
 const Login = () => {
