@@ -9,3 +9,10 @@
 body{
     font-family: "MaisonNeueBook";
 }
+a:hover{
+    text-decoration: none;
+    color: black;
+}
+.Logo{
+    letter-spacing: 5px;
+}

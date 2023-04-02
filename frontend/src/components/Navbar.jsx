@@ -13,21 +13,21 @@ function NavScrollExample() {
   };
 
   return (
-    <navbar className="flex">
+    <navbar className="flex justify-between align-middle -mb-6 mx-12 my-8 sticky top-0 cursor-pointer">
       <div className="">
         {/* left side of the menu */}
-        <Link to="#">MEN</Link>
-        <Link to="#">WOMEN</Link>
-        <Link to="#">KIDS</Link>
-        <Link to="#">EXPLORE</Link>
+        <button className="px-6 py-3 tracking-wider hover:bg-black hover:text-white hover:rounded-sm" to="#">MEN</button>
+        <button className="px-6 py-3 tracking-wider hover:bg-black hover:text-white hover:rounded-sm" to="#">WOMEN</button>
+        <button className="px-6 py-3 tracking-wider hover:bg-black hover:text-white hover:rounded-sm" to="#">KIDS</button>
+        <button className="px-6 py-3 tracking-wider hover:bg-black hover:text-white hover:rounded-sm" to="#">EXPLORE</button>
       </div>
       <div classname="">
-        <h1>AGES</h1>
+      <Link to="/"><h1 className="font-black text-3xl no-underline Logo">AGES</h1></Link>
       </div>
-      <div classname="flex">
-        <img src={Search} className=""/>
-        <img src={Profile} />
-        <button>{cartCount}</button>
+      <div className="flex">
+        <img className="mx-8" src={Search}/>
+        <img className="mx-8" src={Profile} />
+        <button className="mx-4 rounded-full border px-3 h-10 mt-2 border-2 border-slate-950">{cartCount}</button>
       </div>
     </navbar>
   );
