@@ -13,8 +13,8 @@ function NavScrollExample() {
   };
 
   return (
-    <navbar classname="bg-black">
-      <div classname="bg-black">
+    <navbar className="flex">
+      <div className="">
         {/* left side of the menu */}
         <Link to="#">MEN</Link>
         <Link to="#">WOMEN</Link>
@@ -24,8 +24,8 @@ function NavScrollExample() {
       <div classname="">
         <h1>AGES</h1>
       </div>
-      <div classname="">
-        <img src={Search} />
+      <div classname="flex">
+        <img src={Search} className=""/>
         <img src={Profile} />
         <button>{cartCount}</button>
       </div>
