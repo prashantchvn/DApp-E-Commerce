@@ -12,7 +12,6 @@ import Cart from './components/Cart'
 import Seller from "./components/Seller";
 import Products from './components/Products'
 import Product from "./components/Product";
-import 'react-toastify/dist/ReactToastify.css';
 function App() {
   
   return (

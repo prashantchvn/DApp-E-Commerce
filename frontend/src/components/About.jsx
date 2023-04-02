@@ -1,7 +1,4 @@
 import React from 'react'
-import cloth1 from "../assets/shop1.jpg"
-import cloth2 from "../assets/shop1.jpg"
-import cloth3 from "../assets/shop1.jpg"
 import "../assets/CSS/about.css"
 const About = () => {
   return (
@@ -16,7 +13,6 @@ const About = () => {
           </text>
         </div>
         <div className="col-sm">
-          <img src={cloth1} alt="" />
         </div>
 
 
@@ -24,7 +20,6 @@ const About = () => {
       <div className="row mt-5 text-center">
 
         <div className="col-sm">
-          <img src={cloth2} alt="" />
         </div>
         <div className="col-sm">
           <h3 className="mt-5">Our Approach</h3>
@@ -41,10 +36,7 @@ const About = () => {
           </text>
         </div>
         <div className="col-sm">
-          <img src={cloth3} alt="" />
         </div>
-
-
       </div>
     </div>
   )

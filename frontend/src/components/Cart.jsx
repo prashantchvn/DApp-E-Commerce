@@ -1,7 +1,6 @@
 import React from 'react'
 import "../assets/CSS/cart.css"
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
-import one from "../assets/12.png"
 const Cart = () => {
     return (
         <div>
@@ -21,7 +20,6 @@ const Cart = () => {
                         <tbody>
                             <tr>
                                 <td><a href=""><CancelRoundedIcon /></a></td>
-                                <td ><img src={one} alt="" /></td>
                                 <td>Ninja T-Shirt</td>
                                 <td>Rs : 180</td>
                                 <td><input type="number" value="1" /></td>
@@ -29,7 +27,6 @@ const Cart = () => {
                             </tr>
                             <tr>
                                 <td><a href=""><CancelRoundedIcon /></a></td>
-                                <td ><img src={one} alt="" /></td>
                                 <td>Ninja T-Shirt</td>
                                 <td>Rs : 180</td>
                                 <td><input type="number" value="1" /></td>
@@ -37,7 +34,6 @@ const Cart = () => {
                             </tr>
                             <tr>
                                 <td><a href=""><CancelRoundedIcon /></a></td>
-                                <td ><img src={one} alt="" /></td>
                                 <td>Ninja T-Shirt</td>
                                 <td>Rs : 180</td>
                                 <td><input type="number" value="1" /></td>

@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "MaisonNeueBook";
+    src: url('./assets/Fonts/Maison-Neue-Book.ttf');
+}
+body{
+    font-family: "MaisonNeueBook";
+}
