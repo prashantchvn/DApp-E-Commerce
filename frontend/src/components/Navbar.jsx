@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import Search from "../assets/Icons/search.svg";
 import Profile from "../assets/Icons/profile.svg";
 import Close from "../assets/Icons/close.svg";
+import MensMenu from "./SubMenus/MensMenu";
+import WomensMenu from "./SubMenus/WomensMenu";
+import KidsMenu from "./SubMenus/KidsMenu";
+import ExploreMenu from "./SubMenus/ExploreMenu";
 function NavScrollExample() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cartCount, setCartCount] = useState(0);
@@ -15,8 +19,13 @@ function NavScrollExample() {
 
   const Dialog = ({ open, children }) => {
     return (
-      <dialog className="w-full absolute inset-x-0 top-20 pt-10 z-50 px-20 pointer-cursor" open={open}>
-        <button onClick={()=> setDialog('')}><img src={Close} className="h-8 w-8 right-6 absolute top-5"/></button>
+      <dialog
+        className="w-full absolute inset-x-0 top-20 pt-10 z-50 px-20 pointer-cursor"
+        open={open}
+      >
+        <button onClick={() => setDialog("")}>
+          <img src={Close} className="h-8 w-8 right-6 absolute top-5" />
+        </button>
         {children}
       </dialog>
     );
@@ -77,148 +86,17 @@ function NavScrollExample() {
           </button>
         </div>
       </navbar>
-      <Dialog open={dialog == 'men'}>
-        <div className="grid grid-cols-4 gap-4">
-          <div>
-            <h1 className="font-bold text-lg tracking-widest">FEATURED</h1>
-            <ul className="block">
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-            </ul>
-          </div> 
-          <div>
-            <h1 className="font-bold text-lg tracking-widest">CLOTHING</h1>
-            <ul className="block">
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h1 className="font-bold text-lg tracking-widest">ACCESSORIES</h1>
-            <ul className="block">
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h1 className="font-bold text-lg tracking-widest">SNOW</h1>
-            <ul className="block">
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-            </ul>
-          </div>
-        </div>
+      <Dialog open={dialog == "men"}>
+        <MensMenu />
       </Dialog>
-      <Dialog open={dialog == 'women'}>
-        <div className="grid grid-cols-4 gap-4">
-          <div>
-            <h1 className="font-bold text-lg tracking-widest">FEATURED</h1>
-            <ul className="block">
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-            </ul>
-          </div> 
-          <div>
-            <h1 className="font-bold text-lg tracking-widest">CLOTHING</h1>
-            <ul className="block">
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-            </ul>
-          </div>
-          <div>
-            
-          </div>
-          <div>
-            
-          </div>
-        </div>
+      <Dialog open={dialog == "women"}>
+        <WomensMenu />
       </Dialog>
-      <Dialog open={dialog == 'kids'}>
-        <div className="grid grid-cols-4 gap-4">
-          <div>
-            <h1 className="font-bold text-lg tracking-widest">FEATURED</h1>
-            <ul className="block">
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-            </ul>
-          </div> 
-          <div>
-            <h1 className="font-bold text-lg tracking-widest">CLOTHING</h1>
-            <ul className="block">
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h1 className="font-bold text-lg tracking-widest">ACCESSORIES</h1>
-            <ul className="block">
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-            </ul>
-          </div>
-          <div>
-          </div>
-        </div>
+      <Dialog open={dialog == "kids"}>
+        <KidsMenu />
       </Dialog>
-      <Dialog open={dialog == 'explore'}>
-        <div className="grid grid-cols-4 gap-4">
-          <div>
-            <h1 className="font-bold text-lg tracking-widest">FEATURED</h1>
-            <ul className="block">
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-              <li><Link className="text-sm tracking-wider" to="/explore/men">EXPLORE MEN'S</Link></li>
-            </ul>
-          </div> 
-          <div>
-            
-          </div>
-          <div>
-            
-          </div>
-          <div>
-            
-          </div>
-        </div>
+      <Dialog open={dialog == "explore"}>
+        <ExploreMenu />
       </Dialog>
     </div>
   );
