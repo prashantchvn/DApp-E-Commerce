@@ -7,6 +7,8 @@ import MensMenu from "./SubMenus/MensMenu";
 import WomensMenu from "./SubMenus/WomensMenu";
 import KidsMenu from "./SubMenus/KidsMenu";
 import ExploreMenu from "./SubMenus/ExploreMenu";
+import SearchDialog from "./SubMenus/SearchDialog";
+
 function NavScrollExample() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cartCount, setCartCount] = useState(0);
@@ -79,8 +81,8 @@ function NavScrollExample() {
           </Link>
         </div>
         <div className="flex">
-          <img className="mx-8" src={Search} />
-          <img className="mx-8" src={Profile} />
+          <button onClick={ () => { setDialog('search') } }><img className="mx-8" src={Search} /></button>
+          <button onClick={ () => { setDialog('profile') } }><img className="mx-8" src={Profile} /></button>
           <button className="mx-4 rounded-full border px-3 h-10 mt-2 border-2 border-slate-950">
             {cartCount}
           </button>
@@ -97,6 +99,9 @@ function NavScrollExample() {
       </Dialog>
       <Dialog open={dialog == "explore"}>
         <ExploreMenu />
+      </Dialog>
+      <Dialog open={dialog == "search"}>
+        <SearchDialog />
       </Dialog>
     </div>
   );
