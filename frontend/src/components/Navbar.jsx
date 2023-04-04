@@ -9,12 +9,14 @@ import KidsMenu from "./SubMenus/KidsMenu";
 import ExploreMenu from "./SubMenus/ExploreMenu";
 import SearchDialog from "./SubMenus/SearchDialog";
 import LoginModal from "./SubMenus/LoginModal";
+import AddToCart from "./SubMenus/AddToCart";
 
 
 function NavScrollExample() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [dialog, setDialog] = useState("");
+  const [vertialDialog, setVertialDialog] = useState(false)
 
   const logout = () => {
     localStorage.removeItem("AuthToken");
@@ -35,8 +37,22 @@ function NavScrollExample() {
     );
   };
 
+  const VerticalDialog = ({ open, children }) => {
+    return (
+      <dialog
+        className="mr-0 w-3/12 absolute top-12 right-0 h-full pt-10 z-50 pointer-cursor"
+        open={open}
+      >
+        <button onClick={() => setVertialDialog(false)}>
+          <img src={Close} className="h-8 w-8 right-6 absolute top-5" />
+        </button>
+        {children}
+      </dialog>
+    );
+  };
+
   return (
-    <div>
+    <div className="">
       <navbar className="flex justify-between align-middle -mb-6 mx-12 my-8 sticky top-0 cursor-pointer">
         <div className="">
           {/* left side of the menu */}
@@ -85,8 +101,8 @@ function NavScrollExample() {
         <div className="flex">
           <button onClick={ () => { setDialog('search') } }><img className="mx-8" src={Search} /></button>
           <button onClick={ () => { setDialog('profile') } }><img className="mx-8" src={Profile} /></button>
-          <button className="mx-4 rounded-full border px-3 h-10 mt-2 border-2 border-slate-950">
-            {cartCount}
+          <button onClick={ () => { setVertialDialog(true) } } className="mx-4 rounded-full border px-3 h-10 mt-2 border-2 border-slate-950">
+            <p>{cartCount}</p>
           </button>
         </div>
       </navbar>
@@ -108,6 +124,9 @@ function NavScrollExample() {
       <Dialog open={dialog == "profile"}>
         <LoginModal />
       </Dialog>
+      <VerticalDialog open={vertialDialog}>
+        <AddToCart cartCount={cartCount}/>
+      </VerticalDialog>
     </div>
   );
 }

@@ -6,8 +6,19 @@
     font-family: "MaisonNeueBook";
     src: url('./assets/Fonts/Maison-Neue-Book.ttf');
 }
+@font-face {
+    font-family: "MaisonNeueExtended";
+    src: url('./assets/Fonts/MaisonNeueExtended-Medium.otf');
+}
+
+@font-face {
+    font-family: "MaisonNeueMonoRegular";
+    src: url('./assets/Fonts/MaisonNeueMono-Regular.otf');
+}
+
 body{
     font-family: "MaisonNeueBook";
+    position: relative;
 }
 a:hover{
     text-decoration: none;
@@ -40,4 +51,11 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+h1{
+    font-family: "MaisonNeueExtended";
+}
+p{
+    font-family: "MaisonNeueMonoRegular";
 }
