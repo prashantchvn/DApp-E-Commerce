@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import "../assets/CSS/home.css";
+import React from 'react'
 import { Link } from 'react-router-dom';
-import Product from './Products';
 
 const Home = () => {
 
@@ -86,7 +84,6 @@ const Home = () => {
       <div>
 
       </div>
-      <Product/>
     </div>
 
   )

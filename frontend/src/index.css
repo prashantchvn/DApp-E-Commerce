@@ -1,3 +1,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "MaisonNeueBook";
+    src: url('./assets/Fonts/Maison-Neue-Book.ttf');
+}
+@font-face {
+    font-family: "MaisonNeueExtended";
+    src: url('./assets/Fonts/MaisonNeueExtended-Medium.otf');
+}
+
+@font-face {
+    font-family: "MaisonNeueMonoRegular";
+    src: url('./assets/Fonts/MaisonNeueMono-Regular.otf');
+}
+
+body{
+    font-family: "MaisonNeueBook";
+    position: relative;
+}
+a:hover{
+    text-decoration: none;
+    color: black;
+}
+.Logo{
+    letter-spacing: 5px;
+}
+.categories-heading{
+    letter-spacing: 3px;
+}
+.form-button{
+    letter-spacing: 3px;
+    font-weight: 100;
+}
+.forgot-password{
+    letter-spacing: 1px;
+}
+form input{
+    letter-spacing: 2px;
+}
+/* remove the input number type arrows and unwanted spinners */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+h1{
+    font-family: "MaisonNeueExtended";
+}
+p{
+    font-family: "MaisonNeueMonoRegular";
+}
