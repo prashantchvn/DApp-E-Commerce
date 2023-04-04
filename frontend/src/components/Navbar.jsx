@@ -101,7 +101,7 @@ function NavScrollExample() {
         <div className="flex">
           <button onClick={ () => { setDialog('search') } }><img className="mx-8" src={Search} /></button>
           <button onClick={ () => { setDialog('profile') } }><img className="mx-8" src={Profile} /></button>
-          <button onClick={ () => { setVertialDialog(true) } } className="mx-4 rounded-full border px-3 h-10 mt-2 border-2 border-slate-950">
+          <button onClick={ () => { setVertialDialog(true); setDialog('') } } className="mx-4 rounded-full border px-3 h-10 mt-2 border-2 border-slate-950">
             <p>{cartCount}</p>
           </button>
         </div>
