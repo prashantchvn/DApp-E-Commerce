@@ -19,3 +19,25 @@ a:hover{
 .categories-heading{
     letter-spacing: 3px;
 }
+.form-button{
+    letter-spacing: 3px;
+    font-weight: 100;
+}
+.forgot-password{
+    letter-spacing: 1px;
+}
+form input{
+    letter-spacing: 2px;
+}
+/* remove the input number type arrows and unwanted spinners */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

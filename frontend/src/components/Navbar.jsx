@@ -8,6 +8,8 @@ import WomensMenu from "./SubMenus/WomensMenu";
 import KidsMenu from "./SubMenus/KidsMenu";
 import ExploreMenu from "./SubMenus/ExploreMenu";
 import SearchDialog from "./SubMenus/SearchDialog";
+import LoginModal from "./SubMenus/LoginModal";
+
 
 function NavScrollExample() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -102,6 +104,9 @@ function NavScrollExample() {
       </Dialog>
       <Dialog open={dialog == "search"}>
         <SearchDialog />
+      </Dialog>
+      <Dialog open={dialog == "profile"}>
+        <LoginModal />
       </Dialog>
     </div>
   );
