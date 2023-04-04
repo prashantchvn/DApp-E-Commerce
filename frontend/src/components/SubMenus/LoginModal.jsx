@@ -51,7 +51,7 @@ function LoginModal() {
   if (mode === "forgotPassword") {
     return (
       <div className="block my-10">
-        <form className="block w-3/5 mx-auto" onSubmit={handleForgetPassword}>
+        <form className="block w-3/6 mx-auto" onSubmit={handleForgetPassword}>
           <h1 className="font-black tracking-wider leading-2 text-3xl mb-2">
             FORGOT PASSWORD
           </h1>
@@ -71,10 +71,16 @@ function LoginModal() {
             type="submit"
             value="RECOVER ACCOUNT"
           />
-
-          <button onClick={ () => { setMode('login')} } className="mt-3 mb-3 text-left w-full pl-2 forgot-password">
-            BACK TO LOGIN
-          </button>
+          <div className="w-full px-6">
+            <button
+              onClick={() => {
+                setMode("login");
+              }}
+              className="mt-3 mb-3 text-left w-full pl-2 forgot-password"
+            >
+              BACK TO LOGIN
+            </button>
+          </div>
         </form>
       </div>
     );
@@ -121,15 +127,20 @@ function LoginModal() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             type="password"
           />
-          <button onClick={ () => { setMode('login')} } className="mt-3 mb-3 text-right w-full forgot-password">
+          <button
+            onClick={() => {
+              setMode("login");
+            }}
+            className="mt-3 mb-3 text-right w-full forgot-password"
+          >
             ALREADY HAVE AN ACCOUNT ?
           </button>
           <div className="w-full px-6">
-          <input
-            className="bg-black w-full rounded-full h-12 text-white tracking-wideest text-md font-thin form-button"
-            type="submit"
-            value="REGISTER"
-          />
+            <input
+              className="bg-black w-full rounded-full h-12 text-white tracking-wideest text-md font-thin form-button"
+              type="submit"
+              value="REGISTER"
+            />
           </div>
         </form>
       </div>
@@ -138,7 +149,7 @@ function LoginModal() {
   if (mode === "login") {
     return (
       <div className="block my-10">
-        <form className="block w-3/5 mx-auto " onSubmit={handleLogin}>
+        <form className="block w-5/12 mx-auto " onSubmit={handleLogin}>
           <h1 className="font-black tracking-wider leading-2 text-3xl mb-4">
             LOGIN
           </h1>
@@ -156,14 +167,21 @@ function LoginModal() {
             onChange={(e) => setPassword(e.target.value)}
             type="password"
           />
-          <button onClick={ () => { setMode('forgotPassword')} } className="mt-3 mb-3 text-right w-full pr-4 forgot-password">
+          <button
+            onClick={() => {
+              setMode("forgotPassword");
+            }}
+            className="mt-2 mb-3 text-right w-full pr-2 forgot-password"
+          >
             FORGOT PASSWORD
           </button>
-          <input
-            className="w-full bg-black rounded-full h-12 text-white tracking-wideest text-md font-thin form-button"
-            type="submit"
-            value="LOGIN"
-          />
+          <div className="w-full px-6">
+            <input
+              className="bg-black w-full rounded-full h-12 text-white tracking-wideest text-md font-thin form-button"
+              type="submit"
+              value="LOGIN"
+            />
+          </div>
         </form>
       </div>
     );
