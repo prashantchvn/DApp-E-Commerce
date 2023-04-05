@@ -26,7 +26,7 @@ function NavScrollExample() {
   const Dialog = ({ open, children }) => {
     return (
       <dialog
-        className="w-full absolute inset-x-0 top-20 pt-10 z-50 px-20 pointer-cursor"
+        className="w-full absolute inset-x-0 top-18 mt-3 pt-10 z-50 px-20 pointer-cursor"
         open={open}
       >
         <button onClick={() => setDialog("")}>
@@ -102,7 +102,7 @@ function NavScrollExample() {
           <button onClick={ () => { setDialog('search') } }><img className="mx-8" src={Search} /></button>
           <button onClick={ () => { setDialog('profile') } }><img className="mx-8" src={Profile} /></button>
           <button onClick={ () => { setVertialDialog(true); setDialog('') } } className="mx-4 rounded-full border px-3 h-10 mt-2 border-2 border-slate-950">
-            <p>{cartCount}</p>
+            <p className="MaisonNeueMonoRegular">{cartCount}</p>
           </button>
         </div>
       </navbar>
