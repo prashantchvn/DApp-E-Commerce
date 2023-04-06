@@ -7,7 +7,7 @@ function AddToCart({ cartCount }) {
         <h1 className="font-black tracking-wider leading-2 text-3xl mb-2 tracking-widest">
           CART
         </h1>
-        <p className="tracking-wider pt-3 ml-2 text-xs font-thin">
+        <p className="tracking-wider pt-3 ml-2 text-xs font-thin MaisonNeueMonoRegular">
           {cartCount} ITEMS
         </p>
       </div>

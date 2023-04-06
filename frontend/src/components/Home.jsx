@@ -1,92 +1,249 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import video from "../assets/videos/high.mp4";
+import Jacket from "../assets/Images/jacket.webp";
+import poster1 from "../assets/Images/poster1.webp";
+import poster2 from "../assets/Images/poster2.webp";
+import contactUsPoster from "../assets/Images/contactUs.webp";
+import kidsPoster from "../assets/Images/kidsPoster.webp";
 
 const Home = () => {
+  const [season, setSeason] = useState({
+    title: "Summer",
+    description:
+      "Welcome to a new season; our summer collection features items for adventure, elevated casual wear, and protection ",
+    link: "summer",
+  });
 
   return (
-    <div className='container'>
-      <div className="relative mt-5 overflow-hidden bg-slate-50">
-        <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
-          <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-            <div className="sm:max-w-lg">
-              <h1 className="font text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                Summer styles are finally here
-              </h1>
-              <p className="mt-4 text-xl text-gray-500">
-                This year, our new summer collection will shelter you from the harsh elements of a world that doesn't care
-                if you live or die.
-              </p>
-            </div>
-            <div>
-              <div className="mt-10">
-                {/* Decorative image grid */}
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
-                >
-                  <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
-                    <div className="flex items-center space-x-6 lg:space-x-8">
-                      <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                          <img
-                            src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
-                            alt=""
-                            className="h-full w-full object-cover object-center"
-                          />
-                        </div>
-                        <div className="h-64 w-44 overflow-hidden rounded-lg">
-                          <img
-                            src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
-                            alt=""
-                            className="h-full w-full object-cover object-center"
-                          />
-                        </div>
-                      </div>
-                      <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <div className="h-64 w-44 overflow-hidden rounded-lg">
-                          <img
-                            src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
-                            alt=""
-                            className="h-full w-full object-cover object-center"
-                          />
-                        </div>
-                        <div className="h-64 w-44 overflow-hidden rounded-lg">
-                          <img
-                            src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
-                            alt=""
-                            className="h-full w-full object-cover object-center"
-                          />
-                        </div>
-                        <div className="h-64 w-44 overflow-hidden rounded-lg">
-                          <img
-                            src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
-                            alt=""
-                            className="h-full w-full object-cover object-center"
-                          />
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-                <a
-                  href="#"
-                  className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700"
-                >
-                  <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/products">Shop Collection</Link>
-                </a>
-              </div>
-            </div>
+    <div className="mt-10">
+      <div className="w-full relative">
+        <video
+          className=""
+          loop
+          autoPlay
+          muted
+          title="People walking along sand dunes."
+        >
+          <source src={video} type="video/mp4" />
+        </video>
+        <div className="absolute top-2/4 w-4/12 ml-12">
+          <h1 className="text-white text-bold text-5xl">{season.title} is here.</h1>
+          <p className="text-white text-thin text-sm tracking-widest season-description w-5/6 mt-2">{season.description}</p>
+          <button className="rounded-full border px-4 align-middle h-10 uppercase mt-2 border-2 border-white">
+            <p className="text-white text-xs tracking-widest">Exlore new {season.title} style</p>
+          </button>
+        </div>
+      </div>
+      {/* deals of the day */}
+      <div className="w-full my-32 px-8">
+        <h1 className="text-4xl pt-4 top-border">DEAL'S OF THE DAY</h1>
+        <div className="grid grid-cols-4 gap-4 w-full">
+          <div className="mt-3">
+            <img className="" src={Jacket} />
+            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
+          </div>
+          <div className="mt-3">
+            <img className="" src={Jacket} />
+            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
+          </div>
+          <div className="mt-3">
+            <img className="" src={Jacket} />
+            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
+          </div>
+          <div className="mt-3">
+            <img className="" src={Jacket} />
+            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
           </div>
         </div>
       </div>
+      {/* poster for mens and women */}
       <div>
-
+        <div className="mt-20 relative">
+          <img src={poster1} />
+          <div className="absolute top-2/4 text-white w-2/4 ml-16">
+            <h1 className="text-5xl font-bold tracking-widest text-white">
+              Maximum protection, minimal design.
+            </h1>
+            <button className="rounded-full border px-3 align-middle h-10 uppercase mt-2  border-2 outline-black border-black">
+              <p className="text-white text-xs tracking-widest">
+                Explore the men's Jackets
+              </p>
+            </button>
+            <br />
+            <button className="rounded-full border px-3 align-middle h-10 uppercase mt-2  border-2 outline-black border-black">
+              <p className="text-white text-xs tracking-widest">
+                Explore the women's Jackets
+              </p>
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* Exclusive brands Offer*/}
+      <div className="w-full my-32 px-8">
+        <h1 className="text-4xl pt-4 top-border">EXCLUSIVE BRAND OFFER'S</h1>
+        <div className="grid grid-cols-4 gap-4 w-full">
+          <div className="mt-3">
+            <img className="" src={Jacket} />
+            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
+            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
+              <p className="text-black text-xs tracking-widest">Explore</p>
+            </button>
+          </div>
+          <div className="mt-3">
+            <img className="" src={Jacket} />
+            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
+            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
+              <p className="text-black text-xs tracking-widest">Explore</p>
+            </button>
+          </div>
+          <div className="mt-3">
+            <img className="" src={Jacket} />
+            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
+            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
+              <p className="text-black text-xs tracking-widest">Explore</p>
+            </button>
+          </div>
+          <div className="mt-3">
+            <img className="" src={Jacket} />
+            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
+            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
+              <p className="text-black text-xs tracking-widest">Explore</p>
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* second poster */}
+      <div className="relative px-8 my-24">
+        <img src={poster2} className="" />
+        <div className="absolute top-20 text-white w-2/4 ml-16">
+          <h1 className="text-5xl font-bold tracking-wider text-black">
+            {season.title} packing list.
+          </h1>
+          <button className="rounded-full px-3 align-middle h-10 uppercase mt-4 border-2 border-black ">
+            <p className="text-black text-xs tracking-widest">
+              Explore the men's Jackets
+            </p>
+          </button>
+          <br />
+          <button className="rounded-full px-3 align-middle h-10 uppercase mt-2  border-2 outline-black border-black">
+            <p className="text-black text-xs tracking-widest">
+              Explore the women's Jackets
+            </p>
+          </button>
+        </div>
+      </div>
+      {/* contact us email form */}
+      <div className="w-full bg-gray-100 px-24 py-24 grid grid-cols-5 gap-4">
+        <div className="col-span-2 block">
+          <h1 className="text-4xl ">
+            Join our email list and receive exclusive updates.
+          </h1>
+          <input
+            placeholder="Email address"
+            className="w-3/4 h-12 align-middle px-8 mt-4 rounded-full mr-22 email-input font-lg"
+            type="text"
+          />
+          <div className="flex mt-1 ml-2">
+            <div className="mx-2">
+              <input type="checkbox" id="men" name="men" value="men" />
+              <label className=" ml-1 text-xs align-middle mt-1 pt-1" for="men">
+                {" "}
+                MEN
+              </label>
+            </div>
+            <div className="mx-2">
+              <input type="checkbox" id="womens" name="womens" value="womens" />
+              <label
+                className=" ml-1 text-xs align-middle mt-1 pt-1"
+                for="womens"
+              >
+                {" "}
+                WOMENS
+              </label>
+            </div>
+            <div className="mx-2">
+              <input type="checkbox" id="kids" name="kids" value="kids" />
+              <label
+                className=" ml-1 text-xs align-middle mt-1 pt-1"
+                for="kids"
+              >
+                {" "}
+                KIDS
+              </label>
+            </div>
+          </div>
+          <button className="rounded-full px-3 w-full align-middle h-12 uppercase mt-3 border bg-black outline-black border-black">
+            <p className="text-white text-md tracking-widest">
+              JOIN EMAIL LIST
+            </p>
+          </button>
+        </div>
+        <div className="col-span-3 ml-36 w-3/4 flex">
+          <div className="w-2/6">
+            <h1 className="text-4xl ">
+              Visit our stores.
+            </h1>
+            <div className="w-full mt-14">
+              <label className="rounded-full px-3 ml-1 h-8 py-2 text-xs align-middle black-border">PUNE</label>
+              <label className="rounded-full px-3 ml-1 -mt-1 h-8 py-2 text-xs align-middle black-border">MUMBAI</label>
+              <label className="rounded-full px-3 ml-1 -mt-1 h-8 py-2 text-xs align-middle black-border">NASHIK</label>
+              <label className="rounded-full px-3 ml-1 -mt-1 h-8 py-2 text-xs align-middle black-border">SAMBHAJI NAGAR</label>
+            </div>
+          </div>
+          <img src={contactUsPoster} className="h-56 my-auto ml-10"/>
+        </div>
+      </div>
+      {/* kids poster */}
+      <div className="relative px-8 my-24">
+        <img src={kidsPoster} className="" />
+        <div className="absolute top-20 right-14 text-white w-1/4 text-right">
+          <h1 className="text-5xl font-bold tracking-wider text-black">
+            Exclusive kids collection.
+          </h1>
+          <button className="rounded-full px-3 bg-black align-middle h-10 uppercase mt-4 border-2 border-black ">
+            <p className="text-white text-xs tracking-widest">
+              Explore the kid's collection
+            </p>
+          </button>
+        </div>
+      </div>
+      {/* Kids wear exclusive */}
+      {/* Exclusive brands Offer*/}
+      <div className="w-full my-32 px-8">
+        <h1 className="text-4xl pt-4 top-border">EXCLUSIVE KID'S COLLECTION</h1>
+        <div className="grid grid-cols-4 gap-4 w-full">
+          <div className="mt-3">
+            <img className="" src={Jacket} />
+            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
+            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
+              <p className="text-black text-xs tracking-widest">Explore</p>
+            </button>
+          </div>
+          <div className="mt-3">
+            <img className="" src={Jacket} />
+            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
+            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
+              <p className="text-black text-xs tracking-widest">Explore</p>
+            </button>
+          </div>
+          <div className="mt-3">
+            <img className="" src={Jacket} />
+            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
+            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
+              <p className="text-black text-xs tracking-widest">Explore</p>
+            </button>
+          </div>
+          <div className="mt-3">
+            <img className="" src={Jacket} />
+            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
+            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
+              <p className="text-black text-xs tracking-widest">Explore</p>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-
-  )
-
-}
-export default Home
+  );
+};
+export default Home;

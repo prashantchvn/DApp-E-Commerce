@@ -6,9 +6,15 @@
     font-family: "MaisonNeueBook";
     src: url('./assets/Fonts/Maison-Neue-Book.ttf');
 }
+
 @font-face {
     font-family: "MaisonNeueExtended";
     src: url('./assets/Fonts/MaisonNeueExtended-Medium.otf');
+}
+
+@font-face {
+    font-family: "MaisonNeueExtendedDemi";
+    src: url('./assets/Fonts/MaisonNeueExtended-Demi.otf');
 }
 
 @font-face {
@@ -16,46 +22,97 @@
     src: url('./assets/Fonts/MaisonNeueMono-Regular.otf');
 }
 
-body{
+body {
     font-family: "MaisonNeueBook";
     position: relative;
 }
-a:hover{
+
+a:hover {
     text-decoration: none;
     color: black;
 }
-.Logo{
+
+.Logo {
     letter-spacing: 5px;
 }
-.categories-heading{
+
+.categories-heading {
     letter-spacing: 3px;
 }
-.form-button{
+
+.form-button {
     letter-spacing: 3px;
     font-weight: 100;
 }
-.forgot-password{
+
+.forgot-password {
     letter-spacing: 1px;
 }
-form input{
+
+form input {
     letter-spacing: 2px;
 }
+
 /* remove the input number type arrows and unwanted spinners */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
-h1{
-    font-family: "MaisonNeueExtended";
+h1 {
+    font-family: "MaisonNeueExtendedDemi";
 }
-p{
+
+.MaisonNeueMonoRegular {
     font-family: "MaisonNeueMonoRegular";
+}
+
+.season-description {
+    letter-spacing: 2px;
+    line-height: 22px;
+}
+
+.poster {
+    position: fixed;
+    top: 70%;
+}
+
+.email-input::placeholder{
+    opacity: 1;
+    color: black;
+    letter-spacing: 1.5px;
+}
+
+.email-input{
+    border: 1px solid black;
+    letter-spacing: 1px;
+}
+
+.black-border{
+    border: 1px solid black;
+}
+
+.top-border{
+    border-top: 1.6px solid black;
+}
+
+.top-border-thin{
+    border-top: 1.2px solid black;
+}
+
+
+label{
+    letter-spacing: 1px;
+}
+
+.footer-title{
+    letter-spacing: 45px;
+    text-align: center;
 }
