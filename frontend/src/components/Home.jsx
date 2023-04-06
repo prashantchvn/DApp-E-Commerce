@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <div className="mt-10">
-      <div className="w-full">
+      <div className="w-full relative">
         <video
           className=""
           loop
@@ -27,13 +27,13 @@ const Home = () => {
         >
           <source src={video} type="video/mp4" />
         </video>
-        {/* <div className="poster w-4/12 ml-12">
+        <div className="absolute top-2/4 w-4/12 ml-12">
           <h1 className="text-white text-bold text-5xl">{season.title} is here.</h1>
           <p className="text-white text-thin text-sm tracking-widest season-description w-5/6 mt-2">{season.description}</p>
           <button className="rounded-full border px-4 align-middle h-10 uppercase mt-2 border-2 border-white">
             <p className="text-white text-xs tracking-widest">Exlore new {season.title} style</p>
           </button>
-        </div> */}
+        </div>
       </div>
       {/* deals of the day */}
       <div className="w-full my-32 px-8">
