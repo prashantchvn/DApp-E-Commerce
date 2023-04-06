@@ -83,3 +83,36 @@ h1 {
     position: fixed;
     top: 70%;
 }
+
+.email-input::placeholder{
+    opacity: 1;
+    color: black;
+    letter-spacing: 1.5px;
+}
+
+.email-input{
+    border: 1px solid black;
+    letter-spacing: 1px;
+}
+
+.black-border{
+    border: 1px solid black;
+}
+
+.top-border{
+    border-top: 1.6px solid black;
+}
+
+.top-border-thin{
+    border-top: 1.2px solid black;
+}
+
+
+label{
+    letter-spacing: 1px;
+}
+
+.footer-title{
+    letter-spacing: 45px;
+    text-align: center;
+}
