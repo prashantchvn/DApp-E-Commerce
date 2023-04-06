@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div className="footer my-20">
       <h1 className="text-9xl footer-title">AGES</h1>
-      <div className="grid grid-cols-5 gap-0 ml-24 px-20 mt-12">
+      <div className="grid grid-cols-5 gap-0 ml-16 px-20 mt-12">
         <div>
           <h1 className="tracking-widest text-md">MEN</h1>
           <div className="mt-6">
@@ -29,21 +29,20 @@ function Footer() {
           </div>
         </div>
         <div>
+          <h1 className="tracking-widest text-md">KID'S</h1>
+          <div className="mt-6">
+            <p className="uppercase text-xs tracking-widest">CLOTHING'S</p>
+          </div>
+        </div>
+        <div>
           <h1 className="tracking-widest text-md">EXPLORE</h1>
           <div className="mt-6">
-            <p className="uppercase text-xs tracking-widest">EXPLORE BRAND's</p>
             <p className="uppercase mt-2 text-xs tracking-widest">
               DEAL'S OF THE DAY
             </p>
             <p className="uppercase mt-2 text-xs tracking-widest">
               TRENDING WITH FASHION
             </p>
-          </div>
-        </div>
-        <div>
-          <h1 className="tracking-widest text-md">KID'S</h1>
-          <div className="mt-6">
-            <p className="uppercase text-xs tracking-widest">CLOTHING'S</p>
           </div>
         </div>
         <div>
@@ -58,8 +57,8 @@ function Footer() {
         <p>YOU ONLY LIVE ONCE, BUT IF YOU DO IT RIGHT, ONCE IS ENOUGH.</p>
         <div className="flex">
           <p>© 2023 ALL RIGHTS RESERVED</p>
-          <p>PRIVACY</p>
-          <p>TERM OF USE</p>
+          <p className="ml-4">PRIVACY</p>
+          <p className="ml-4">TERM OF USE</p>
         </div>
       </div>
     </div>
