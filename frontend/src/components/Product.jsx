@@ -1,14 +1,14 @@
 import React from "react";
 import poster1 from "../assets/Images/poster1.webp";
 import ContactUsForm from "./SubComponents/ContactUsForm";
+import Carousel from "./SubComponents/Carousel";
 
 function Product() {
   return (
     <div className="my-20">
       <div className="grid grid-cols-2">
         <div>
-          {/* carousel */}
-          <h1>carousel</h1>
+          <Carousel/>
         </div>
         <div>
           <h1 className=" text-4xl top-border mr-8 pt-4 tracking-wider">
