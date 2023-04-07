@@ -3,7 +3,9 @@ import React from 'react'
 function Explore() {
   return (
     <div>
-        <h1>Explore</h1>
+        <h1>
+          
+        </h1>
     </div>
   )
 }
