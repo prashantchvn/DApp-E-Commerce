@@ -3,7 +3,7 @@ import contactUsPoster from "../../assets/Images/contactUs.webp";
 
 function ContactUsForm() {
   return (
-    <div className="w-full bg-gray-100 px-24 py-24 grid grid-cols-5 gap-4">
+    <div className="w-full bg-gray-100 px-24 py-24 grid grid-cols-5 gap-4 my-20">
       <div className="col-span-2 block">
         <h1 className="text-4xl ">
           Join our email list and receive exclusive updates.

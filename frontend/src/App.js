@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar"
 import { Route, Switch } from "react-router-dom"
 import Footer from "./components/Footer";
 import Product from "./components/Product";
+import Explore from "./components/Explore";
 
 function App() {
   
@@ -16,6 +17,7 @@ function App() {
           <Route exact  path="/" component={Home} />
           <Route exact  path="/home" component={Home} />
           <Route exact  path="/product/:id" component={Product} />
+          <Route exact  path="/explore/:category/:keyword" component={Explore} />
         </Switch>
 
       <Footer/> 
