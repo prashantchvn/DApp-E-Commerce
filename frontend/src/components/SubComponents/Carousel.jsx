@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 
 function Carousel() {
   return (
-    <div className="w-4/6 mx-auto">
+    <div className="mx-auto">
         <Swiper
         style={{
           "--swiper-navigation-color": "#fff",
@@ -17,7 +17,7 @@ function Carousel() {
         }}
         zoom={true}
         loop={true}
-        navigation={true}
+        navigation={false}
         pagination={{
           clickable: true,
         }}

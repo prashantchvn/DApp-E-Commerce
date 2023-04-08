@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="footer mt-20 mb-8 fixed bottom-0 w-full">
+    <div className="footer mt-20 mb-8 w-full">
       <h1 className="text-9xl footer-title">AGES</h1>
       <div className="grid grid-cols-5 gap-0 ml-16 px-20 mt-12">
         <div>
