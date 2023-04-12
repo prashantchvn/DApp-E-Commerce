@@ -10,7 +10,7 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/"
             >
               EXPLORE KID'S
             </Link>
@@ -18,25 +18,9 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
-            >
-              NEW STYLES
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/"
             >
               VIEW ALL
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
-            >
-              GIFT CARDS
             </Link>
           </li>
         </ul>
@@ -47,7 +31,7 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/"
             >
               ALL CLOTHINGS
             </Link>
@@ -55,7 +39,7 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/winter-jacket"
             >
               INSULATED JACKETS
             </Link>
@@ -63,7 +47,7 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/jacket"
             >
               NON-INSULATED JACKETS
             </Link>
@@ -71,15 +55,7 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
-            >
-              VESTS
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/sweaters"
             >
               SWEATERS
             </Link>
@@ -87,41 +63,17 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/shirts"
             >
-              SWEATSHIRTS AND MIDLAYERS
+              SHIRTS
             </Link>
           </li>
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
-            >
-              SHORT SLEEVE SHIRTS
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
-            >
-              LONG SLEEVE SHIRTS
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/pants-and-short"
             >
               PANTS AND SHORTS
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
-            >
-              BASE LAYERS
             </Link>
           </li>
         </ul>
@@ -134,15 +86,7 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
-            >
-              ALL ACCESSORIES
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/shoes"
             >
               SHOES
             </Link>
@@ -150,7 +94,7 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/hats"
             >
               HATS
             </Link>
@@ -158,25 +102,9 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
-            >
-              SMALL HATS
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/watches"
             >
               WATCHES
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
-            >
-              OTHERS
             </Link>
           </li>
         </ul>
@@ -187,7 +115,7 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/snow"
             >
               ALL SNOW COLLECTION
             </Link>
@@ -195,7 +123,7 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/winter-jackets"
             >
               JACKETS
             </Link>
@@ -203,7 +131,7 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/midlayers"
             >
               MIDLAYERS
             </Link>
@@ -211,7 +139,7 @@ function KidsMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/kids/pants-and-shorts"
             >
               PANTS AND SHORTS
             </Link>
