@@ -6,6 +6,7 @@ import { Route, Switch } from "react-router-dom"
 import Footer from "./components/Footer";
 import Product from "./components/Product";
 import Explore from "./components/Explore";
+import NotFound404 from "./components/NotFound404";
 
 function App() {
   
@@ -19,6 +20,7 @@ function App() {
           <Route exact  path="/product/:id" component={Product} />
           <Route exact  path="/explore/:category/:keyword" component={Explore} />
           <Route exact  path="/explore/:category/" component={Explore} />
+          <Route exact  path="*" component={NotFound404} />
         </Switch>
 
       <Footer/> 
