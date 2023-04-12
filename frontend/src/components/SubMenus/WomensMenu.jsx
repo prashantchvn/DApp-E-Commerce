@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-function WomensMenu() {
+function WowomensMenu() {
   return (
     <div className="grid grid-cols-5 gap-0">
       <div>
@@ -10,7 +10,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/"
             >
               EXPLORE WOMEN'S
             </Link>
@@ -18,7 +18,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/new-styles"
             >
               NEW STYLES
             </Link>
@@ -26,7 +26,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/"
             >
               VIEW ALL
             </Link>
@@ -34,7 +34,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/gift-Cards"
             >
               GIFT CARDS
             </Link>
@@ -47,7 +47,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/"
             >
               ALL CLOTHINGS
             </Link>
@@ -55,7 +55,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/winter-jacket"
             >
               INSULATED JACKETS
             </Link>
@@ -63,7 +63,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/jacket"
             >
               NON-INSULATED JACKETS
             </Link>
@@ -71,7 +71,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/vests"
             >
               VESTS
             </Link>
@@ -79,7 +79,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/sweaters"
             >
               SWEATERS
             </Link>
@@ -87,7 +87,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/midlayers"
             >
               SWEATSHIRTS AND MIDLAYERS
             </Link>
@@ -95,7 +95,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/short-sleeve-shirts"
             >
               SHORT SLEEVE SHIRTS
             </Link>
@@ -103,7 +103,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/long-sleeve-shirts"
             >
               LONG SLEEVE SHIRTS
             </Link>
@@ -111,7 +111,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/pants-and-short"
             >
               PANTS AND SHORTS
             </Link>
@@ -119,7 +119,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/base-layers"
             >
               BASE LAYERS
             </Link>
@@ -134,7 +134,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/accessories"
             >
               ALL ACCESSORIES
             </Link>
@@ -142,7 +142,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/shoes"
             >
               SHOES
             </Link>
@@ -150,31 +150,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
-            >
-              SCARVES
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
-            >
-              SMALL HATS
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
-            >
-              WATCHES
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women"
             >
               OTHERS
             </Link>
@@ -187,7 +163,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/snow"
             >
               ALL SNOW COLLECTION
             </Link>
@@ -195,7 +171,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/winter-jackets"
             >
               JACKETS
             </Link>
@@ -203,7 +179,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/midlayers"
             >
               MIDLAYERS
             </Link>
@@ -211,7 +187,7 @@ function WomensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men"
+              to="/explore/women/pants-and-shorts"
             >
               PANTS AND SHORTS
             </Link>
@@ -222,4 +198,4 @@ function WomensMenu() {
   )
 }
 
-export default WomensMenu
+export default WowomensMenu
