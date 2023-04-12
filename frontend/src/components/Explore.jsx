@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import MensPoster from "../assets/Images/mensPoster.jpg";
 import Carousel from "./SubComponents/Carousel";
 import poster2 from "../assets/Images/poster2.webp";
@@ -21,33 +22,32 @@ function Explore() {
         <div className="grid grid-cols-2 w-5/6 mx-auto gap-x-36 gap-y-12">
           <div className="mt-3">
             <Carousel />
-            <h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1>
+            <Link to="../../product/Hooded-Tech-Fleece-Full-Zip"><h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1></Link>
             <p className="mt-2 text-sm tracking-wider">$325.00</p>
           </div>
           <div className="mt-3">
             <Carousel />
-            <h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1>
+            <Link to="../../product/Hooded-Tech-Fleece-Full-Zip"><h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1></Link>
             <p className="mt-2 text-sm tracking-wider">$325.00</p>
           </div>
           <div className="mt-3">
             <Carousel />
-            <h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1>
+            <Link to="../../product/Hooded-Tech-Fleece-Full-Zip"><h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1></Link>
             <p className="mt-2 text-sm tracking-wider">$325.00</p>
           </div>
           <div className="mt-3">
             <Carousel />
-            <h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1>
+            <Link to="../../product/Hooded-Tech-Fleece-Full-Zip"><h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1></Link>
+            <p className="mt-2 text-sm tracking-wider">$325.00</p>
+          </div><div className="mt-3">
+            <Carousel />
+            <Link to="../../product/Hooded-Tech-Fleece-Full-Zip"><h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1></Link>
             <p className="mt-2 text-sm tracking-wider">$325.00</p>
           </div>
           <div className="mt-3">
             <Carousel />
-            <h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1>
+            <Link to="../../product/Hooded-Tech-Fleece-Full-Zip"><h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1></Link>
             <p className="mt-2 text-sm tracking-wider">$325.00</p>
-          </div>
-          <div className="mt-3">
-            <Carousel />
-            <h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1>
-            <p className="mt-2 text-sm tracking-wider">$325.00</p>/
           </div>
         </div>
       </div>
@@ -63,35 +63,34 @@ function Explore() {
       {/* remaining product cards */}
       <div className="w-full my-24  px-8">
         <div className="grid grid-cols-2 w-5/6 mx-auto gap-x-36 gap-y-12">
-          <div className="mt-3">
+        <div className="mt-3">
             <Carousel />
-            <h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1>
+            <Link to="../../product/Hooded-Tech-Fleece-Full-Zip"><h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1></Link>
             <p className="mt-2 text-sm tracking-wider">$325.00</p>
           </div>
           <div className="mt-3">
             <Carousel />
-            <h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1>
+            <Link to="../../product/Hooded-Tech-Fleece-Full-Zip"><h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1></Link>
             <p className="mt-2 text-sm tracking-wider">$325.00</p>
           </div>
           <div className="mt-3">
             <Carousel />
-            <h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1>
+            <Link to="../../product/Hooded-Tech-Fleece-Full-Zip"><h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1></Link>
             <p className="mt-2 text-sm tracking-wider">$325.00</p>
           </div>
           <div className="mt-3">
             <Carousel />
-            <h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1>
+            <Link to="../../product/Hooded-Tech-Fleece-Full-Zip"><h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1></Link>
+            <p className="mt-2 text-sm tracking-wider">$325.00</p>
+          </div><div className="mt-3">
+            <Carousel />
+            <Link to="../../product/Hooded-Tech-Fleece-Full-Zip"><h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1></Link>
             <p className="mt-2 text-sm tracking-wider">$325.00</p>
           </div>
           <div className="mt-3">
             <Carousel />
-            <h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1>
+            <Link to="../../product/Hooded-Tech-Fleece-Full-Zip"><h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1></Link>
             <p className="mt-2 text-sm tracking-wider">$325.00</p>
-          </div>
-          <div className="mt-3">
-            <Carousel />
-            <h1 className="mt-4 text-2xl cursor-pointer">Hooded Tech-Fleece Full-Zip</h1>
-            <p className="mt-2 text-sm tracking-wider">$325.00</p>/
           </div>
         </div>
       </div>

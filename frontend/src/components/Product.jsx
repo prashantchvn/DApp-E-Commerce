@@ -7,7 +7,7 @@ function Product() {
   return (
     <div className="my-20">
       <div className="grid grid-cols-2">
-        <div>
+        <div className="w-3/4 mx-auto">
           <Carousel/>
         </div>
         <div>
