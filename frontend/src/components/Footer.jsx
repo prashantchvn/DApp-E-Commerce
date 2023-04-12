@@ -1,55 +1,61 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="footer mt-20 mb-8 w-full">
+    <div className="footer mt-20 mb-8 w-full cursor-pointer">
       <h1 className="text-9xl footer-title">AGES</h1>
       <div className="grid grid-cols-5 gap-0 ml-16 px-20 mt-12">
         <div>
           <h1 className="tracking-widest text-md">MEN</h1>
           <div className="mt-6">
-            <p className="uppercase text-xs tracking-widest">EXPLORE MEN's</p>
-            <p className="uppercase mt-2 text-xs tracking-widest">CLOTHING</p>
-            <p className="uppercase mt-2 text-xs tracking-widest">SNOW</p>
-            <p className="uppercase mt-2 text-xs tracking-widest">
-              ACCESSORIES
-            </p>
+            <Link to="/explore/men">
+              <p className="uppercase text-xs tracking-widest hover:text-slate-400">EXPLORE MEN's</p>
+            </Link>
+            <Link to="/explore/men">
+              <p className="uppercase mt-2 text-xs tracking-widest hover:text-slate-400">CLOTHING</p>
+            </Link>
+            <Link to="/explore/men/snow">
+              <p className="uppercase mt-2 text-xs tracking-widest hover:text-slate-400">SNOW</p>
+            </Link>
+            <Link to="/explore/men/accessories">
+              <p className="uppercase mt-2 text-xs tracking-widest hover:text-slate-400">
+                ACCESSORIES
+              </p>
+            </Link>
           </div>
         </div>
         <div>
           <h1 className="tracking-widest text-md">WOMEN's</h1>
           <div className="mt-6">
-            <p className="uppercase mt-2 text-xs tracking-widest">
-              ACCESSORIES
-            </p>
-            <p className="uppercase mt-2 text-xs tracking-widest">CLOTHINGS</p>
-            <p className="uppercase mt-2 text-xs tracking-widest">
-              TRENDING WITH FASHION
-            </p>
+            <Link to="/explore/women/accessories">
+              <p className="uppercase mt-2 text-xs tracking-widest hover:text-slate-400">
+                ACCESSORIES
+              </p>
+            </Link>
+            <Link to="/explore/women">
+              <p className="uppercase mt-2 text-xs tracking-widest hover:text-slate-400">
+                CLOTHINGS
+              </p>
+            </Link>
+            <Link to="/explore/women/trending-fashion">
+              <p className="uppercase mt-2 text-xs tracking-widest hover:text-slate-400">
+                TRENDING WITH FASHION
+              </p>
+            </Link>
           </div>
         </div>
         <div>
           <h1 className="tracking-widest text-md">KID'S</h1>
           <div className="mt-6">
-            <p className="uppercase text-xs tracking-widest">CLOTHING'S</p>
-          </div>
-        </div>
-        <div>
-          <h1 className="tracking-widest text-md">EXPLORE</h1>
-          <div className="mt-6">
-            <p className="uppercase mt-2 text-xs tracking-widest">
-              DEAL'S OF THE DAY
-            </p>
-            <p className="uppercase mt-2 text-xs tracking-widest">
-              TRENDING WITH FASHION
-            </p>
+          <Link to="/explore/kids"><p className="uppercase text-xs tracking-widest hover:text-slate-400">CLOTHING'S</p></Link>
           </div>
         </div>
         <div>
           <h1 className="tracking-widest text-md">ABOUT US</h1>
           <div className="mt-6">
-            <p className="uppercase text-xs tracking-widest">ABOUT US</p>
-            <p className="uppercase mt-2 text-xs tracking-widest">FAQ</p>
+            <Link to="/about-us"><p className="uppercase text-xs tracking-widest hover:text-slate-400">ABOUT US</p></Link>
+            <Link to="/faq"><p className="uppercase mt-2 text-xs tracking-widest hover:text-slate-400">FAQ</p></Link>
           </div>
         </div>
       </div>
