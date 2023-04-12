@@ -10,7 +10,7 @@ function MensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men/clothing"
+              to="/explore/men/"
             >
               EXPLORE MEN'S
             </Link>
@@ -34,7 +34,7 @@ function MensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/gift-Cards"
+              to="/explore/men/gift-Cards"
             >
               GIFT CARDS
             </Link>
@@ -47,7 +47,7 @@ function MensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/men/clothings"
+              to="/explore/men/"
             >
               ALL CLOTHINGS
             </Link>
@@ -71,7 +71,7 @@ function MensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/vests"
+              to="/explore/men/vests"
             >
               VESTS
             </Link>
@@ -87,7 +87,7 @@ function MensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/midlayers"
+              to="/explore/men/midlayers"
             >
               SWEATSHIRTS AND MIDLAYERS
             </Link>
@@ -187,7 +187,7 @@ function MensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/snow"
+              to="/explore/men/snow"
             >
               ALL SNOW COLLECTION
             </Link>
@@ -195,7 +195,7 @@ function MensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/jackets"
+              to="/explore/men/winter-jackets"
             >
               JACKETS
             </Link>
@@ -203,7 +203,7 @@ function MensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/midlayers"
+              to="/explore/men/midlayers"
             >
               MIDLAYERS
             </Link>
@@ -211,7 +211,7 @@ function MensMenu() {
           <li>
             <Link
               className="text-xs tracking-wider hover:text-slate-400"
-              to="/explore/pants-and-shorts"
+              to="/explore/men/pants-and-shorts"
             >
               PANTS AND SHORTS
             </Link>

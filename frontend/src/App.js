@@ -18,6 +18,7 @@ function App() {
           <Route exact  path="/home" component={Home} />
           <Route exact  path="/product/:id" component={Product} />
           <Route exact  path="/explore/:category/:keyword" component={Explore} />
+          <Route exact  path="/explore/:category/" component={Explore} />
         </Switch>
 
       <Footer/> 
