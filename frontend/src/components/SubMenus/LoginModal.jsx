@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { loginCall, registerCall, forgotPassword } from "../../scripts/Auth";
 import { validateUser } from "../../scripts/Auth";
 
+
 function LoginModal() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -201,9 +202,19 @@ function LoginModal() {
     return (
       <div className="block my-10">
         <form className="block w-5/12 mx-auto " onSubmit={handleLogin}>
-          <h1 className="font-black tracking-wider leading-2 text-3xl mb-4">
-            LOGIN
-          </h1>
+          <div className="flex">
+            <h1 className="font-black tracking-wider leading-2 text-3xl mb-4">
+              LOGIN
+            </h1>
+            <button
+              onClick={() => {
+                setMode("register");
+              }}
+              className="mt-2 mb-3 text-sm text-right w-full pr-2 forgot-password"
+            >
+              REGISTER 
+            </button>
+          </div>
           <input
             value={email}
             placeholder="EMAIL ADDRESS"
