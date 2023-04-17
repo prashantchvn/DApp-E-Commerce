@@ -20,6 +20,19 @@ function LoginModal() {
     }
   }, []);
 
+  const clearFields = () => {
+    setName("");
+    setEmail("");
+    setPhNo("");
+    setPassword("");
+    setConfirmPassword("");
+  };
+
+  const getUser = async () => {
+    const res = await validateUser();
+    setUser(res.data);
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     const data = {
@@ -30,13 +43,9 @@ function LoginModal() {
     if (res.data) {
       localStorage.setItem("AuthToken", res.data.user);
       getUser();
+      clearFields();
       setMode("");
     }
-  };
-
-  const getUser = async () => {
-    const res = await validateUser();
-    setUser(res.data);
   };
 
   const handleSignup = async (e) => {
@@ -54,8 +63,7 @@ function LoginModal() {
     const res = await registerCall(data);
     if (res.status) {
       setMode("login");
-    } else {
-      console.log("error");
+      clearFields();
     }
   };
 
@@ -65,9 +73,10 @@ function LoginModal() {
     };
 
     const res = await forgotPassword(data);
-    if(res.status == "ok"){
+    if (res.status == "ok") {
       // toast with your password reset link is sent on ur email Id
-      setMode('login')
+      setMode("login");
+      clearFields();
     }
   };
 
@@ -79,8 +88,8 @@ function LoginModal() {
         </h1>
         <button
           onClick={() => {
-            localStorage.removeItem('AuthToken')
-            setMode('login')
+            localStorage.removeItem("AuthToken");
+            setMode("login");
           }}
           className="mt-3 mb-3 text-right w-full pl-2 forgot-password"
         >
