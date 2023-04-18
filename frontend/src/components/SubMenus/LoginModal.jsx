@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { loginCall, registerCall, forgotPassword } from "../../scripts/Auth";
+import { validateUser } from "../../scripts/Auth";
+
 
 function LoginModal() {
   const [name, setName] = useState("");
@@ -9,8 +11,28 @@ function LoginModal() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [mode, setMode] = useState("register");
+  const [user, setUser] = useState("Prashant");
 
   const history = useHistory();
+
+  useEffect(() => {
+    if (localStorage.getItem("AuthToken")) {
+      getUser();
+    }
+  }, []);
+
+  const clearFields = () => {
+    setName("");
+    setEmail("");
+    setPhNo("");
+    setPassword("");
+    setConfirmPassword("");
+  };
+
+  const getUser = async () => {
+    const res = await validateUser();
+    setUser(res.data);
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,7 +43,9 @@ function LoginModal() {
     const res = await loginCall(data);
     if (res.data) {
       localStorage.setItem("AuthToken", res.data.user);
-      history.push("/");
+      getUser();
+      clearFields();
+      setMode("");
     }
   };
 
@@ -37,7 +61,11 @@ function LoginModal() {
       password: password,
     };
 
-    const res = registerCall(data);
+    const res = await registerCall(data);
+    if (res.status) {
+      setMode("login");
+      clearFields();
+    }
   };
 
   const handleForgetPassword = async (e) => {
@@ -45,8 +73,32 @@ function LoginModal() {
       email: email,
     };
 
-    const res = forgotPassword(data);
+    const res = await forgotPassword(data);
+    if (res.status == "ok") {
+      // toast with your password reset link is sent on ur email Id
+      setMode("login");
+      clearFields();
+    }
   };
+
+  if (localStorage.getItem("AuthToken")) {
+    return (
+      <div className="block my-10">
+        <h1 className="font-black tracking-wider leading-2 text-3xl mb-2">
+          Hello {user.name}
+        </h1>
+        <button
+          onClick={() => {
+            localStorage.removeItem("AuthToken");
+            setMode("login");
+          }}
+          className="mt-3 mb-3 text-right w-full pl-2 forgot-password"
+        >
+          logout
+        </button>
+      </div>
+    );
+  }
 
   if (mode === "forgotPassword") {
     return (
@@ -150,9 +202,19 @@ function LoginModal() {
     return (
       <div className="block my-10">
         <form className="block w-5/12 mx-auto " onSubmit={handleLogin}>
-          <h1 className="font-black tracking-wider leading-2 text-3xl mb-4">
-            LOGIN
-          </h1>
+          <div className="flex">
+            <h1 className="font-black tracking-wider leading-2 text-3xl mb-4">
+              LOGIN
+            </h1>
+            <button
+              onClick={() => {
+                setMode("register");
+              }}
+              className="mt-2 mb-3 text-sm text-right w-full pr-2 forgot-password"
+            >
+              REGISTER 
+            </button>
+          </div>
           <input
             value={email}
             placeholder="EMAIL ADDRESS"
@@ -175,13 +237,11 @@ function LoginModal() {
           >
             FORGOT PASSWORD
           </button>
-          <div className="w-full px-6">
-            <input
-              className="bg-black w-full rounded-full h-12 text-white tracking-wideest text-md font-thin form-button"
-              type="submit"
-              value="LOGIN"
-            />
-          </div>
+          <input
+            className="bg-black w-full rounded-full h-12 text-white tracking-wideest text-md font-thin form-button"
+            type="submit"
+            value="LOGIN"
+          />
         </form>
       </div>
     );
