@@ -123,9 +123,12 @@ router.post('/', upload.array("product-images", 12), async (req, res) => {
             description: req.body.description,
             price: req.body.price,
             slug: await generateSlug(req.body.productName),
-            discountPrice: req.body.discountPrice,
             images: imageUrlList,
-            category: req.body.category
+            category: req.body.category,
+            technicalFeatures: req.body.technicalFeatures,
+            sizes: req.body.sizes,
+            gender : req.body.gender,
+            kids: req.body.kids
         })
         res.json({ status: 'ok' })
     } catch (error) {
