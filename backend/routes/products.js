@@ -187,7 +187,10 @@ router.get('/:slug', async (req, res) => {
     try {
         const data = await Products.findOne({slug: req.params.slug})
         const relatedProducts = await Products.find({ gender: data.gender, category: data.category, kids: data.kids})
-        res.json({ status: 'ok', data: data, relatedProducts: relatedProducts })
+        const filteredRelatedProducts = relatedProducts.filter((product)=>{
+            return product.slug != data.slug
+        })
+        res.json({ status: 'ok', data: data, relatedProducts: filteredRelatedProducts })
     } catch (error) {
         console.log(error)
         res.json({ status: 'error', error: 'Duplicate email' })
