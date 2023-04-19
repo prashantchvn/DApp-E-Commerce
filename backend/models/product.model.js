@@ -12,7 +12,7 @@ const ProductSchema = new mongoose.Schema({
     category: [{ type: String }],
     sizes: [{
         type: Number,
-        default: [ 0, 0, 0, 0, 0]
+        default: [ 0, 0, 0, 0, 0, 0]
     }],
     gender: {
         type: String,
@@ -23,7 +23,7 @@ const ProductSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     }
-    // [ S, M, L, XL, XXL ] if we have only medium and XL available then the array would be like [ 0, 1, 0, 1, 0]
+    // [ xs, S, M, L, XL, XXL ] if we have only medium and XL available then the array would be like [ 0, 0, 1, 0, 1, 0]
 },
     {
         collection: 'products-data'

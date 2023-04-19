@@ -6,9 +6,9 @@ function SingleProduct() {
     <div className="mt-3">
       <img className="" src={Jacket} />
       <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
-      <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
+      {/* <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
         <p className="text-black text-xs tracking-widest">Explore</p>
-      </button>
+      </button> */}
     </div>
   );
 }

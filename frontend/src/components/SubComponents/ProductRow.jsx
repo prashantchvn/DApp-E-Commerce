@@ -3,7 +3,7 @@ import SingleProduct from './SingleProduct'
 
 function ProductRow({ heading }) {
 
-  const [product,setProduct] = useState([0,1,2,3,])
+  const [product,setProduct] = useState([0,1,2,3])
 
   return (
     <div className="w-full my-32 px-8">
@@ -11,9 +11,7 @@ function ProductRow({ heading }) {
         <div className="grid grid-cols-4 gap-4 w-full">
           {
             product.map((product)=>{
-                return(
-                    <SingleProduct />
-                )
+                return <SingleProduct />
             })
           }
         </div>
