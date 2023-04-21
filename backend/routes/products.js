@@ -197,7 +197,7 @@ router.get('/:slug', async (req, res) => {
     }
 })
 
-router.get('/:gender/:category', async (req, res) => {
+router.get('/explore/:gender/:category', async (req, res) => {
     // get the list of products in the explore page
     let gender, isKids = false;
     switch(req.params.gender){
@@ -213,6 +213,29 @@ router.get('/:gender/:category', async (req, res) => {
     }
     try {
         const data = await Products.find({kids: isKids, gender: gender, category: req.params.category})
+        res.json({ status: 'ok', data: data })
+    } catch (error) {
+        console.log(error)
+        res.json({ status: 'error', error: 'Duplicate email' })
+    }
+})
+
+router.get('/explore/:gender/', async (req, res) => {
+    // get the list of products in the explore page
+    let gender, isKids = false;
+    switch(req.params.gender){
+        case 'male':
+            gender = 'M'
+            break;
+        case 'female':
+            gender = 'F'
+            break;
+        case 'kids':
+            isKids = true;
+            break;
+    }
+    try {
+        const data = await Products.find({kids: isKids, gender: gender})
         res.json({ status: 'ok', data: data })
     } catch (error) {
         console.log(error)
