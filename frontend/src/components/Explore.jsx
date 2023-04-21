@@ -1,11 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom"
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom"
 import MensPoster from "../assets/Images/mensPoster.jpg";
 import Carousel from "./SubComponents/Carousel";
 import poster2 from "../assets/Images/poster2.webp";
 import ContactUsForm from "./SubComponents/ContactUsForm";
+import { exploreCategory, exploreGender } from "../scripts/products";
 
 function Explore() {
+  const { gender,category } = useParams();
+
+  useEffect( async ()=>{
+    if( gender && category){
+      const res = await exploreCategory(gender,category);
+      console.log(res.data)
+    }else{
+      const res = await exploreGender(gender)
+      console.log(res.data)
+    }
+  },[])
+
   return (
     <div className="mt-16">
       {/* banner or video  */}

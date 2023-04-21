@@ -125,13 +125,20 @@ router.post('/', upload.array("product-images", 12), async (req, res) => {
         }
     }
     try {
+
+        // filter to make all the categories lowercase before adding
+        let categories = [] 
+        req.body.category.map((category) => {
+            categories.push(category.toLowerCase()) 
+        })
+
         const product = await Products.create({
             productName: req.body.productName,
             description: req.body.description,
             price: req.body.price,
             slug: await generateSlug(req.body.productName),
             images: imageUrlList,
-            category: req.body.category,
+            category: categories,
             technicalFeatures: req.body.technicalFeatures,
             sizes: req.body.sizes,
             gender : req.body.gender,
@@ -201,10 +208,10 @@ router.get('/explore/:gender/:category', async (req, res) => {
     // get the list of products in the explore page
     let gender, isKids = false;
     switch(req.params.gender){
-        case 'male':
+        case 'men':
             gender = 'M'
             break;
-        case 'female':
+        case 'women':
             gender = 'F'
             break;
         case 'kids':
@@ -224,10 +231,10 @@ router.get('/explore/:gender/', async (req, res) => {
     // get the list of products in the explore page
     let gender, isKids = false;
     switch(req.params.gender){
-        case 'male':
+        case 'men':
             gender = 'M'
             break;
-        case 'female':
+        case 'women':
             gender = 'F'
             break;
         case 'kids':

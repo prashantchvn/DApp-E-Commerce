@@ -23,6 +23,6 @@ if you don't have node version 14 then make sure you install node 14 using docs 
 install mongoDB on the machine depending on the operating system using docs `https://www.mongodb.com/docs/manual/installation/`
 ### note : make sure you are running node 14 on the machine
 ### steps to run backend
-step 1 : run mongoDb on the system 
+step 1 : run mongoDb on the system po
 
 step 2 : run `npm run dev` to start the server on port 5000
