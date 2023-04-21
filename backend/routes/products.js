@@ -1,4 +1,3 @@
-
 const Products = require('../models/product.model')
 const express = require('express');
 const router = express.Router();
@@ -88,6 +87,14 @@ function generateSlugFromTitle(title){
     return title.toString().toLowerCase().replace(/\s+/g, "-").replace(/[^\w\-]+/g, "").replace(/\-\-+/g, "-").replace(/^-+/, "").replace(/-+$/, "") 
 }
 
+function getRelatedProducts(){
+    // get related products of the current product
+    // 1. map through the category of the given product
+    // 2. check for the product who have same category and of same type male of female or its kids wear or not
+    // 3. if we found proudcts in this category add those products to the list of the given products
+    // 4. return array of related products
+}
+
 async function generateSlug(title) {
     
     let slug = generateSlugFromTitle(title)
@@ -123,9 +130,12 @@ router.post('/', upload.array("product-images", 12), async (req, res) => {
             description: req.body.description,
             price: req.body.price,
             slug: await generateSlug(req.body.productName),
-            discountPrice: req.body.discountPrice,
             images: imageUrlList,
-            category: req.body.category
+            category: req.body.category,
+            technicalFeatures: req.body.technicalFeatures,
+            sizes: req.body.sizes,
+            gender : req.body.gender,
+            kids: req.body.kids
         })
         res.json({ status: 'ok' })
     } catch (error) {
@@ -160,8 +170,10 @@ router.patch('/update/:slug',upload.array("product-images", 12) , async (req, re
             }
         }
         updatedBody.images = imageUrlList;
-        // update the slug according to the new product name        
-        updatedBody.slug = await generateSlug(req.body.productName)
+        // update the slug according to the new product name 
+        if(req.body.productName){
+            updatedBody.slug = await generateSlug(req.body.productName)
+        }       
         const data = await Products.findOneAndUpdate({ slug: req.params.slug }, updatedBody)
         res.json({ status: 'ok', message: 'product updated successfully' })
     } catch (error) {
@@ -174,11 +186,57 @@ router.get('/:slug', async (req, res) => {
     // get the single product and relative products
     try {
         const data = await Products.findOne({slug: req.params.slug})
-        let relatedProducts = await Products.find({category: data.category})
+        const relatedProducts = await Products.find({ gender: data.gender, category: data.category, kids: data.kids})
         const filteredRelatedProducts = relatedProducts.filter((product)=>{
             return product.slug != data.slug
         })
         res.json({ status: 'ok', data: data, relatedProducts: filteredRelatedProducts })
+    } catch (error) {
+        console.log(error)
+        res.json({ status: 'error', error: 'Duplicate email' })
+    }
+})
+
+router.get('/explore/:gender/:category', async (req, res) => {
+    // get the list of products in the explore page
+    let gender, isKids = false;
+    switch(req.params.gender){
+        case 'male':
+            gender = 'M'
+            break;
+        case 'female':
+            gender = 'F'
+            break;
+        case 'kids':
+            isKids = true;
+            break;
+    }
+    try {
+        const data = await Products.find({kids: isKids, gender: gender, category: req.params.category})
+        res.json({ status: 'ok', data: data })
+    } catch (error) {
+        console.log(error)
+        res.json({ status: 'error', error: 'Duplicate email' })
+    }
+})
+
+router.get('/explore/:gender/', async (req, res) => {
+    // get the list of products in the explore page
+    let gender, isKids = false;
+    switch(req.params.gender){
+        case 'male':
+            gender = 'M'
+            break;
+        case 'female':
+            gender = 'F'
+            break;
+        case 'kids':
+            isKids = true;
+            break;
+    }
+    try {
+        const data = await Products.find({kids: isKids, gender: gender})
+        res.json({ status: 'ok', data: data })
     } catch (error) {
         console.log(error)
         res.json({ status: 'error', error: 'Duplicate email' })

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import video from "../assets/videos/high.mp4";
-import Jacket from "../assets/Images/jacket.webp";
 import poster1 from "../assets/Images/poster1.webp";
 import poster2 from "../assets/Images/poster2.webp";
 import kidsPoster from "../assets/Images/kidsPoster.webp";
 import ContactUsForm from "./SubComponents/ContactUsForm";
+import ProductRow from "./SubComponents/ProductRow";
 
 const Home = () => {
   const [season, setSeason] = useState({
@@ -28,35 +28,21 @@ const Home = () => {
           <source src={video} type="video/mp4" />
         </video>
         <div className="absolute top-2/4 w-4/12 ml-12">
-          <h1 className="text-white text-bold text-5xl">{season.title} is here.</h1>
-          <p className="text-white text-thin text-sm tracking-widest season-description w-5/6 mt-2">{season.description}</p>
+          <h1 className="text-white text-bold text-5xl">
+            {season.title} is here.
+          </h1>
+          <p className="text-white text-thin text-sm tracking-widest season-description w-5/6 mt-2">
+            {season.description}
+          </p>
           <button className="rounded-full border px-4 align-middle h-10 uppercase mt-2 border-2 border-white">
-            <p className="text-white text-xs tracking-widest">Exlore new {season.title} style</p>
+            <p className="text-white text-xs tracking-widest">
+              Exlore new {season.title} style
+            </p>
           </button>
         </div>
       </div>
       {/* deals of the day */}
-      <div className="w-full my-32 px-8">
-        <h1 className="text-4xl pt-4 top-border">DEAL'S OF THE DAY</h1>
-        <div className="grid grid-cols-4 gap-4 w-full">
-          <div className="mt-3">
-            <img className="" src={Jacket} />
-            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
-          </div>
-          <div className="mt-3">
-            <img className="" src={Jacket} />
-            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
-          </div>
-          <div className="mt-3">
-            <img className="" src={Jacket} />
-            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
-          </div>
-          <div className="mt-3">
-            <img className="" src={Jacket} />
-            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
-          </div>
-        </div>
-      </div>
+      <ProductRow heading={`deal's of the day`} />
       {/* poster for mens and women */}
       <div>
         <div className="mt-20 relative">
@@ -80,39 +66,7 @@ const Home = () => {
         </div>
       </div>
       {/* Exclusive brands Offer*/}
-      <div className="w-full my-32 px-8">
-        <h1 className="text-4xl pt-4 top-border">EXCLUSIVE BRAND OFFER'S</h1>
-        <div className="grid grid-cols-4 gap-4 w-full">
-          <div className="mt-3">
-            <img className="" src={Jacket} />
-            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
-            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
-              <p className="text-black text-xs tracking-widest">Explore</p>
-            </button>
-          </div>
-          <div className="mt-3">
-            <img className="" src={Jacket} />
-            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
-            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
-              <p className="text-black text-xs tracking-widest">Explore</p>
-            </button>
-          </div>
-          <div className="mt-3">
-            <img className="" src={Jacket} />
-            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
-            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
-              <p className="text-black text-xs tracking-widest">Explore</p>
-            </button>
-          </div>
-          <div className="mt-3">
-            <img className="" src={Jacket} />
-            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
-            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
-              <p className="text-black text-xs tracking-widest">Explore</p>
-            </button>
-          </div>
-        </div>
-      </div>
+      <ProductRow heading={`exclusive brand's offer`} />
       {/* second poster */}
       <div className="relative px-8 my-24">
         <img src={poster2} className="" />
@@ -150,40 +104,7 @@ const Home = () => {
         </div>
       </div>
       {/* Kids wear exclusive */}
-      {/* Exclusive brands Offer*/}
-      <div className="w-full my-32 px-8">
-        <h1 className="text-4xl pt-4 top-border">EXCLUSIVE KID'S COLLECTION</h1>
-        <div className="grid grid-cols-4 gap-4 w-full">
-          <div className="mt-3">
-            <img className="" src={Jacket} />
-            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
-            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
-              <p className="text-black text-xs tracking-widest">Explore</p>
-            </button>
-          </div>
-          <div className="mt-3">
-            <img className="" src={Jacket} />
-            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
-            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
-              <p className="text-black text-xs tracking-widest">Explore</p>
-            </button>
-          </div>
-          <div className="mt-3">
-            <img className="" src={Jacket} />
-            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
-            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
-              <p className="text-black text-xs tracking-widest">Explore</p>
-            </button>
-          </div>
-          <div className="mt-3">
-            <img className="" src={Jacket} />
-            <h1 className="mt-4 text-2xl">Hooded Tech-Fleece Full-Zip</h1>
-            <button className="rounded-full px-4 align-middle h-10 uppercase mt-2 border outline-black border-black">
-              <p className="text-black text-xs tracking-widest">Explore</p>
-            </button>
-          </div>
-        </div>
-      </div>
+      <ProductRow heading={`kid's wear exclusive`} />
     </div>
   );
 };

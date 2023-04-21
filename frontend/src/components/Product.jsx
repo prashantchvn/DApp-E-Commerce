@@ -2,7 +2,7 @@ import React from "react";
 import poster1 from "../assets/Images/poster1.webp";
 import ContactUsForm from "./SubComponents/ContactUsForm";
 import Carousel from "./SubComponents/Carousel";
-
+import ProductRow from "./SubComponents/ProductRow"
 function Product() {
   return (
     <div className="my-20">
@@ -76,6 +76,7 @@ function Product() {
           </div>
         </div>
       </div>
+      <ProductRow heading={`related products`}/>
       <ContactUsForm />
     </div>
   );
