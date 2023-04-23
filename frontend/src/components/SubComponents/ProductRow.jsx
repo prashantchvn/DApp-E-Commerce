@@ -1,22 +1,32 @@
-import React, { useState } from 'react'
-import SingleProduct from './SingleProduct'
+import React, { useEffect, useState } from "react";
+import SingleProduct from "./SingleProduct";
 
-function ProductRow({ heading }) {
+function ProductRow({ heading, products }) {
+  const [trimmedProducts,setTrimmedProducts] = useState([]);
 
-  const [product,setProduct] = useState([0,1,2,3])
+  useEffect(()=>{
+    setTrimmedProducts(products.slice(0,4))
+  },[])
 
-  return (
-    <div className="w-full my-32 px-8">
-        <h1 className="text-4xl pt-4 top-border uppercase">{ heading }</h1>
+  if (trimmedProducts.length > 0) {
+    return (
+      <div className="w-full my-32 px-8">
+        <h1 className="text-4xl pt-4 top-border uppercase">{heading}</h1>
         <div className="grid grid-cols-4 gap-4 w-full">
-          {
-            product.map((product)=>{
-                return <SingleProduct />
-            })
-          }
+          {trimmedProducts.map((product) => {
+            return (
+              <SingleProduct
+                key={product._id}
+                product={product}
+                carouselEnabled={true}
+                buttonEnabled={false}
+              />
+            );
+          })}
         </div>
       </div>
-  )
+    );
+  }
 }
 
-export default ProductRow
+export default ProductRow;

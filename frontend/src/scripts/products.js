@@ -8,6 +8,14 @@ export function getProduct(slug){
     return Get(`/api/products/${slug}`)
 }
 
+export function exploreGender(gender){
+    return Get(`/api/products/explore/${gender}`);
+}
+
+export function exploreCategory(gender,category){
+    return Get(`/api/products/explore/${gender}/${category}`);
+}
+
 export function createProduct(data){
     return Post('/api/products',data);
 }
