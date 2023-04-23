@@ -12,17 +12,23 @@ function Explore() {
   const [products, setProducts] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(async () => {
-    if (gender && category) {
-      const res = await exploreCategory(gender, category);
-      setProducts(res.data.data);
-      setIsLoaded(true)
-    } else {
-      const res = await exploreGender(gender);
-      setProducts(res.data.data);
-      setIsLoaded(true)
+  
 
+  useEffect(() => {
+    const apiCall = async () => {
+      if (gender && category) {
+        const res = await exploreCategory(gender, category);
+        setProducts(res.data.data);
+        setIsLoaded(true)
+      } else {
+        const res = await exploreGender(gender);
+        setProducts(res.data.data);
+        setIsLoaded(true)
+      }
     }
+
+    apiCall();
+
   }, []);
 
   if (isLoaded) {
