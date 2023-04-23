@@ -17,7 +17,7 @@ function App() {
         <Switch>
           <Route exact  path="/" component={Home} />
           <Route exact  path="/home" component={Home} />
-          <Route exact  path="/product/:id" component={Product} />
+          <Route exact  path="/product/:slug" component={Product} />
           <Route exact  path="/explore/:gender/:category" component={Explore} />
           <Route exact  path="/explore/:gender/" component={Explore} />
           <Route exact  path="*" component={NotFound404} />

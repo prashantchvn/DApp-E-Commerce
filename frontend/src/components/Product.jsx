@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import poster1 from "../assets/Images/poster1.webp";
 import ContactUsForm from "./SubComponents/ContactUsForm";
 import Carousel from "./SubComponents/Carousel";
 import ProductRow from "./SubComponents/ProductRow"
+import { useParams } from "react-router-dom";
+import { getProduct } from "../scripts/products";
+
 function Product() {
+
+  const { slug } = useParams()
+  const [product, setProduct] = useState({}) 
+  const [relatedProducts, setRelatedProducts] = useState([])
+  useEffect( async () => {
+    const res = await getProduct(slug);
+    setProduct(res.data.data)
+    setRelatedProducts(res.data.relatedProducts)
+  },[])
+
   return (
     <div className="my-20">
       <div className="grid grid-cols-2">
@@ -12,16 +25,14 @@ function Product() {
         </div>
         <div>
           <h1 className=" text-4xl top-border mr-8 pt-4 tracking-wider">
-            Walsh Full-Zip
+            {product.productName}
           </h1>
           <div className="w-3/4 mt-4">
             <p className="text-sm tracking-widest mr-23">
-              Crafted from 100% recycled polyester Polartec® Thermal Pro®
-              fabric, the Walsh Full-Zip is our modern take on the classic
-              outdoor fleece for the eco-conscious adventurer.
+              { product.description }
             </p>
           </div>
-          <p className="mt-2 text-sm tracking-wider">$325.00</p>
+          <p className="mt-2 text-sm tracking-wider">$ {product.price}</p>
           {/* <div>
             <p className="uppercase">AVAILABLE COLOR OPTIONS</p>
             <div className="flex mt-2">

@@ -53,7 +53,7 @@ function NavScrollExample() {
 
   return (
     <div className="">
-      <navbar className="flex justify-between align-middle -mb-6 mx-12 my-8 sticky top-0 cursor-pointer">
+      <div className="flex justify-between align-middle -mb-6 mx-12 my-8 sticky top-0 cursor-pointer">
         <div className="">
           {/* left side of the menu */}
           <button
@@ -93,7 +93,7 @@ function NavScrollExample() {
             EXPLORE
           </button>
         </div>
-        <div classname="">
+        <div className="">
           <Link to="/">
             <h1 className="font-black text-3xl no-underline Logo">AGES</h1>
           </Link>
@@ -105,7 +105,7 @@ function NavScrollExample() {
             <p className="MaisonNeueMonoRegular">{cartCount}</p>
           </button>
         </div>
-      </navbar>
+      </div>
       <Dialog open={dialog == "men"}>
         <MensMenu />
       </Dialog>
