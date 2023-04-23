@@ -98,7 +98,7 @@ function Product() {
             </div>
           </div>
         </div>
-        <ProductRow heading={`related products`} />
+        <ProductRow heading={`related products`} products={relatedProducts} />
         <ContactUsForm />
       </div>
     );
