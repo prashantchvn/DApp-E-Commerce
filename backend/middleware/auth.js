@@ -26,8 +26,8 @@ const isAdmin = async (req, res, next) => {
         if (!verified)
             return res.status(401).json({ msg: "Token verification failed, authorization denied" });
         req.user = verified.id;
-        await User.findById(req.user).then((res) => {
-            if (res.isAdmin) {
+        await User.findById(req.user).then((user) => {
+            if (user.isAdmin) {
                 next();
             } else {
                 return res.status(401).json({ msg: "Unauthorized to access the data, Unprevilleged user" })
