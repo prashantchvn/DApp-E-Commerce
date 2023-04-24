@@ -14,6 +14,7 @@ router.post('/register', async (req, res) => {
             email: req.body.email,
             phoneNo: req.body.phoneNo,
             password: hashedPassword,
+            isAdmin: req.body.isAdmin ? true : false,
         })
         res.json({ status: 'ok' })
     } catch (error) {

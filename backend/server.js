@@ -10,6 +10,8 @@ const passwordReset = require("./routes/forgot-password");
 const userAuthentication = require("./routes/userAuthentication");
 const Contact = require("./routes/contact")
 const auth = require("./middleware/auth");
+const admin = require("./routes/admin")
+const isAdmin = require('./middleware/auth')
 
 // middlewares
 app.use(cors())
@@ -30,3 +32,6 @@ app.use("/api/products", products);
 app.use("/api/cart",auth, cart);
 app.use("/api/orders",auth, orders);
 app.use("/api",Contact)
+
+// admin routes
+app.use("/admin",[auth, isAdmin],admin)
