@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { loginCall, registerCall, forgotPassword } from "../../scripts/Auth";
 import { validateUser } from "../../scripts/Auth";
 
-
 function LoginModal() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,7 +10,7 @@ function LoginModal() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [mode, setMode] = useState("register");
-  const [user, setUser] = useState("Prashant");
+  const [user, setUser] = useState({});
 
   const history = useHistory();
 
@@ -31,6 +30,7 @@ function LoginModal() {
 
   const getUser = async () => {
     const res = await validateUser();
+    // console.log(res.data)
     setUser(res.data);
   };
 
@@ -41,11 +41,16 @@ function LoginModal() {
       password: password,
     };
     const res = await loginCall(data);
-    if (res.data) {
+    if(res.data.isAdmin){
+      localStorage.setItem('isAdmin',true)
+    }
+    if (res.data.user) {
       localStorage.setItem("AuthToken", res.data.user);
-      getUser();
       clearFields();
       setMode("");
+    } else {
+      setMode("login");
+      alert(res.data.message);
     }
   };
 
@@ -91,6 +96,7 @@ function LoginModal() {
           onClick={() => {
             localStorage.removeItem("AuthToken");
             setMode("login");
+            localStorage.removeItem('isAdmin')
           }}
           className="mt-3 mb-3 text-right w-full pl-2 forgot-password"
         >
@@ -212,7 +218,7 @@ function LoginModal() {
               }}
               className="mt-2 mb-3 text-sm text-right w-full pr-2 forgot-password"
             >
-              REGISTER 
+              REGISTER
             </button>
           </div>
           <input

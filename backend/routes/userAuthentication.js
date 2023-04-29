@@ -28,6 +28,9 @@ router.post('/login', async (req, res) => {
         const user = await User.findOne({
             email: req.body.email
         })
+        
+        const isAdmin = user.isAdmin ? true : false ;
+
         if (!user) {
             return res.status(404).json({ status: 'error', error: 'User does not exists with this email Id' })
         }
@@ -38,10 +41,15 @@ router.post('/login', async (req, res) => {
                 {
                     id: user._id
                 }
-                , "alksdjlskjfskldfjsdlkjfs")
-            return res.json({ status: 'ok', user: token })
-        } else {
-            return res.json({ status: 'error', user: false })
+                , "alksdjlskjfskldfjsdlkjfs" )
+            if (isAdmin) {
+                return res.json({ status: 'ok', user: token, isAdmin: isAdmin })
+            } else {
+                return res.json({ status: 'ok', user: token })
+            }
+        }
+        else {
+            return res.json({ status: 'error', message: "Password does not match" })
         }
     } catch (error) {
         console.log(error)
@@ -56,6 +64,11 @@ router.get("/", auth, async (req, res) => {
         name: user.name,
         email: user.email
     });
+});
+
+router.get("/user", async (req, res) => {
+    const user = await User.find();
+    res.json({ data: user });
 });
 
 module.exports = router;
