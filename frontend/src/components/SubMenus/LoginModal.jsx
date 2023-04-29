@@ -29,9 +29,9 @@ function LoginModal() {
   };
 
   const getUser = async () => {
-    const res = await validateUser();
-    // console.log(res.data)
-    setUser(res.data);
+    await validateUser().then((data) => {
+      setUser(data.data);
+    })
   };
 
   const handleLogin = async (e) => {
@@ -47,6 +47,7 @@ function LoginModal() {
     if (res.data.user) {
       localStorage.setItem("AuthToken", res.data.user);
       clearFields();
+      getUser();
       setMode("");
     } else {
       setMode("login");
