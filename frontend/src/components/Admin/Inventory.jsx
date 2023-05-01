@@ -16,7 +16,13 @@ function Inventory() {
   }, []);
 
   if (isAdmin) {
-    return <div>Inventory</div>;
+    return (
+      <div className="my-16 w-full">
+        <button className="fixed right-20 text-white px-3 tracking-wider py-2 bg-black MaisonNeueMonoRegular">
+          Create
+        </button>x
+      </div>
+    );
   } else {
     return (
       <div className="text-center w-full my-60 py-8 ">

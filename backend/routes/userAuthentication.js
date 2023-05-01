@@ -67,9 +67,4 @@ router.get("/", auth, async (req, res) => {
     });
 });
 
-router.get("/user", async (req, res) => {
-    const user = await User.find();
-    res.json({ data: user });
-});
-
 module.exports = router;

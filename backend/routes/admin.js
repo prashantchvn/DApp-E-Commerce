@@ -5,6 +5,7 @@ const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
 const Products = require('../models/product.model')
 const Orders = require('../models/orders.model')
+const User = require('../models/user.model')
 
 // Creating uploads folder if not already present
 // In "uploads" folder we will temporarily upload
@@ -191,10 +192,58 @@ router.get('/orders', async (req, res) => {
     // get the list of orders placed by all users Items
     try {
         const data = await Orders.find({}).populate("orders.cartItems.product").populate("orderPlacedBy")
-        res.json({ status: 'ok', data: data })
+        let filteredOrders = data.map((order) => {
+            return{
+                id: order._id,
+                orderPlacedBy: {
+                    email: order.orderPlacedBy.email,
+                    name: order.orderPlacedBy.name,
+                    phoneNo: order.orderPlacedBy.phoneNo
+                },
+                orders: order.orders,
+            }
+        })
+        res.json({ status: 'ok', data: filteredOrders })
     } catch (error) {
         res.json({ status: 'error', error: error })
     }
 })
 
+// routes for the admin to get users
+
+router.get('/users', async (req, res) => {
+    try {
+        const user = await User.find();
+        let filteredUser = user.map((user) => {
+            return{
+                id: user._id,
+                email: user.email,
+                name: user.name,
+                phoneNo: user.phoneNo,
+                isAdmin: user.isAdmin
+            }
+        })
+        res.json({ status: 'ok', data: filteredUser })
+    } catch (error) {
+        res.json({ status: 'error', error: error })
+    }
+})
+
+router.get('/dashboard', async (req, res) => {
+    try {
+        const users = await User.find();
+        const orders = await Orders.find();
+        const products = await Products.find();
+
+        res.json({ status: 'ok', data: {
+            users : users.length,
+            orders: orders.length,
+            products: products.length
+        }})
+
+    } catch (error) {
+        console.log(error)
+        res.json({ status: 'error', error: error.message })
+    }
+})
 module.exports = router;
