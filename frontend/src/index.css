@@ -8,6 +8,11 @@
 }
 
 @font-face {
+    font-family: "MaisonNeueMonoBold";
+    src: url('./assets/Fonts/MaisonNeueMono-Bold.otf');
+}
+
+@font-face {
     font-family: "MaisonNeueExtended";
     src: url('./assets/Fonts/MaisonNeueExtended-Medium.otf');
 }
@@ -72,6 +77,10 @@ h1 {
 
 .MaisonNeueMonoRegular {
     font-family: "MaisonNeueMonoRegular";
+}
+
+.MaisonNeueMonoBold{
+    font-family: "MaisonNeueMonoBold";
 }
 
 .season-description {

@@ -18,10 +18,35 @@ function Dashboard() {
   if (isAdmin) {
     return (
       <div className="my-16 w-full">
-        <button className="fixed right-20 text-white px-3 tracking-wider py-2 bg-black MaisonNeueMonoRegular">
+        {/* <button className="text-white px-3 tracking-wider py-2 bg-black MaisonNeueMonoRegular">
           Create
-        </button>
-        x
+        </button> */}
+        <div className="mx-12 grid grid-cols-3 gap-3 px-12 py-8 text-center MaisonNeueMonoBold">
+          <div className="">
+            <h2 className="text-2xl my-2"> Total Users</h2>
+            <h4 className="text-xl tracking-wider MaisonNeueMonoRegular font-bold">
+              14
+            </h4>
+          </div>
+          <div className="">
+            <h2 className="text-2xl my-2"> Total Products</h2>
+            <h4 className="text-xl tracking-wider MaisonNeueMonoRegular font-bold">
+              14
+            </h4>
+          </div>
+          <div className="">
+            <h2 className="text-2xl my-2"> Total Orders</h2>
+            <h4 className="text-xl tracking-wider MaisonNeueMonoRegular font-bold">
+              14
+            </h4>
+          </div>
+        </div>
+        <div>
+          {/* three tab menus to show the table with all the data with pagination and action button */}
+          <div>{/* first tab of the product */}</div>
+          <div>{/* second tab is of the users */}</div>
+          <div>{/* third tab of the orders */}</div>
+        </div>
       </div>
     );
   } else {
