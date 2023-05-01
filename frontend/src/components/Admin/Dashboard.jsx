@@ -17,7 +17,12 @@ function Dashboard() {
 
   if (isAdmin) {
     return (
-      <div>Dashboard</div>
+      <div className="my-16 w-full">
+        <button className="fixed right-20 text-white px-3 tracking-wider py-2 bg-black MaisonNeueMonoRegular">
+          Create
+        </button>
+        x
+      </div>
     );
   } else {
     return (

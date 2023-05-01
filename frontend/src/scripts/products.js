@@ -15,15 +15,3 @@ export function exploreGender(gender){
 export function exploreCategory(gender,category){
     return Get(`/api/products/explore/${gender}/${category}`);
 }
-
-export function createProduct(data){
-    return Post('/api/products',data);
-}
-
-export function updateProduct(slug, data){
-    return Patch(`/api/products/update/${slug}`,data);
-}
-
-export function deleteProduct(slug){
-    return Delete(`/api/products/delete/${slug}`);
-}
