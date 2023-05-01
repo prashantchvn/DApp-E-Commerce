@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { validateUser } from "../../scripts/Auth";
 import { Link } from "react-router-dom";
+import TabMenu from "./TabMenu";
 
 function Dashboard() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -41,11 +42,9 @@ function Dashboard() {
             </h4>
           </div>
         </div>
-        <div>
+        <div className="mx-12">
           {/* three tab menus to show the table with all the data with pagination and action button */}
-          <div>{/* first tab of the product */}</div>
-          <div>{/* second tab is of the users */}</div>
-          <div>{/* third tab of the orders */}</div>
+          <TabMenu />
         </div>
       </div>
     );

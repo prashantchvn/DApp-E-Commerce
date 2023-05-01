@@ -125,3 +125,7 @@ label{
     letter-spacing: 45px;
     text-align: center;
 }
+
+.react-tabs__tab--selected{
+    border-radius: 0px !important;
+}
