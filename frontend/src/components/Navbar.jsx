@@ -10,7 +10,6 @@ import ExploreMenu from "./SubMenus/ExploreMenu";
 import SearchDialog from "./SubMenus/SearchDialog";
 import LoginModal from "./SubMenus/LoginModal";
 import AddToCart from "./SubMenus/AddToCart";
-import AdminDialog from "./SubMenus/AdminDialog";
 
 function NavScrollExample() {
   const [cartCount, setCartCount] = useState(0);
@@ -94,15 +93,12 @@ function NavScrollExample() {
             EXPLORE
           </button>
           {isAdmin ? (
-            <button
-              onClick={() => {
-                setDialog("admin");
-              }}
+            <Link
+              to="/admin"
               className="px-6 py-3 tracking-wider hover:bg-black hover:text-white hover:rounded-sm"
-              to="#"
             >
               ADMIN
-            </button>
+            </Link>
           ) : (
             <></>
           )}
@@ -152,9 +148,6 @@ function NavScrollExample() {
       </Dialog>
       <Dialog open={dialog == "search"}>
         <SearchDialog />
-      </Dialog>
-      <Dialog open={dialog == "admin"}>
-        <AdminDialog />
       </Dialog>
       <Dialog open={dialog == "profile"}>
         <LoginModal />
