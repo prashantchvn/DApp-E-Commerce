@@ -1,6 +1,9 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import Orders from "./Tables/Orders";
+import Products from "./Tables/Products";
+import Users from "./Tables/Users";
 
 function TabMenu() {
   return (
@@ -20,26 +23,19 @@ function TabMenu() {
 
         <TabPanel>
           <div className="my-20 mx-8">
-            <h2 className="MaisonNeueMonoRegular tracking-widest font-bold text-2xl">
-              PRODUCTS
-            </h2>
-            <div>{/* react table for the products */}</div>
+            <Products />
           </div>
         </TabPanel>
         <TabPanel>
           <div className="my-20 mx-8">
-            <h2 className="MaisonNeueMonoRegular tracking-widest font-bold text-2xl">
-              USERS
-            </h2>
-            <div>{/* react table for the products */}</div>
+            <Users/>
           </div>
         </TabPanel>
         <TabPanel>
           <div className="my-20 mx-8">
-            <h2 className="MaisonNeueMonoRegular tracking-widest font-bold text-2xl">
-              ORDERS
-            </h2>
-            <div>{/* react table for the products */}</div>
+            <div>
+              <Orders />
+            </div>
           </div>
         </TabPanel>
       </Tabs>

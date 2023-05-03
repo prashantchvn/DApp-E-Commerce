@@ -76,7 +76,7 @@ h1 {
 }
 
 .MaisonNeueMonoRegular {
-    font-family: "MaisonNeueMonoRegular";
+    font-family: "MaisonNeueMonoRegular" !important;
 }
 
 .MaisonNeueMonoBold{

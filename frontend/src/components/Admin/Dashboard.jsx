@@ -9,6 +9,7 @@ function Dashboard() {
   useEffect(() => {
     const checkUserAuthenticity = async () => {
       await validateUser().then((data) => {
+        console.log(data.data.isAdmin);
         setIsAdmin(data.data.isAdmin);
       });
     };

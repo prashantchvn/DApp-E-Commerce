@@ -1,4 +1,4 @@
-import { Post, Get } from "./apiClient";
+import { Get, Post, Patch, Delete } from "./apiClient";
 
 export function getDashboardCount(){
     return Get('/admin/dashboard')
