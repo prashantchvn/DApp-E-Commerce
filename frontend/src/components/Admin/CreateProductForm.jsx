@@ -26,6 +26,12 @@ function CreateProductForm() {
   const [productName, setProductName] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productPrice, setProductPrice] = useState(0);
+  const [xs, setXs] = useState(false);
+  const [s, setS] = useState(false);
+  const [m, setM] = useState(false);
+  const [l, setL] = useState(false);
+  const [xl, setXl] = useState(false);
+  const [xxl, setXxl] = useState(false);
   const theme = useTheme();
 
   const categories = ["fashion", "jacket", "denim", "summer wears"];
@@ -198,7 +204,85 @@ function CreateProductForm() {
             </Select>
           </div>
           {/* sizes multiple select option  */}
-
+          <div className="flex my-4">
+            <label className="MaisonNeueMonoRegular w-1/4 font-bold tracking-widest mr-12">
+              Select Sizes :
+            </label>
+            <div className="flex my-3">
+              <button
+                onClick={(e) => {
+                  setXs(!xs);
+                }}
+                className={
+                  xs
+                    ? "mx-2 rounded-full px-3 cursor-pointer bg-black text-white h-8 py-2 text-xs align-middle black-border"
+                    : "mx-2 rounded-full px-3 cursor-pointer h-8 py-2 text-xs align-middle black-border"
+                }
+              >
+                XS
+              </button>
+              <button
+                onClick={(e) => {
+                  setS(!s);
+                }}
+                className={
+                  s
+                    ? "mx-2 rounded-full px-3 cursor-pointer bg-black text-white h-8 py-2 text-xs align-middle black-border"
+                    : "mx-2 rounded-full px-3 cursor-pointer h-8 py-2 text-xs align-middle black-border"
+                }
+              >
+                S
+              </button>
+              <button
+                onClick={(e) => {
+                  setM(!m);
+                }}
+                className={
+                  m
+                    ? "mx-2 rounded-full px-3 cursor-pointer bg-black text-white h-8 py-2 text-xs align-middle black-border"
+                    : "mx-2 rounded-full px-3 cursor-pointer h-8 py-2 text-xs align-middle black-border"
+                }
+              >
+                M
+              </button>
+              <button
+                onClick={(e) => {
+                  setL(!l);
+                }}
+                className={
+                  l
+                    ? "mx-2 rounded-full px-3 cursor-pointer bg-black text-white h-8 py-2 text-xs align-middle black-border"
+                    : "mx-2 rounded-full px-3 cursor-pointer h-8 py-2 text-xs align-middle black-border"
+                }
+              >
+                L
+              </button>
+              <button
+                onClick={(e) => {
+                  setXl(!xl);
+                }}
+                className={
+                  xl
+                    ? "mx-2 rounded-full px-3 cursor-pointer bg-black text-white h-8 py-2 text-xs align-middle black-border"
+                    : "mx-2 rounded-full px-3 cursor-pointer h-8 py-2 text-xs align-middle black-border"
+                }
+              >
+                XL
+              </button>
+              <button
+                onClick={(e) => {
+                  setXxl(!xxl);
+                }}
+                className={
+                  xxl
+                    ? "mx-2 rounded-full px-3 cursor-pointer bg-black text-white h-8 py-2 text-xs align-middle black-border"
+                    : "mx-2 rounded-full px-3 cursor-pointer h-8 py-2 text-xs align-middle black-border"
+                }
+              >
+                XXL
+              </button>
+            </div>
+          </div>
           {/* gender selection drop down menu */}
           <div className="flex my-4">
             <label className="MaisonNeueMonoRegular w-1/4 font-bold tracking-widest mr-12">
@@ -208,7 +292,9 @@ function CreateProductForm() {
               labelId="demo-simple-select-label"
               className="w-3/4 mx-10 border-2 border-black"
               value={gender}
-              onChange={(e) => {setGender(e.target.value)}}
+              onChange={(e) => {
+                setGender(e.target.value);
+              }}
             >
               <MenuItem value={"M"}>Male</MenuItem>
               <MenuItem value={"F"}>Female</MenuItem>
@@ -225,7 +311,13 @@ function CreateProductForm() {
               For Kids
             </label>
           </div>
-          <input type="submit"></input>
+          <div className="w-full ">
+            <input
+              type="submit"
+              className="w-3/4 mx-auto bg-black rounded-full h-12 text-white tracking-wideest text-md font-thin form-button mt-2"
+              value={"Create"}
+            ></input>
+          </div>
         </form>
       </div>
     );
