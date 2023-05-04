@@ -8,6 +8,7 @@ import Product from "./components/Product";
 import Explore from "./components/Explore";
 import NotFound404 from "./components/NotFound404";
 import Dashboard from "./components/Admin/Dashboard";
+import CreateProductForm from "./components/Admin/CreateProductForm";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
 
         {/* Admin routes */}
         <Route exact path="/admin" component={Dashboard} />
+        <Route exact path="/create/product" component={CreateProductForm} />
 
         {/* 404 page */}
         <Route exact path="*" component={NotFound404} />

@@ -9,6 +9,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -65,7 +67,12 @@ function Products() {
     );
   } else {
     return (
-      <div>
+      <div className="">
+        <Link
+         to="/create/product"
+         className="px-4 py-3 bg-black text-white rounded-sm MaisonNeueMonoRegular my-6 float-right">
+          CREATE PRODUCT
+        </Link>
         <TableContainer component={Paper} className="MaisonNeueMonoRegular">
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
@@ -80,29 +87,33 @@ function Products() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {products.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data) => (
-                <StyledTableRow key={data._id}>
-                  <StyledTableCell component="th" scope="row">
-                    <p className="MaisonNeueMonoRegular">{data.productName}</p>
-                  </StyledTableCell>
-                  <StyledTableCell>
-                    <p className="MaisonNeueMonoRegular">{data.price}</p>
-                  </StyledTableCell>
-                  <StyledTableCell>
-                    <p className="MaisonNeueMonoRegular">{data.gender}</p>
-                  </StyledTableCell>
-                  <StyledTableCell>
-                    <p className="MaisonNeueMonoRegular">
-                      {data.category.join(" ")}
-                    </p>
-                  </StyledTableCell>
-                </StyledTableRow>
-              ))}
+              {products
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((data) => (
+                  <StyledTableRow key={data._id}>
+                    <StyledTableCell component="th" scope="row">
+                      <p className="MaisonNeueMonoRegular">
+                        {data.productName}
+                      </p>
+                    </StyledTableCell>
+                    <StyledTableCell>
+                      <p className="MaisonNeueMonoRegular">{data.price}</p>
+                    </StyledTableCell>
+                    <StyledTableCell>
+                      <p className="MaisonNeueMonoRegular">{data.gender}</p>
+                    </StyledTableCell>
+                    <StyledTableCell>
+                      <p className="MaisonNeueMonoRegular">
+                        {data.category.join(" ")}
+                      </p>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[10,15,20]}
+          rowsPerPageOptions={[10, 15, 20]}
           component="div"
           count={products.length}
           rowsPerPage={rowsPerPage}
