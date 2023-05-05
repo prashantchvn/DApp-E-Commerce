@@ -110,7 +110,6 @@ router.get('/', async (req, res) => {
 
 router.post('/product/create', upload.array("product-images", 12), async (req, res) => {
     let imageUrlList = [];
-
     if (req.files) {
         for (let i = 0; i < req.files.length; i++) {
             let locaFilePath = req.files[i].path;
@@ -125,7 +124,7 @@ router.post('/product/create', upload.array("product-images", 12), async (req, r
 
         // filter to make all the categories lowercase before adding
         let categories = []
-        req.body.category.map((category) => {
+        JSON.parse(req.body.category).map((category) => {
             categories.push(category.toLowerCase())
         })
 
@@ -136,8 +135,8 @@ router.post('/product/create', upload.array("product-images", 12), async (req, r
             slug: await generateSlug(req.body.productName),
             images: imageUrlList,
             category: categories,
-            technicalFeatures: req.body.technicalFeatures,
-            sizes: req.body.sizes,
+            technicalFeatures: JSON.parse(req.body.technicalFeatures),
+            sizes: JSON.parse(req.body.sizes),
             gender: req.body.gender,
             kids: req.body.kids
         })

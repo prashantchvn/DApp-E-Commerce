@@ -5,6 +5,7 @@ import { useTheme } from "@mui/material/styles";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import { createProduct } from "../../scripts/admin";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -19,7 +20,7 @@ const MenuProps = {
 
 function CreateProductForm() {
   const [isAdmin, setIsAdmin] = useState(false);
-  const [selectedFile, setSelectedFile] = useState();
+  const [selectedFile, setSelectedFile] = useState([]);
   const [category, setCategory] = useState([]);
   const [gender, setGender] = useState();
   const [technicalFeature, setTechnicalFeature] = useState([]);
@@ -32,6 +33,7 @@ function CreateProductForm() {
   const [l, setL] = useState(false);
   const [xl, setXl] = useState(false);
   const [xxl, setXxl] = useState(false);
+  const [isKids, setIsKids] = useState(false);
   const theme = useTheme();
 
   const categories = ["fashion", "jacket", "denim", "summer wears"];
@@ -66,6 +68,7 @@ function CreateProductForm() {
   };
 
   const handleChange = (event) => {
+    event.preventDefault()
     const {
       target: { value },
     } = event;
@@ -76,6 +79,7 @@ function CreateProductForm() {
   };
 
   const handleChangeFeatures = (event) => {
+    event.preventDefault()
     const {
       target: { value },
     } = event;
@@ -85,8 +89,31 @@ function CreateProductForm() {
     );
   };
 
-  const handleCreateProduct = (e) => {
+  const handleCreateProduct = async (e) => {
     e.preventDefault();
+    let formData = new FormData();
+    Object.values(selectedFile).map((file) => {
+      formData.append('product-images',file)
+    })
+    formData.append("product-images", selectedFile);
+    formData.append("productName", productName);
+    formData.append("description", productDescription);
+    formData.append("price", productPrice);
+    formData.append('technicalFeatures',JSON.stringify(technicalFeature));
+    formData.append('category',JSON.stringify(category))
+    let sizes = [];
+    sizes[0] = xs ? 1 : 0;
+    sizes[1] = s ? 1 : 0;
+    sizes[2] = m ? 1 : 0;
+    sizes[3] = l ? 1 : 0;
+    sizes[4] = xl ? 1 : 0;
+    sizes[5] = xxl ? 1 : 0;
+    formData.append("sizes", JSON.stringify(sizes));
+    formData.append("gender", gender);
+    formData.append("kids", isKids);
+    await createProduct(formData).then((data) => {
+      console.log(data)
+    })
   };
 
   if (isAdmin) {
@@ -94,7 +121,6 @@ function CreateProductForm() {
       <div className="my-16 w-full">
         <form
           className="w-3/4 mx-auto px-12 py-12"
-          onSubmit={handleCreateProduct}
         >
           <div className="flex my-4">
             <label className="MaisonNeueMonoRegular w-1/4 font-bold tracking-widest mr-12">
@@ -211,6 +237,7 @@ function CreateProductForm() {
             <div className="flex my-3">
               <button
                 onClick={(e) => {
+                  e.preventDefault()
                   setXs(!xs);
                 }}
                 className={
@@ -223,6 +250,7 @@ function CreateProductForm() {
               </button>
               <button
                 onClick={(e) => {
+                  e.preventDefault()
                   setS(!s);
                 }}
                 className={
@@ -235,6 +263,7 @@ function CreateProductForm() {
               </button>
               <button
                 onClick={(e) => {
+                  e.preventDefault()
                   setM(!m);
                 }}
                 className={
@@ -247,6 +276,7 @@ function CreateProductForm() {
               </button>
               <button
                 onClick={(e) => {
+                  e.preventDefault()
                   setL(!l);
                 }}
                 className={
@@ -259,6 +289,7 @@ function CreateProductForm() {
               </button>
               <button
                 onClick={(e) => {
+                  e.preventDefault()
                   setXl(!xl);
                 }}
                 className={
@@ -271,6 +302,7 @@ function CreateProductForm() {
               </button>
               <button
                 onClick={(e) => {
+                  e.preventDefault()
                   setXxl(!xxl);
                 }}
                 className={
@@ -293,6 +325,7 @@ function CreateProductForm() {
               className="w-3/4 mx-10 border-2 border-black"
               value={gender}
               onChange={(e) => {
+                e.preventDefault()
                 setGender(e.target.value);
               }}
             >
@@ -301,22 +334,24 @@ function CreateProductForm() {
             </Select>
           </div>
           {/* isKid selection menu */}
-          <div className="flex my-4 ml-4">
+          <div className="flex my-4 ml-0">
             <input
               type="checkbox"
+              value={isKids}
               className="font-thin h-10 text-sm border-2 border-black"
-              onChange={(e) => {}}
+              onChange={(e) => {
+                setIsKids(!isKids);
+              }}
             />
-            <label className="MaisonNeueMonoRegular font-bold tracking-widest mx-3 mt-1">
+            <label className="MaisonNeueMonoRegular font-bold tracking-widest mx-3 mt-2">
               For Kids
             </label>
           </div>
-          <div className="w-full ">
-            <input
-              type="submit"
-              className="w-3/4 mx-auto bg-black rounded-full h-12 text-white tracking-wideest text-md font-thin form-button mt-2"
-              value={"Create"}
-            ></input>
+          <div className="w-full mt-16">
+            <button
+              onClick={handleCreateProduct}
+              className="w-3/4 bg-black rounded-full h-12 text-white tracking-wideest text-md font-thin form-button mt-2 mx-36"
+            >CREATE PRODUCT</button>
           </div>
         </form>
       </div>
