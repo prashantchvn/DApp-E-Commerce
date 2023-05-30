@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { validateUser } from "../../scripts/Auth";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
@@ -35,6 +35,7 @@ function CreateProductForm() {
   const [xxl, setXxl] = useState(false);
   const [isKids, setIsKids] = useState(false);
   const theme = useTheme();
+  const history = useHistory();
 
   const categories = ["fashion", "jacket", "denim", "summer wears"];
   const technicalFeatures = [
@@ -112,7 +113,7 @@ function CreateProductForm() {
     formData.append("gender", gender);
     formData.append("kids", isKids);
     await createProduct(formData).then((data) => {
-      console.log(data)
+      history.pushState('/admin')
     })
   };
 

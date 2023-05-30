@@ -3,13 +3,13 @@ import { useHistory } from "react-router-dom";
 import { loginCall, registerCall, forgotPassword } from "../../scripts/Auth";
 import { validateUser } from "../../scripts/Auth";
 
-function LoginModal() {
+function LoginModal(){
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phNo, setPhNo] = useState();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [mode, setMode] = useState("register");
+  const [mode, setMode] = useState("login");
   const [user, setUser] = useState({});
 
   const history = useHistory();
@@ -42,7 +42,9 @@ function LoginModal() {
     };
     const res = await loginCall(data);
     if(res.data.isAdmin){
-      localStorage.setItem('isAdmin',true)
+      localStorage.setItem('isAdmin',true);
+      history.push("/admin");
+      setMode("");
     }
     if (res.data.user) {
       localStorage.setItem("AuthToken", res.data.user);

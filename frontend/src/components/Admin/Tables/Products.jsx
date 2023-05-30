@@ -106,6 +106,7 @@ function Products() {
                       <p className="MaisonNeueMonoRegular">
                         {data.category.join(" ")}
                       </p>
+                      
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}
