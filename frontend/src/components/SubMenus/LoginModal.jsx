@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 import { loginCall, registerCall, forgotPassword } from "../../scripts/Auth";
 import { validateUser } from "../../scripts/Auth";
+import { setAdmin } from "../../actions";
 
 function LoginModal(){
   const [name, setName] = useState("");
@@ -11,8 +13,10 @@ function LoginModal(){
   const [confirmPassword, setConfirmPassword] = useState("");
   const [mode, setMode] = useState("login");
   const [user, setUser] = useState({});
+  const value = useSelector(state => state.isAdmin);
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (localStorage.getItem("AuthToken")) {
@@ -42,7 +46,7 @@ function LoginModal(){
     };
     const res = await loginCall(data);
     if(res.data.isAdmin){
-      localStorage.setItem('isAdmin',true);
+      dispatch(setAdmin(true));
       history.push("/admin");
       setMode("");
     }
@@ -100,6 +104,7 @@ function LoginModal(){
             localStorage.removeItem("AuthToken");
             setMode("login");
             localStorage.removeItem('isAdmin')
+            dispatch(setAdmin(false))
           }}
           className="mt-3 mb-3 text-right w-full pl-2 forgot-password"
         >
