@@ -11,7 +11,7 @@ const userAuthentication = require("./routes/userAuthentication");
 const Contact = require("./routes/contact")
 const auth = require("./middleware/auth");
 const admin = require("./routes/admin")
-const isAdmin = require('./middleware/auth')
+const isAdmin = require('./middleware/admin')
 const bodyParser = require("body-parser");
 
 // middlewares

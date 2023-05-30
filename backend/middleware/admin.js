@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model')
 
-const auth = (req, res, next) => {
+const isAdmin = async (req, res, next) => {
     try {
         const token = req.headers.authorization.split(" ")[1];
         if (!token)
@@ -10,9 +10,15 @@ const auth = (req, res, next) => {
         if (!verified)
             return res.status(401).json({ msg: "Token verification failed, authorization denied" });
         req.user = verified.id;
-        next();
+        await User.findById(req.user).then((user) => {
+            if (user.isAdmin) {
+                next();
+            } else {
+                return res.status(401).json({ msg: "Unauthorized to access the data, Unprevilleged user" })
+            }
+        });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 }
-module.exports = auth;
+module.exports = isAdmin;
