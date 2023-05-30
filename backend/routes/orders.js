@@ -78,15 +78,5 @@ router.get('/', async (req, res) => {
 })
 
 
-router.get('/admin', async (req, res) => {
-    // get the list of orders placed by all users Items
-    // admin route
-    try {
-        const data = await Orders.findOne({}).populate("orders.cartItems.product").populate("orderPlacedBy")
-        res.json({ status: 'ok', data: data })
-    } catch (error) {
-        res.json({ status: 'error', error: error })
-    }
-})
 
 module.exports = router;

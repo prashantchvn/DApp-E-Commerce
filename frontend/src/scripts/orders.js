@@ -1,4 +1,4 @@
-import { Get, Post } from "../apiClient";
+import { Get, Post, Patch, Delete } from "./apiClient";
 
 export function placeOrder(){
     return Post('/api/orders');

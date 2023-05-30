@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 
 function ExploreMenu() {
@@ -25,16 +25,11 @@ function ExploreMenu() {
           </li>
         </ul>
       </div>
-      <div>
-      </div>
-      <div>
-        
-      </div>
-      <div>
-        
-      </div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-  )
+  );
 }
 
-export default ExploreMenu
+export default ExploreMenu;

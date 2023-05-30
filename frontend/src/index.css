@@ -8,6 +8,11 @@
 }
 
 @font-face {
+    font-family: "MaisonNeueMonoBold";
+    src: url('./assets/Fonts/MaisonNeueMono-Bold.otf');
+}
+
+@font-face {
     font-family: "MaisonNeueExtended";
     src: url('./assets/Fonts/MaisonNeueExtended-Medium.otf');
 }
@@ -71,7 +76,11 @@ h1 {
 }
 
 .MaisonNeueMonoRegular {
-    font-family: "MaisonNeueMonoRegular";
+    font-family: "MaisonNeueMonoRegular" !important;
+}
+
+.MaisonNeueMonoBold{
+    font-family: "MaisonNeueMonoBold";
 }
 
 .season-description {
@@ -115,4 +124,8 @@ label{
 .footer-title{
     letter-spacing: 45px;
     text-align: center;
+}
+
+.react-tabs__tab--selected{
+    border-radius: 0px !important;
 }

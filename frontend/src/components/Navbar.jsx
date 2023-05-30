@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Search from "../assets/Icons/search.svg";
 import Profile from "../assets/Icons/profile.svg";
@@ -11,17 +11,17 @@ import SearchDialog from "./SubMenus/SearchDialog";
 import LoginModal from "./SubMenus/LoginModal";
 import AddToCart from "./SubMenus/AddToCart";
 
-
 function NavScrollExample() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [dialog, setDialog] = useState("");
-  const [vertialDialog, setVertialDialog] = useState(false)
+  const [vertialDialog, setVertialDialog] = useState(false);
 
-  const logout = () => {
-    localStorage.removeItem("AuthToken");
-    // show toast on the logout button
-  };
+  useEffect(() => {
+    if (localStorage.getItem("isAdmin")) {
+      setIsAdmin(true);
+    }
+  }, []);
 
   const Dialog = ({ open, children }) => {
     return (
@@ -92,6 +92,16 @@ function NavScrollExample() {
           >
             EXPLORE
           </button>
+          {isAdmin ? (
+            <Link
+              to="/admin"
+              className="px-6 py-3 tracking-wider hover:bg-black hover:text-white hover:rounded-sm"
+            >
+              ADMIN
+            </Link>
+          ) : (
+            <></>
+          )}
         </div>
         <div className="">
           <Link to="/">
@@ -99,9 +109,27 @@ function NavScrollExample() {
           </Link>
         </div>
         <div className="flex">
-          <button onClick={ () => { setDialog('search') } }><img className="mx-8" src={Search} /></button>
-          <button onClick={ () => { setDialog('profile') } }><img className="mx-8" src={Profile} /></button>
-          <button onClick={ () => { setVertialDialog(true); setDialog('') } } className="mx-4 rounded-full border px-3 h-10 mt-2 border-2 border-slate-950">
+          <button
+            onClick={() => {
+              setDialog("search");
+            }}
+          >
+            <img className="mx-8" src={Search} />
+          </button>
+          <button
+            onClick={() => {
+              setDialog("profile");
+            }}
+          >
+            <img className="mx-8" src={Profile} />
+          </button>
+          <button
+            onClick={() => {
+              setVertialDialog(true);
+              setDialog("");
+            }}
+            className="mx-4 rounded-full border px-3 h-10 mt-2 border-2 border-slate-950"
+          >
             <p className="MaisonNeueMonoRegular">{cartCount}</p>
           </button>
         </div>
@@ -125,7 +153,7 @@ function NavScrollExample() {
         <LoginModal />
       </Dialog>
       <VerticalDialog open={vertialDialog}>
-        <AddToCart cartCount={cartCount}/>
+        <AddToCart cartCount={cartCount} />
       </VerticalDialog>
     </div>
   );

@@ -14,6 +14,7 @@ router.post('/register', async (req, res) => {
             email: req.body.email,
             phoneNo: req.body.phoneNo,
             password: hashedPassword,
+            isAdmin: req.body.isAdmin ? true : false,
         })
         res.json({ status: 'ok' })
     } catch (error) {
@@ -27,6 +28,9 @@ router.post('/login', async (req, res) => {
         const user = await User.findOne({
             email: req.body.email
         })
+        
+        const isAdmin = user.isAdmin ? true : false ;
+
         if (!user) {
             return res.status(404).json({ status: 'error', error: 'User does not exists with this email Id' })
         }
@@ -37,10 +41,15 @@ router.post('/login', async (req, res) => {
                 {
                     id: user._id
                 }
-                , "alksdjlskjfskldfjsdlkjfs")
-            return res.json({ status: 'ok', user: token })
-        } else {
-            return res.json({ status: 'error', user: false })
+                , "alksdjlskjfskldfjsdlkjfs" )
+            if (isAdmin) {
+                return res.json({ status: 'ok', user: token, isAdmin: isAdmin })
+            } else {
+                return res.json({ status: 'ok', user: token })
+            }
+        }
+        else {
+            return res.json({ status: 'error', message: "Password does not match" })
         }
     } catch (error) {
         console.log(error)
@@ -53,7 +62,8 @@ router.get("/", auth, async (req, res) => {
     res.json({
         id: user._id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        isAdmin: user.isAdmin
     });
 });
 
