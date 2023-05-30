@@ -100,4 +100,22 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/cartCount', async (req, res) => {
+    // get the list of cart Items
+    try {
+        let cart = await Cart.findOne({ user: req.user })
+        if (!cart) {
+            //create a new cart if not exist
+            cart = await Cart.create({
+                user: req.user,
+                cartItems: req.body.cartItem,
+            })
+        }
+        cart = await Cart.findOne({ user: req.user }).populate("cartItems.product")
+        res.json({ status: 'ok', count: cart.cartItems.length})
+    } catch (error) {
+        res.json({ status: 'error', error: error })
+    }
+})
+
 module.exports = router;

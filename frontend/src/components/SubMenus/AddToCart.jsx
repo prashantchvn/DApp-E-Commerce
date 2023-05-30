@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
-function AddToCart({ cartCount }) {
+function AddToCart() {
+  const [cartItems, setCartItems] = useState([]);
+
+  const cartCount = useSelector((state) => state.cartCount);
+
   return (
     <div>
       <div className="flex">
@@ -11,14 +16,18 @@ function AddToCart({ cartCount }) {
           {cartCount} ITEMS
         </p>
       </div>
-      <div className="w-full mt-2">
-        <button
-          className="bg-black w-full rounded-full h-10 text-white tracking-wider text-sm font-thin"
-        >EXPLORE MEN'S</button>
-        <button
-          className="bg-black w-full rounded-full h-10 mt-2 text-white tracking-wider text-sm font-thin"
-        >EXPLORE WOMEN'S</button>
-      </div>
+      {cartCount >= 1 ? (
+        <></>
+      ) : (
+        <div className="w-full mt-2">
+          <button className="bg-black w-full rounded-full h-10 text-white tracking-wider text-sm font-thin">
+            EXPLORE MEN'S
+          </button>
+          <button className="bg-black w-full rounded-full h-10 mt-2 text-white tracking-wider text-sm font-thin">
+            EXPLORE WOMEN'S
+          </button>
+        </div>
+      )}
     </div>
   );
 }
