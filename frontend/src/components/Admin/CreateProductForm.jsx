@@ -138,7 +138,7 @@ function CreateProductForm() {
           {/* input field for the product name */}
           <div className="flex justify-between  my-4">
             <label className="MaisonNeueMonoRegular  w-1/4 font-bold tracking-widest mr-12">
-              Product Name :
+              Product Name:
             </label>
             <input
               type="text"
@@ -167,7 +167,7 @@ function CreateProductForm() {
           {/* input field for the price of the product */}
           <div className="flex my-4">
             <label className="MaisonNeueMonoRegular w-1/4 font-bold tracking-widest mr-12">
-              Product Price :
+              Product Price:
             </label>
             <input
               type="number"
