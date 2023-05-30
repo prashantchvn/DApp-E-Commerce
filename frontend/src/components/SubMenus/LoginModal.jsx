@@ -34,6 +34,9 @@ function LoginModal(){
 
   const getUser = async () => {
     await validateUser().then((data) => {
+      if(data.data.isAdmin){
+        dispatch(setAdmin(true))
+      }
       setUser(data.data);
     })
   };
