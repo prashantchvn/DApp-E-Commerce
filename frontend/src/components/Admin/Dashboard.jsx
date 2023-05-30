@@ -1,21 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { validateUser } from "../../scripts/Auth";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import TabMenu from "./TabMenu";
+import { setAdmin } from "../../actions";
 
 function Dashboard() {
-  const [isAdmin, setIsAdmin] = useState(false);
+  const isAdmin = useSelector((state) => state.isAdmin);
 
-  useEffect(() => {
-    const checkUserAuthenticity = async () => {
-      await validateUser().then((data) => {
-        console.log(data.data.isAdmin);
-        setIsAdmin(data.data.isAdmin);
-      });
-    };
-
-    checkUserAuthenticity();
-  }, []);
+  const dispatch = useDispatch();
 
   if (isAdmin) {
     return (

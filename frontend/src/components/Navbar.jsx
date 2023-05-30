@@ -10,18 +10,15 @@ import ExploreMenu from "./SubMenus/ExploreMenu";
 import SearchDialog from "./SubMenus/SearchDialog";
 import LoginModal from "./SubMenus/LoginModal";
 import AddToCart from "./SubMenus/AddToCart";
+import { useSelector } from 'react-redux';
+
 
 function NavScrollExample() {
   const [cartCount, setCartCount] = useState(0);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [dialog, setDialog] = useState("");
   const [vertialDialog, setVertialDialog] = useState(false);
 
-  useEffect(() => {
-    if (localStorage.getItem("isAdmin")) {
-      setIsAdmin(true);
-    }
-  }, []);
+  const isAdmin = useSelector(state => state.isAdmin);
 
   const Dialog = ({ open, children }) => {
     return (
