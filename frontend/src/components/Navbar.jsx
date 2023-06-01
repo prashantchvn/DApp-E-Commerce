@@ -48,7 +48,7 @@ function NavScrollExample() {
   const VerticalDialog = ({ open, children }) => {
     return (
       <dialog
-        className="mr-0 w-3/12 absolute top-12 right-0 h-full pt-10 z-50 pointer-cursor"
+        className="mr-0 w-3/12 absolute top-12 right-0 h-screen overflow-hidden z-50 pointer-cursor"
         open={open}
       >
         <button onClick={() => setVertialDialog(false)}>

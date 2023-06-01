@@ -5,12 +5,17 @@ import Carousel from "./SubComponents/Carousel";
 import ProductRow from "./SubComponents/ProductRow";
 import { useParams } from "react-router-dom";
 import { getProduct } from "../scripts/products";
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart, getCartCount } from "../scripts/cart";
+import { setCount } from "../actions";
 
 function Product() {
   const { slug } = useParams();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loaded, setLoaded] = useState(false);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const ApiCall = async () => {
@@ -24,6 +29,20 @@ function Product() {
     ApiCall();
 
   }, []);
+
+  const handleAddToCart = async () => {
+    const data = {
+      cartItem:{
+        product: product._id,
+        quantity: 1  
+      }
+    }
+    await addToCart(data).then(async (res) => {
+      await getCartCount().then((res) => {
+        dispatch(setCount(res.data.count))
+      })
+    })
+  }
 
   if (loaded) {
     return (
@@ -73,7 +92,7 @@ function Product() {
                 XXL
               </label>
             </div>
-            <button className="bg-black text-left pl-10 mt-2 w-4/6 rounded-full h-12 text-white tracking-widest text-md font-thin form-button mb-8">
+            <button onClick={handleAddToCart} className="bg-black text-left pl-10 mt-2 w-4/6 rounded-full h-12 text-white tracking-widest text-md font-thin form-button mb-8">
               ADD TO CART
             </button>
             <div className="top-border mr-8 pt-2 mt-6">
