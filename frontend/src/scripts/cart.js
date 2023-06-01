@@ -15,6 +15,10 @@ export function removeItemFromCart(data){
     return Post('/api/cart/removeItem', data)
 }
 
+export function updateProductQuantity(data){
+    return Post('/api/cart/updateQuantity',data)
+}
+
 export function getCart(){
     return Get('/api/cart')
 }

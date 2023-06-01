@@ -82,6 +82,23 @@ router.post('/removeItem', async (req, res) => {
     }
 })
 
+router.post('/updateQuantity', async (req, res) => {
+    try {
+        // remove the Item from cart
+        await Cart.updateOne({ "cartItems.product": req.body.product, user: req.user }, {
+            $set: { 
+                "cartItems.$.quantity": req.body.quantity
+            }
+        })
+        // return the new populated cart in the response
+        const cart = await Cart.findOne({ user: req.user }).populate("cartItems.product")
+        res.json({ status: 'ok', data: cart.cartItems})      
+    } catch (error) {
+        console.log(error)
+        res.json({ status: 'error', error: error })
+    }
+})
+
 router.get('/', async (req, res) => {
     // get the list of cart Items
     try {

@@ -3,7 +3,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Close from "../../assets/Icons/close.svg";
 import Carousel from "../SubComponents/Carousel";
-import { removeItemFromCart } from "../../scripts/cart";
+import { removeItemFromCart, updateProductQuantity } from "../../scripts/cart";
 
 function CartItem({ product, proQuantity, loadCartItems }) {
   const [quantity, setQuantity] = useState(1);
@@ -17,6 +17,17 @@ function CartItem({ product, proQuantity, loadCartItems }) {
       product: product._id
     }
     await removeItemFromCart(data).then((res) => {
+      loadCartItems()
+    })
+  }
+
+  const updateQuantity = async (val) => {
+    setQuantity(val)
+    const data = {
+      product: product._id,
+      quantity: val
+    }
+    await updateProductQuantity(data).then((res) => {
       loadCartItems()
     })
   }
@@ -38,7 +49,7 @@ function CartItem({ product, proQuantity, loadCartItems }) {
             value={quantity}
             onChange={(e) => {
               e.preventDefault();
-              setQuantity(e.target.value);
+              updateQuantity(e.target.value)
             }}
           >
             <MenuItem className="MaisonNeueMonoRegular" value={1}>
