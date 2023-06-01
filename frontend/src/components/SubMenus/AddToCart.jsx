@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCart, getSubTotal } from "../../scripts/cart";
 import CartItem from "./CartItem";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { setSubTotal } from "../../actions";
 
 function AddToCart() {
@@ -17,9 +18,9 @@ function AddToCart() {
 
   const loadSubTotal = async () => {
     await getSubTotal().then((res) => {
-      dispatch(setSubTotal(res.data.subTotal))
-    })
-  }
+      dispatch(setSubTotal(res.data.subTotal));
+    });
+  };
 
   const loadCartItems = async () => {
     await getCart().then((res) => {
@@ -42,25 +43,42 @@ function AddToCart() {
         <div>
           <div className="overflow-scroll h-2/5 no-scrollBar cart-item-container">
             {cartItems.map((product) => {
-              return <CartItem product={product.product} proQuantity={product.quantity} loadCartItems={loadCartItems}/>;
+              return (
+                <CartItem
+                  product={product.product}
+                  proQuantity={product.quantity}
+                  loadCartItems={loadCartItems}
+                />
+              );
             })}
           </div>
-          <hr className="border-black border-2 my-2"/>
+          <hr className="border-black border-2 my-2" />
           <div className="flex w-full justify-between">
-            <p className="text-sm">SUBTOTAL</p><p className="text-sm">${subTotal}</p>
+            <p className="text-sm">SUBTOTAL</p>
+            <p className="text-sm">${subTotal}</p>
           </div>
           <button className="bg-black uppercase mt-1 w-full rounded-full h-12 py-2 mt-2 text-white text-sm font-thin tracking-widest">
-              proceed Checkout
-            </button>
+            proceed Checkout
+          </button>
         </div>
       ) : (
-        <div className="w-full mt-2">
-          <button className="bg-black w-full rounded-full h-10 text-white tracking-wider text-sm font-thin">
-            EXPLORE MEN'S
-          </button>
-          <button className="bg-black w-full rounded-full h-10 mt-2 text-white tracking-wider text-sm font-thin">
-            EXPLORE WOMEN'S
-          </button>
+        <div className="mt-2">
+          <div className="w-full">
+            <Link
+              to={`/explore/men/`}
+              className="bg-black text-center block mx-auto text-white w-full py-3 rounded-full tracking-wider text-sm font-thin"
+            >
+              EXPLORE MEN'S
+            </Link>
+          </div>
+          <div className="w-full mt-2">
+            <Link
+              to={`/explore/women/`}
+              className="w-full text-center block mx-auto bg-black text-white mx-4 py-3 rounded-full tracking-wider text-sm font-thin"
+            >
+              EXPLORE WOMEN'S
+            </Link>
+          </div>
         </div>
       )}
     </div>

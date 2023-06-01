@@ -3,10 +3,14 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Close from "../../assets/Icons/close.svg";
 import Carousel from "../SubComponents/Carousel";
-import { removeItemFromCart, updateProductQuantity } from "../../scripts/cart";
+import { useDispatch } from "react-redux";
+import { removeItemFromCart, updateProductQuantity, getCartCount } from "../../scripts/cart";
+import { setCount } from "../../actions";
 
 function CartItem({ product, proQuantity, loadCartItems }) {
   const [quantity, setQuantity] = useState(1);
+
+  const dispatch = useDispatch();
 
   useEffect(()=>{
     setQuantity(proQuantity)
@@ -16,8 +20,11 @@ function CartItem({ product, proQuantity, loadCartItems }) {
     const data = {
       product: product._id
     }
-    await removeItemFromCart(data).then((res) => {
-      loadCartItems()
+    await removeItemFromCart(data).then(async (res) => {
+      loadCartItems();
+      await getCartCount().then((res) => {
+        dispatch(setCount(res.data.count))
+      })
     })
   }
 

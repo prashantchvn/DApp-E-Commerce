@@ -5,7 +5,7 @@ import Carousel from "./SubComponents/Carousel";
 import ProductRow from "./SubComponents/ProductRow";
 import { useParams } from "react-router-dom";
 import { getProduct } from "../scripts/products";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addToCart, getCartCount, getSubTotal } from "../scripts/cart";
 import { setCount, setSubTotal } from "../actions";
 
