@@ -10,15 +10,26 @@ import ExploreMenu from "./SubMenus/ExploreMenu";
 import SearchDialog from "./SubMenus/SearchDialog";
 import LoginModal from "./SubMenus/LoginModal";
 import AddToCart from "./SubMenus/AddToCart";
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { setCount } from "../actions";
+import { getCartCount } from "../scripts/cart";
 
 function NavScrollExample() {
-  const [cartCount, setCartCount] = useState(0);
   const [dialog, setDialog] = useState("");
   const [vertialDialog, setVertialDialog] = useState(false);
 
   const isAdmin = useSelector(state => state.isAdmin);
+  const cartCount = useSelector((state) => state.cartCount);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const loadCartCount = async () => {
+      await getCartCount().then((res) => {
+        dispatch(setCount(res.data.count))
+      })
+    }
+    loadCartCount();
+  },[])
 
   const Dialog = ({ open, children }) => {
     return (
@@ -37,7 +48,7 @@ function NavScrollExample() {
   const VerticalDialog = ({ open, children }) => {
     return (
       <dialog
-        className="mr-0 w-3/12 absolute top-12 right-0 h-full pt-10 z-50 pointer-cursor"
+        className="mr-0 w-3/12 absolute top-12 right-0 h-screen overflow-hidden z-50 pointer-cursor"
         open={open}
       >
         <button onClick={() => setVertialDialog(false)}>

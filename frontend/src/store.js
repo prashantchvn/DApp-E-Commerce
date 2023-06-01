@@ -1,7 +1,9 @@
 import { legacy_createStore as createStore } from 'redux'
 
 const initialState = {
-    isAdmin: false
+    isAdmin: false,
+    cartCount: 0,
+    subTotal: 0
 }
 
 function reducer(state = initialState, action) {
@@ -9,6 +11,10 @@ function reducer(state = initialState, action) {
         case 'SET_ADMIN':
             return { ...state, isAdmin: action.payload };
         // Add more cases for different actions
+        case 'SET_COUNT':
+            return { ...state, cartCount: action.payload };
+        case 'SET_SUBTOTAL':
+            return { ...state, subTotal: action.payload }
         default:
             return state;
     }

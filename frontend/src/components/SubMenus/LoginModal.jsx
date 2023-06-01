@@ -11,9 +11,8 @@ function LoginModal(){
   const [phNo, setPhNo] = useState();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [mode, setMode] = useState("login");
+  const [mode, setMode] = useState(localStorage.getItem("AuthToken") ? "user" : "login");
   const [user, setUser] = useState({});
-  const value = useSelector(state => state.isAdmin);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -38,6 +37,7 @@ function LoginModal(){
         dispatch(setAdmin(true))
       }
       setUser(data.data);
+      setMode("user")
     })
   };
 
@@ -96,7 +96,7 @@ function LoginModal(){
     }
   };
 
-  if (localStorage.getItem("AuthToken")) {
+  if (mode === 'user') {
     return (
       <div className="block my-10">
         <h1 className="font-black tracking-wider leading-2 text-3xl mb-2">
@@ -104,8 +104,8 @@ function LoginModal(){
         </h1>
         <button
           onClick={() => {
-            localStorage.removeItem("AuthToken");
             setMode("login");
+            localStorage.removeItem("AuthToken");
             localStorage.removeItem('isAdmin')
             dispatch(setAdmin(false))
           }}

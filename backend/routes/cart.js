@@ -74,7 +74,24 @@ router.post('/removeItem', async (req, res) => {
             }
         )
         // return the new populated cart in the response
-        cart = await Cart.findOne({ user: req.user }).populate("cartItems.product")
+        const cart = await Cart.findOne({ user: req.user }).populate("cartItems.product")
+        res.json({ status: 'ok', data: cart.cartItems})      
+    } catch (error) {
+        console.log(error)
+        res.json({ status: 'error', error: error })
+    }
+})
+
+router.post('/updateQuantity', async (req, res) => {
+    try {
+        // remove the Item from cart
+        await Cart.updateOne({ "cartItems.product": req.body.product, user: req.user }, {
+            $set: { 
+                "cartItems.$.quantity": req.body.quantity
+            }
+        })
+        // return the new populated cart in the response
+        const cart = await Cart.findOne({ user: req.user }).populate("cartItems.product")
         res.json({ status: 'ok', data: cart.cartItems})      
     } catch (error) {
         console.log(error)
@@ -95,6 +112,48 @@ router.get('/', async (req, res) => {
         }
         cart = await Cart.findOne({ user: req.user }).populate("cartItems.product")
         res.json({ status: 'ok', data: cart.cartItems})
+    } catch (error) {
+        res.json({ status: 'error', error: error })
+    }
+})
+
+router.get('/cartCount', async (req, res) => {
+    // get the list of cart Items
+    try {
+        let cart = await Cart.findOne({ user: req.user })
+        if (!cart) {
+            //create a new cart if not exist
+            cart = await Cart.create({
+                user: req.user,
+                cartItems: req.body.cartItem,
+            })
+        }
+        cart = await Cart.findOne({ user: req.user }).populate("cartItems.product")
+        res.json({ status: 'ok', count: cart.cartItems.length})
+    } catch (error) {
+        res.json({ status: 'error', error: error })
+    }
+})
+
+router.get('/subTotal', async (req, res) => {
+    // get the list of cart Items
+    try {
+        let cart = await Cart.findOne({ user: req.user })
+        if (!cart) {
+            //create a new cart if not exist
+            cart = await Cart.create({
+                user: req.user,
+                cartItems: req.body.cartItem,
+            })
+        }
+        cart = await Cart.findOne({ user: req.user }).populate("cartItems.product")
+        let subTotal = 0;
+        cart.cartItems.map((item) => {
+            let total = 0;
+            total = item.quantity * item.product.price;
+            subTotal += total;
+        })
+        res.json({ status: 'ok', subTotal: subTotal})
     } catch (error) {
         res.json({ status: 'error', error: error })
     }
