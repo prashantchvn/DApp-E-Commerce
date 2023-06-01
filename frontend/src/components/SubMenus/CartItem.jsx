@@ -42,7 +42,7 @@ function CartItem({ product, proQuantity, loadCartItems }) {
   return (
     <div className="flex my-4">
       <div className="w-4/12">
-        <Carousel />
+        <Carousel/>
       </div>
       <div className="px-2 relative py-2 w-full">
         <img src={Close} onClick={removeItem} className="h-4 w-4 absolute right-2 top-0 z-50 cursor-pointer" />
