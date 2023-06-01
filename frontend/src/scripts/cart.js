@@ -22,3 +22,7 @@ export function getCart(){
 export function getCartCount(){
     return Get('/api/cart/cartCount')
 }
+
+export function getSubTotal(){
+    return Get('/api/cart/subTotal')
+}

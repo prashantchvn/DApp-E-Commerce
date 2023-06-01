@@ -6,8 +6,8 @@ import ProductRow from "./SubComponents/ProductRow";
 import { useParams } from "react-router-dom";
 import { getProduct } from "../scripts/products";
 import { useSelector, useDispatch } from 'react-redux';
-import { addToCart, getCartCount } from "../scripts/cart";
-import { setCount } from "../actions";
+import { addToCart, getCartCount, getSubTotal } from "../scripts/cart";
+import { setCount, setSubTotal } from "../actions";
 
 function Product() {
   const { slug } = useParams();
@@ -40,6 +40,9 @@ function Product() {
     await addToCart(data).then(async (res) => {
       await getCartCount().then((res) => {
         dispatch(setCount(res.data.count))
+      })
+      await getSubTotal().then((res) => {
+        dispatch(setSubTotal(res.data.count))
       })
     })
   }

@@ -1,11 +1,25 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Close from "../../assets/Icons/close.svg";
 import Carousel from "../SubComponents/Carousel";
+import { removeItemFromCart } from "../../scripts/cart";
 
-function CartItem({ product }) {
+function CartItem({ product, proQuantity, loadCartItems }) {
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(()=>{
+    setQuantity(proQuantity)
+  },[])
+
+  const removeItem = async () => {
+    const data = {
+      product: product._id
+    }
+    await removeItemFromCart(data).then((res) => {
+      loadCartItems()
+    })
+  }
 
   return (
     <div className="flex my-4">
@@ -13,8 +27,8 @@ function CartItem({ product }) {
         <Carousel />
       </div>
       <div className="px-2 relative py-2 w-full">
-        <img src={Close} className="h-4 w-4 absolute right-2 top-0 z-50 cursor-pointer" />
-        <p className="text-md uppercase tracking-wider font-thin pr-2">
+        <img src={Close} onClick={removeItem} className="h-4 w-4 absolute right-2 top-0 z-50 cursor-pointer" />
+        <p className="text-sm uppercase tracking-widest font-thin pr-4">
           {product.productName}
         </p>
         <div className="flex mt-auto absolute bottom-px w-full justify-between">
@@ -32,6 +46,30 @@ function CartItem({ product }) {
             </MenuItem>
             <MenuItem className="MaisonNeueMonoRegular" value={2}>
               2
+            </MenuItem>
+            <MenuItem className="MaisonNeueMonoRegular" value={3}>
+              3
+            </MenuItem>
+            <MenuItem className="MaisonNeueMonoRegular" value={4}>
+              4
+            </MenuItem>
+            <MenuItem className="MaisonNeueMonoRegular" value={5}>
+              5
+            </MenuItem>
+            <MenuItem className="MaisonNeueMonoRegular" value={6}>
+              6
+            </MenuItem>
+            <MenuItem className="MaisonNeueMonoRegular" value={7}>
+              7
+            </MenuItem>
+            <MenuItem className="MaisonNeueMonoRegular" value={8}>
+              8
+            </MenuItem>
+            <MenuItem className="MaisonNeueMonoRegular" value={9}>
+              9
+            </MenuItem>
+            <MenuItem className="MaisonNeueMonoRegular" value={10}>
+              10
             </MenuItem>
           </Select>
           <p className="MaisonNeueMonoRegular font-thin text-sm mr-4 mt-2">

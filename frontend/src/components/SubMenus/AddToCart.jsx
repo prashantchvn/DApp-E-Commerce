@@ -1,19 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { getCart } from "../../scripts/cart";
+import { useSelector, useDispatch } from "react-redux";
+import { getCart, getSubTotal } from "../../scripts/cart";
 import CartItem from "./CartItem";
+import { setSubTotal } from "../../actions";
 
 function AddToCart() {
   const [cartItems, setCartItems] = useState([]);
   const cartCount = useSelector((state) => state.cartCount);
+  const subTotal = useSelector((state) => state.subTotal);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     loadCartItems();
   }, []);
 
+  const loadSubTotal = async () => {
+    await getSubTotal().then((res) => {
+      dispatch(setSubTotal(res.data.subTotal))
+    })
+  }
+
   const loadCartItems = async () => {
     await getCart().then((res) => {
       setCartItems(res.data.data);
+      loadSubTotal();
     });
   };
 
@@ -31,12 +42,12 @@ function AddToCart() {
         <div>
           <div className="overflow-scroll h-2/5 no-scrollBar cart-item-container">
             {cartItems.map((product) => {
-              return <CartItem product={product.product} />;
+              return <CartItem product={product.product} proQuantity={product.quantity} loadCartItems={loadCartItems}/>;
             })}
           </div>
           <hr className="border-black border-2 my-2"/>
           <div className="flex w-full justify-between">
-            <p className="text-sm">SUBTOTAL</p><p className="text-sm">$400</p>
+            <p className="text-sm">SUBTOTAL</p><p className="text-sm">${subTotal}</p>
           </div>
           <button className="bg-black uppercase mt-1 w-full rounded-full h-12 py-2 mt-2 text-white text-sm font-thin tracking-widest">
               proceed Checkout

@@ -7,3 +7,8 @@ export const setCount = (newValue) => ({
     type: 'SET_COUNT',
     payload: newValue
 });
+
+export const setSubTotal = (newValue) => ({
+    type: 'SET_SUBTOTAL',
+    payload: newValue
+});
