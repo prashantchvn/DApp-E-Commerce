@@ -27,6 +27,18 @@ router.get('/:slug', async (req, res) => {
     }
 })
 
+router.post('/search', async (req, res) => {
+    // get the single product and relative products
+    try {
+        const searchRegex = new RegExp(req.body.query, 'i')
+        const data = await Products.find({ productName: { $regex: searchRegex } } )
+        res.json({ status: 'ok', data: data })
+    } catch (error) {
+        console.log(error)
+        res.json({ status: 'error', error: error })
+    }
+})
+
 router.get('/explore/:gender/:category', async (req, res) => {
     // get the list of products in the explore page
     let gender, isKids = false;
