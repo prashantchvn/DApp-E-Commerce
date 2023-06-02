@@ -9,6 +9,7 @@ import Explore from "./components/Explore";
 import NotFound404 from "./components/NotFound404";
 import Dashboard from "./components/Admin/Dashboard";
 import CreateProductForm from "./components/Admin/CreateProductForm";
+import Checkout from "./components/Checkout";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/product/:slug" component={Product} />
         <Route exact path="/explore/:gender/:category" component={Explore} />
         <Route exact path="/explore/:gender/" component={Explore} />
+        <Route exact path="/checkout/cart" component={Checkout} />
 
         {/* Admin routes */}
         <Route exact path="/admin" component={Dashboard} />
