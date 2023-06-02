@@ -3,7 +3,8 @@ import { legacy_createStore as createStore } from 'redux'
 const initialState = {
     isAdmin: false,
     cartCount: 0,
-    subTotal: 0
+    subTotal: 0,
+    loggedIn: false,
 }
 
 function reducer(state = initialState, action) {
@@ -15,6 +16,8 @@ function reducer(state = initialState, action) {
             return { ...state, cartCount: action.payload };
         case 'SET_SUBTOTAL':
             return { ...state, subTotal: action.payload }
+        case "LOGGED_IN":
+            return { ...state, loggedIn: action.payload }
         default:
             return state;
     }

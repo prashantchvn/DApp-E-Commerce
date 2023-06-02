@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { loginCall, registerCall, forgotPassword } from "../../scripts/Auth";
 import { validateUser } from "../../scripts/Auth";
-import { setAdmin } from "../../actions";
+import { setAdmin, setLogIn } from "../../actions";
 
 function LoginModal(){
   const [name, setName] = useState("");
@@ -50,11 +50,13 @@ function LoginModal(){
     const res = await loginCall(data);
     if(res.data.isAdmin){
       dispatch(setAdmin(true));
+      dispatch(setLogIn(true))
       history.push("/admin");
       setMode("");
     }
     if (res.data.user) {
       localStorage.setItem("AuthToken", res.data.user);
+      dispatch(setLogIn(true))
       clearFields();
       getUser();
       setMode("");
@@ -108,6 +110,7 @@ function LoginModal(){
             localStorage.removeItem("AuthToken");
             localStorage.removeItem('isAdmin')
             dispatch(setAdmin(false))
+            dispatch(setLogIn(false))
           }}
           className="mt-3 mb-3 text-right w-full pl-2 forgot-password"
         >
