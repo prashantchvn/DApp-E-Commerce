@@ -9,8 +9,10 @@ function AddToCart() {
   const [cartItems, setCartItems] = useState([]);
   const cartCount = useSelector((state) => state.cartCount);
   const subTotal = useSelector((state) => state.subTotal);
+  const isLoggedin = useSelector((state) => state.loggedIn);
 
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     loadCartItems();
@@ -36,10 +38,10 @@ function AddToCart() {
           CART
         </h1>
         <p className="tracking-wider pt-3 ml-2 text-xs font-thin MaisonNeueMonoRegular">
-          {cartCount} ITEMS
+          { isLoggedin ? cartCount : 0 } ITEMS
         </p>
       </div>
-      {cartCount >= 1 ? (
+      {cartCount >= 1 && isLoggedin ? (
         <div>
           <div className="overflow-scroll h-2/5 no-scrollBar cart-item-container">
             {cartItems.map((product) => {
@@ -57,9 +59,12 @@ function AddToCart() {
             <p className="text-sm">SUBTOTAL</p>
             <p className="text-sm">${subTotal}</p>
           </div>
-          <button className="bg-black uppercase mt-1 w-full rounded-full h-12 py-2 mt-2 text-white text-sm font-thin tracking-widest">
+          <Link
+            to={`/checkout/cart`}
+            className="bg-black uppercase mt-1 w-full rounded-full h-12 py-2 mt-2 text-white text-sm font-thin tracking-widest bg-black text-center block mx-auto text-white w-full py-3 rounded-full tracking-wider text-sm font-thin"
+          >
             proceed Checkout
-          </button>
+          </Link>
         </div>
       ) : (
         <div className="mt-2">

@@ -12,3 +12,8 @@ export const setSubTotal = (newValue) => ({
     type: 'SET_SUBTOTAL',
     payload: newValue
 });
+
+export const setLogIn = (newValue) => ({
+    type: 'LOGGED_IN',
+    payload: newValue
+});

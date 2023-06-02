@@ -20,6 +20,8 @@ function NavScrollExample() {
 
   const isAdmin = useSelector(state => state.isAdmin);
   const cartCount = useSelector((state) => state.cartCount);
+  const isLoggedin = useSelector((state) => state.loggedIn);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -138,7 +140,7 @@ function NavScrollExample() {
             }}
             className="mx-4 rounded-full border px-3 h-10 mt-2 border-2 border-slate-950"
           >
-            <p className="MaisonNeueMonoRegular">{cartCount}</p>
+            <p className="MaisonNeueMonoRegular">{ isLoggedin ? cartCount : 0 }</p>
           </button>
         </div>
       </div>
