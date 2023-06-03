@@ -1,7 +1,7 @@
 import { Get, Post, Patch, Delete } from "./apiClient";
 
-export function placeOrder(){
-    return Post('/api/orders');
+export function placeOrder(data){
+    return Post('/api/orders',data);
 }
 
 export function getOrders(){

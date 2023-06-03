@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loginCall, registerCall, forgotPassword } from "../../scripts/Auth";
 import { validateUser } from "../../scripts/Auth";
 import { setAdmin, setLogIn } from "../../actions";
+import { getBalance } from "../../scripts/orders";
 
 function LoginModal(){
   const [name, setName] = useState("");
@@ -34,7 +35,7 @@ function LoginModal(){
   };
   
   const loadBalance = async () => {
-    await loadBalance().then((res) => {
+    await getBalance().then((res) => {
       setBalance(res.data.balance)
     })
   }

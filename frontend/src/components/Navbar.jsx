@@ -30,7 +30,10 @@ function NavScrollExample() {
         dispatch(setCount(res.data.count))
       })
     }
-    loadCartCount();
+    
+    if(localStorage.getItem('AuthToken')){
+      loadCartCount();
+    }
   },[])
 
   const Dialog = ({ open, children }) => {

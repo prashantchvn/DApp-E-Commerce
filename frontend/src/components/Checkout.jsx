@@ -4,6 +4,8 @@ import Select from "@mui/material/Select";
 import { getCart } from "../scripts/cart";
 import { useSelector } from "react-redux";
 import Jacket from "../assets/Images/jacket.webp";
+import { placeOrder } from "../scripts/orders";
+import toast, { Toaster } from 'react-hot-toast';
 
 function Checkout() {
   const [country, setCountry] = useState("india");
@@ -29,6 +31,19 @@ function Checkout() {
       setCartItems(res.data.data);
     });
   };
+
+  const PlaceAnOrder = async (e) => {
+    e.preventDefault();
+    const data = {
+      amount: ((subTotal/100)*12 + subTotal).toString(),
+      paymentMode: "ether"
+    }
+    await placeOrder(data).then((res) => {
+      if(res.data.status == "error"){
+        toast.error(res.data.message);
+      }
+    })
+  }
 
   return (
     <div className="flex mx-48 my-24">
@@ -153,7 +168,7 @@ function Checkout() {
             type="number"
           />
 
-          <button className="mt-3 float-right bg-black w-2/6 rounded-md h-12 text-white tracking-widest text-md font-thin form-button">
+          <button onClick={PlaceAnOrder} className="mt-3 float-right bg-black w-2/6 rounded-md h-12 text-white tracking-widest text-md font-thin form-button">
             Continue shipping
           </button>
         </div>
@@ -194,6 +209,7 @@ function Checkout() {
           <p className="text-md font-semibold">${(subTotal/100)*12 + subTotal}</p>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 }

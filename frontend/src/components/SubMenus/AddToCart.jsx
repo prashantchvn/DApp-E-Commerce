@@ -15,7 +15,9 @@ function AddToCart() {
   
 
   useEffect(() => {
-    loadCartItems();
+    if(localStorage.getItem("AuthToken")){
+      loadCartItems();
+    }
   }, []);
 
   const loadSubTotal = async () => {
