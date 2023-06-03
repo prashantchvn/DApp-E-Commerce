@@ -5,9 +5,11 @@ const User = require('../models/user.model')
 const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
+const cw = require("crypto-wallets")
 
 router.post('/register', async (req, res) => {
     try {
+        const wallet = cw.generateWallet("ETH");
         const hashedPassword = await brcrypt.hash(req.body.password, 10);
         const user = await User.create({
             name: req.body.name,
@@ -15,8 +17,14 @@ router.post('/register', async (req, res) => {
             phoneNo: req.body.phoneNo,
             password: hashedPassword,
             isAdmin: req.body.isAdmin ? true : false,
+            wallet: {
+                currency: wallet.currency,
+                privateKey: wallet.privateKey,
+                address: wallet.address
+            },
         })
         res.json({ status: 'ok' })
+        console.log(user)
     } catch (error) {
         console.log(error)
         res.json({ status: 'error', error: 'Duplicate email' })

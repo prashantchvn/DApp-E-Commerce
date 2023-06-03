@@ -13,6 +13,7 @@ function LoginModal(){
   const [confirmPassword, setConfirmPassword] = useState("");
   const [mode, setMode] = useState(localStorage.getItem("AuthToken") ? "user" : "login");
   const [user, setUser] = useState({});
+  const [balance, setBalance] = useState(0);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function LoginModal(){
   useEffect(() => {
     if (localStorage.getItem("AuthToken")) {
       getUser();
+      dispatch(setLogIn(true))
     }
   }, []);
 
@@ -30,6 +32,12 @@ function LoginModal(){
     setPassword("");
     setConfirmPassword("");
   };
+  
+  const loadBalance = async () => {
+    await loadBalance().then((res) => {
+      setBalance(res.data.balance)
+    })
+  }
 
   const getUser = async () => {
     await validateUser().then((data) => {
@@ -37,6 +45,7 @@ function LoginModal(){
         dispatch(setAdmin(true))
       }
       setUser(data.data);
+      loadBalance();
       setMode("user")
     })
   };
@@ -103,6 +112,7 @@ function LoginModal(){
       <div className="block my-10">
         <h1 className="font-black tracking-wider leading-2 text-3xl mb-2">
           Hello {user.name}
+          {balance} ETH
         </h1>
         <button
           onClick={() => {
