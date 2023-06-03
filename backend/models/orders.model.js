@@ -17,7 +17,8 @@ const ordersSchema = new mongoose.Schema({
             paymentReference: { type: String },
             paidStatus: { type: Boolean, default: false },
             orderDelivered: { type: Boolean, default: false },
-            deliveryAgency: { type: String, required: true }
+            deliveryAgency: { type: String, required: true },
+            transactionHash: { type: String, required: true }
         }
     ]
 }, { timestamps: true });

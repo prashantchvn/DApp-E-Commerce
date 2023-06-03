@@ -7,3 +7,7 @@ export function placeOrder(){
 export function getOrders(){
     return Get('/api/orders')
 }
+
+export function getBalance(){
+    return Get('/api/orders/get/balance')
+}
