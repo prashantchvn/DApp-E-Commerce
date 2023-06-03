@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { loginCall, registerCall, forgotPassword } from "../../scripts/Auth";
 import { validateUser } from "../../scripts/Auth";
 import { setAdmin, setLogIn } from "../../actions";
 import { getBalance } from "../../scripts/orders";
 
-function LoginModal(){
+function LoginModal() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phNo, setPhNo] = useState();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [mode, setMode] = useState(localStorage.getItem("AuthToken") ? "user" : "login");
+  const [mode, setMode] = useState(
+    localStorage.getItem("AuthToken") ? "user" : "login"
+  );
   const [user, setUser] = useState({});
   const [balance, setBalance] = useState(0);
 
@@ -22,7 +24,7 @@ function LoginModal(){
   useEffect(() => {
     if (localStorage.getItem("AuthToken")) {
       getUser();
-      dispatch(setLogIn(true))
+      dispatch(setLogIn(true));
     }
   }, []);
 
@@ -33,22 +35,22 @@ function LoginModal(){
     setPassword("");
     setConfirmPassword("");
   };
-  
+
   const loadBalance = async () => {
     await getBalance().then((res) => {
-      setBalance(res.data.balance)
-    })
-  }
+      setBalance(res.data.balance);
+    });
+  };
 
   const getUser = async () => {
     await validateUser().then((data) => {
-      if(data.data.isAdmin){
-        dispatch(setAdmin(true))
+      if (data.data.isAdmin) {
+        dispatch(setAdmin(true));
       }
       setUser(data.data);
       loadBalance();
-      setMode("user")
-    })
+      setMode("user");
+    });
   };
 
   const handleLogin = async (e) => {
@@ -58,15 +60,15 @@ function LoginModal(){
       password: password,
     };
     const res = await loginCall(data);
-    if(res.data.isAdmin){
+    if (res.data.isAdmin) {
       dispatch(setAdmin(true));
-      dispatch(setLogIn(true))
+      dispatch(setLogIn(true));
       history.push("/admin");
       setMode("");
     }
     if (res.data.user) {
       localStorage.setItem("AuthToken", res.data.user);
-      dispatch(setLogIn(true))
+      dispatch(setLogIn(true));
       clearFields();
       getUser();
       setMode("");
@@ -108,20 +110,20 @@ function LoginModal(){
     }
   };
 
-  if (mode === 'user') {
+  if (mode === "user") {
     return (
       <div className="block my-10">
         <h1 className="font-black tracking-wider leading-2 text-3xl mb-2">
           Hello {user.name}
-          {balance} ETH
         </h1>
+        <h1 className="text-sm"> {balance} ETH</h1>
         <button
           onClick={() => {
             setMode("login");
             localStorage.removeItem("AuthToken");
-            localStorage.removeItem('isAdmin')
-            dispatch(setAdmin(false))
-            dispatch(setLogIn(false))
+            localStorage.removeItem("isAdmin");
+            dispatch(setAdmin(false));
+            dispatch(setLogIn(false));
           }}
           className="mt-3 mb-3 text-right w-full pl-2 forgot-password"
         >
