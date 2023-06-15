@@ -3,6 +3,7 @@ const Cart = require('../models/cart.model')
 const express = require('express')
 const router = express.Router();
 const Web3 = require("web3")
+const User = require('../models/user.model')
 
 async function cartItems(id) {
     const cart = await Cart.findOne({ user: id })
@@ -123,7 +124,7 @@ router.get('/get/balance', async (req, res) => {
     try {
         const web3 = new Web3("https://fluent-broken-brook.ethereum-goerli.discover.quiknode.pro/fe4406891a39eaa2cbf3d5ed46ccfc89d15af86f/")
         const user = await User.findById(req.user);
-        const balance = await web3.eth.getBalance(user.wallet.address)
+        const balance = await web3.eth.getBalance('0x507Ea3bD542C0da7518328439301d4E10Fcb76e8')
         res.json({ status: 'ok', balance: balance })
     } catch (error) {
         console.log(error)
